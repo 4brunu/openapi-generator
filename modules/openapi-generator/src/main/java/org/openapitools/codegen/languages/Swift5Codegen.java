@@ -126,7 +126,7 @@ public class Swift5Codegen extends DefaultCodegen implements CodegenConfig {
                 Arrays.asList(
                         // Added for Objective-C compatibility
                         "id", "description", "NSArray", "NSURL", "CGFloat", "NSSet", "NSString", "NSInteger", "NSUInteger",
-                        "NSError", "NSDictionary"
+                        "NSError", "NSDictionary", "className"
                 )
         );
 
@@ -908,14 +908,21 @@ public class Swift5Codegen extends DefaultCodegen implements CodegenConfig {
         super.postProcessModelProperty(model, property);
 
         boolean isSwiftScalarType = property.isInteger || property.isLong || property.isFloat
-                || property.isDouble || property.isBoolean;
+                || property.isDouble || property.isBoolean || property.isNumber || property.isNumeric;
+
+        LOGGER.info("HERE before - " + model.name + " - property: " + property.name + " - (!property.required " + property.required + " || property.isNullable " + property.isNullable +") && isSwiftScalarType " + isSwiftScalarType + " \n" + property);
+
+
         if ((!property.required || property.isNullable) && isSwiftScalarType) {
             // Optional scalar types like Int?, Int64?, Float?, Double?, and Bool?
             // do not translate to Objective-C. So we want to flag those
             // properties in case we want to put special code in the templates
             // which provide Objective-C compatibility.
             property.vendorExtensions.put("x-swift-optional-scalar", true);
+            LOGGER.info("HERE x-swift-optional-scalar - " + model.name + " - property: " + property.name);
         }
+
+        LOGGER.info("HERE after - " + model.name + " - property: " + property.name + " - (!property.required " + property.required + " || property.isNullable " + property.isNullable +") && isSwiftScalarType " + isSwiftScalarType + " \n" + property);
     }
 
     @Override

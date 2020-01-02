@@ -1,5 +1,5 @@
 {{^objcCompatible}}{{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} struct {{classname}}: Codable { {{/objcCompatible}}
-{{#objcCompatible}}@objc {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} class {{classname}}: NSObject { {{/objcCompatible}}
+{{#objcCompatible}}@objc {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} class {{classname}}: NSObject, Codable { {{/objcCompatible}}
 
 {{#vars}}
 {{#isEnum}}
@@ -9,7 +9,27 @@
 {{#vars}}
 {{#isEnum}}
     {{#description}}/** {{description}} */
-    {{/description}}{{#objcCompatible}}@objc {{/objcCompatible}}{{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} var {{name}}: {{{datatypeWithEnum}}}{{#required}}{{#isNullable}}?{{/isNullable}}{{/required}}{{^required}}?{{/required}}{{#defaultValue}} = {{{defaultValue}}}{{/defaultValue}}
+    {{/description}}{{#objcCompatible}}{{#required}}{{^isNullable}}@objc {{/isNullable}}{{/required}}{{/objcCompatible}}{{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} var {{name}}: {{{datatypeWithEnum}}}{{#required}}{{#isNullable}}?{{/isNullable}}{{/required}}{{^required}}?{{/required}}{{#defaultValue}} = {{{defaultValue}}}{{/defaultValue}}
+    {{#objcCompatible}}
+    {{^required}}
+    {{#vendorExtensions.x-swift-optional-scalar}}
+    @objc {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} var {{name}}Num: NSNumber? {
+        get {
+            return {{name}} as? NSNumber
+        }
+    }
+    {{/required}}
+    {{#required}}
+    {{#isNullable}}
+    {{#vendorExtensions.x-swift-optional-scalar}}
+    @objc {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} var {{name}}Num: NSNumber? {
+        get {
+            return {{name}} as? NSNumber
+        }
+    }
+    {{/isNullable}}
+    {{/required}}
+    {{/objcCompatible}}
 {{/isEnum}}
 {{^isEnum}}
     {{#description}}/** {{description}} */
@@ -65,7 +85,7 @@
 
     // Decodable protocol methods
 
-    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} init(from decoder: Decoder) throws {
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: String.self)
 
         {{#vars}}

@@ -1,7 +1,28 @@
-    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} enum {{enumName}}: {{^isContainer}}{{dataType}}{{/isContainer}}{{#isContainer}}String{{/isContainer}}, Codable, CaseIterable {
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} enum {{enumName}}: {{^objcCompatible}}{{^isContainer}}{{dataType}}{{/isContainer}}{{#isContainer}}String{{/isContainer}}{{/objcCompatible}}{{#objcCompatible}}Int{{/objcCompatible}}, Codable, CaseIterable {
         {{#allowableValues}}
         {{#enumVars}}
-        case {{name}} = {{{value}}}
+        case {{name}}{{^objcCompatible}} = {{{value}}}{{/objcCompatible}}
         {{/enumVars}}
         {{/allowableValues}}
+        {{#objcCompatible}}
+
+        func value() -> {{^isContainer}}{{dataType}}{{/isContainer}}{{#isContainer}}String{{/isContainer}} {
+            switch self {
+                {{#allowableValues}}
+                {{#enumVars}}
+                case .{{name}}: return {{{value}}}
+                {{/enumVars}}
+                {{/allowableValues}}
+            }
+        }
+
+        static func fromValue(value: {{^isContainer}}{{dataType}}{{/isContainer}}{{#isContainer}}String{{/isContainer}}) -> {{enumName}}? {
+            {{#allowableValues}}
+            {{#enumVars}}
+            {{#-first}}if {{/-first}}{{^-first}}else if {{/-first}} value == {{{value}}} { return .{{name}} }
+            {{/enumVars}}
+            {{/allowableValues}}
+            return nil
+        }
+        {{/objcCompatible}}
     }

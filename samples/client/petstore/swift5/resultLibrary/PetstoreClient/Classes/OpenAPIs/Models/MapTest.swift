@@ -13,9 +13,12 @@ public struct MapTest: Codable {
         case upper = "UPPER"
         case lower = "lower"
     }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var mapMapOfString: [String: [String: String]]?
     public var mapOfEnumString: [String: String]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var directMap: [String: Bool]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var indirectMap: StringBooleanMap?
 
     public init(mapMapOfString: [String: [String: String]]?, mapOfEnumString: [String: String]?, directMap: [String: Bool]?, indirectMap: StringBooleanMap?) {
@@ -26,10 +29,10 @@ public struct MapTest: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mapMapOfString = "map_map_of_string"
-        case mapOfEnumString = "map_of_enum_string"
-        case directMap = "direct_map"
-        case indirectMap = "indirect_map"
+        case mapMapOfString
+        case mapOfEnumString
+        case directMap
+        case indirectMap
     }
 
 }

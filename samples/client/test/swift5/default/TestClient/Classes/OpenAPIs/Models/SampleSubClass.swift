@@ -10,9 +10,13 @@ import Foundation
 /** This is a subclass defived from the SampleBase class. */
 public struct SampleSubClass: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var baseClassStringProp: String?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var baseClassIntegerProp: Int?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var subClassStringProp: String?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var subClassIntegerProp: Int?
 
     public init(baseClassStringProp: String?, baseClassIntegerProp: Int?, subClassStringProp: String?, subClassIntegerProp: Int?) {

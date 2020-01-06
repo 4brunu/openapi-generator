@@ -9,13 +9,10 @@ import Foundation
 
 public struct Dog: Codable {
 
-    public var className: String
-    public var color: String? = "red"
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var breed: String?
 
-    public init(className: String, color: String?, breed: String?) {
-        self.className = className
-        self.color = color
+    public init(breed: String?) {
         self.breed = breed
     }
 

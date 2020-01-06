@@ -9,8 +9,11 @@ import Foundation
 
 internal struct OuterComposite: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var myNumber: Double?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var myString: String?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var myBoolean: Bool?
 
     internal init(myNumber: Double?, myString: String?, myBoolean: Bool?) {
@@ -20,9 +23,9 @@ internal struct OuterComposite: Codable {
     }
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
-        case myNumber = "my_number"
-        case myString = "my_string"
-        case myBoolean = "my_boolean"
+        case myNumber
+        case myString
+        case myBoolean
     }
 
 }

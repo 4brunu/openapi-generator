@@ -9,7 +9,9 @@ import Foundation
 
 internal struct Tag: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var id: Int64?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var name: String?
 
     internal init(id: Int64?, name: String?) {

@@ -14,12 +14,17 @@ public struct Order: Codable {
         case approved = "approved"
         case delivered = "delivered"
     }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var id: Int64?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var petId: Int64?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var quantity: Int?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var shipDate: Date?
     /** Order Status */
     public var status: Status?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var complete: Bool? = false
 
     public init(id: Int64?, petId: Int64?, quantity: Int?, shipDate: Date?, status: Status?, complete: Bool?) {

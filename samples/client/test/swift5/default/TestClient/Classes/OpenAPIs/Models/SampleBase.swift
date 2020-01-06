@@ -10,7 +10,9 @@ import Foundation
 /** This is a base class object from which other classes will derive. */
 public struct SampleBase: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var baseClassStringProp: String?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var baseClassIntegerProp: Int?
 
     public init(baseClassStringProp: String?, baseClassIntegerProp: Int?) {

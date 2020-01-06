@@ -9,7 +9,9 @@ import Foundation
 
 public struct PersonCardAllOf: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var firstName: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var lastName: String?
 
     public init(firstName: String?, lastName: String?) {

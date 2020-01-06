@@ -8,12 +8,27 @@
 import Foundation
 
 /** Model for testing model name same as property name */
-public struct Name: Codable {
 
-    public var name: Int
+@objc public class Name: NSObject, Codable {
+
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var name: Int
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var snakeCase: Int?
-    public var property: String?
+    @objc public var snakeCaseNum: NSNumber? {
+        get {
+            return snakeCase as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var property: String?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var _123number: Int?
+    @objc public var _123numberNum: NSNumber? {
+        get {
+            return _123number as? NSNumber
+        }
+    }
 
     public init(name: Int, snakeCase: Int?, property: String?, _123number: Int?) {
         self.name = name
@@ -24,9 +39,9 @@ public struct Name: Codable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case snakeCase = "snake_case"
+        case snakeCase
         case property
-        case _123number = "123Number"
+        case _123number
     }
 
 }

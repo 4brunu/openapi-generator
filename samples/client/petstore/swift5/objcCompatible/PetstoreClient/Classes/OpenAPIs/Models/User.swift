@@ -7,17 +7,35 @@
 
 import Foundation
 
-public struct User: Codable {
+@objc public class User: NSObject, Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var _id: Int64?
-    public var username: String?
-    public var firstName: String?
-    public var lastName: String?
-    public var email: String?
-    public var password: String?
-    public var phone: String?
+    @objc public var _idNum: NSNumber? {
+        get {
+            return _id as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var username: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var firstName: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var lastName: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var email: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var password: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var phone: String?
     /** User Status */
+    /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var userStatus: Int?
+    @objc public var userStatusNum: NSNumber? {
+        get {
+            return userStatus as? NSNumber
+        }
+    }
 
     public init(_id: Int64?, username: String?, firstName: String?, lastName: String?, email: String?, password: String?, phone: String?, userStatus: Int?) {
         self._id = _id
@@ -31,7 +49,7 @@ public struct User: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id = "id"
+        case _id
         case username
         case firstName
         case lastName

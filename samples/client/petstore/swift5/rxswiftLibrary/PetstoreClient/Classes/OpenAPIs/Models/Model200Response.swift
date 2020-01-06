@@ -10,7 +10,9 @@ import Foundation
 /** Model for testing model name starting with number */
 public struct Model200Response: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var name: Int?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var _class: String?
 
     public init(name: Int?, _class: String?) {
@@ -20,7 +22,7 @@ public struct Model200Response: Codable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case _class = "class"
+        case _class
     }
 
 }

@@ -31,6 +31,7 @@ public struct EnumTest: Codable {
     public var enumStringRequired: EnumStringRequired
     public var enumInteger: EnumInteger?
     public var enumNumber: EnumNumber?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var outerEnum: OuterEnum?
 
     public init(enumString: EnumString?, enumStringRequired: EnumStringRequired, enumInteger: EnumInteger?, enumNumber: EnumNumber?, outerEnum: OuterEnum?) {
@@ -42,10 +43,10 @@ public struct EnumTest: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case enumString = "enum_string"
-        case enumStringRequired = "enum_string_required"
-        case enumInteger = "enum_integer"
-        case enumNumber = "enum_number"
+        case enumString
+        case enumStringRequired
+        case enumInteger
+        case enumNumber
         case outerEnum
     }
 

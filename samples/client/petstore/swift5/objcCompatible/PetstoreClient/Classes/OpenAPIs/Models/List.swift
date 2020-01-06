@@ -7,16 +7,17 @@
 
 import Foundation
 
-public struct List: Codable {
+@objc public class List: NSObject, Codable {
 
-    public var _123list: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var _123list: String?
 
     public init(_123list: String?) {
         self._123list = _123list
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _123list = "123-list"
+        case _123list
     }
 
 }

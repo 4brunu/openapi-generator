@@ -7,10 +7,12 @@
 
 import Foundation
 
-public struct FileSchemaTestClass: Codable {
+@objc public class FileSchemaTestClass: NSObject, Codable {
 
-    public var file: File?
-    public var files: [File]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var file: File?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var files: [File]?
 
     public init(file: File?, files: [File]?) {
         self.file = file

@@ -10,6 +10,7 @@ import Foundation
 /** Model for testing reserved words */
 internal struct Return: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var _return: Int?
 
     internal init(_return: Int?) {
@@ -17,7 +18,7 @@ internal struct Return: Codable {
     }
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
-        case _return = "return"
+        case _return
     }
 
 }

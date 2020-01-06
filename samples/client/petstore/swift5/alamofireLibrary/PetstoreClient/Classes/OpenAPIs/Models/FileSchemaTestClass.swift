@@ -9,7 +9,9 @@ import Foundation
 
 public struct FileSchemaTestClass: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var file: File?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var files: [File]?
 
     public init(file: File?, files: [File]?) {

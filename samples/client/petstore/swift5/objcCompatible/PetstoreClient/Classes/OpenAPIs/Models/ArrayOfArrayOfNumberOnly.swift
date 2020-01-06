@@ -7,16 +7,17 @@
 
 import Foundation
 
-public struct ArrayOfArrayOfNumberOnly: Codable {
+@objc public class ArrayOfArrayOfNumberOnly: NSObject, Codable {
 
-    public var arrayArrayNumber: [[Double]]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var arrayArrayNumber: [[Double]]?
 
     public init(arrayArrayNumber: [[Double]]?) {
         self.arrayArrayNumber = arrayArrayNumber
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayArrayNumber = "ArrayArrayNumber"
+        case arrayArrayNumber
     }
 
 }

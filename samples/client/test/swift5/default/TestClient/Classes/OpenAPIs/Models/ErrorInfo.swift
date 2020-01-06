@@ -10,8 +10,11 @@ import Foundation
 /** Example Error object */
 public struct ErrorInfo: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var code: Int?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var message: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var details: [String]?
 
     public init(code: Int?, message: String?, details: [String]?) {

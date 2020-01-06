@@ -7,11 +7,19 @@
 
 import Foundation
 
-public struct ApiResponse: Codable {
+@objc public class ApiResponse: NSObject, Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var code: Int?
-    public var type: String?
-    public var message: String?
+    @objc public var codeNum: NSNumber? {
+        get {
+            return code as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var type: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var message: String?
 
     public init(code: Int?, type: String?, message: String?) {
         self.code = code

@@ -9,7 +9,9 @@ import Foundation
 
 public struct AdditionalPropertiesClass: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var mapString: [String: String]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var mapMapString: [String: [String: String]]?
 
     public init(mapString: [String: String]?, mapMapString: [String: [String: String]]?) {
@@ -18,8 +20,8 @@ public struct AdditionalPropertiesClass: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mapString = "map_string"
-        case mapMapString = "map_map_string"
+        case mapString
+        case mapMapString
     }
 
 }

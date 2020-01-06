@@ -10,8 +10,11 @@ import Foundation
 /** Response object containing AllPrimitives object */
 public struct GetAllModelsResult: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myPrimitiveArray: [AllPrimitives]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myPrimitive: AllPrimitives?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myVariableNameTest: VariableNameTest?
 
     public init(myPrimitiveArray: [AllPrimitives]?, myPrimitive: AllPrimitives?, myVariableNameTest: VariableNameTest?) {

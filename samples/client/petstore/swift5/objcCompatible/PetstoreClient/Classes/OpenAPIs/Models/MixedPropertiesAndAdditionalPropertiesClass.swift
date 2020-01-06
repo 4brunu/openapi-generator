@@ -7,11 +7,14 @@
 
 import Foundation
 
-public struct MixedPropertiesAndAdditionalPropertiesClass: Codable {
+@objc public class MixedPropertiesAndAdditionalPropertiesClass: NSObject, Codable {
 
-    public var uuid: UUID?
-    public var dateTime: Date?
-    public var map: [String: Animal]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var uuid: UUID?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var dateTime: Date?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var map: [String: Animal]?
 
     public init(uuid: UUID?, dateTime: Date?, map: [String: Animal]?) {
         self.uuid = uuid

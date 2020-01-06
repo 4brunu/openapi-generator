@@ -7,13 +7,18 @@
 
 import Foundation
 
-public struct TypeHolderDefault: Codable {
+@objc public class TypeHolderDefault: NSObject, Codable {
 
-    public var stringItem: String = "what"
-    public var numberItem: Double
-    public var integerItem: Int
-    public var boolItem: Bool = true
-    public var arrayItem: [Int]
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var stringItem: String = "what"
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var numberItem: Double
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var integerItem: Int
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var boolItem: Bool = true
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var arrayItem: [Int]
 
     public init(stringItem: String, numberItem: Double, integerItem: Int, boolItem: Bool, arrayItem: [Int]) {
         self.stringItem = stringItem
@@ -24,11 +29,11 @@ public struct TypeHolderDefault: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case stringItem = "string_item"
-        case numberItem = "number_item"
-        case integerItem = "integer_item"
-        case boolItem = "bool_item"
-        case arrayItem = "array_item"
+        case stringItem
+        case numberItem
+        case integerItem
+        case boolItem
+        case arrayItem
     }
 
 }

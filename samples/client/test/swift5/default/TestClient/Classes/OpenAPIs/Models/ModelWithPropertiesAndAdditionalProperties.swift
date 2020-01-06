@@ -10,13 +10,21 @@ import Foundation
 /** This is an empty model with no properties and only additionalProperties of type int32 */
 public struct ModelWithPropertiesAndAdditionalProperties: Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myIntegerReq: Int
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var myIntegerOpt: Int?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myPrimitiveReq: AllPrimitives
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myPrimitiveOpt: AllPrimitives?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myStringArrayReq: [String]
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myStringArrayOpt: [String]?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myPrimitiveArrayReq: [AllPrimitives]
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var myPrimitiveArrayOpt: [AllPrimitives]?
 
     public init(myIntegerReq: Int, myIntegerOpt: Int?, myPrimitiveReq: AllPrimitives, myPrimitiveOpt: AllPrimitives?, myStringArrayReq: [String], myStringArrayOpt: [String]?, myPrimitiveArrayReq: [AllPrimitives], myPrimitiveArrayOpt: [AllPrimitives]?) {
@@ -63,7 +71,7 @@ public struct ModelWithPropertiesAndAdditionalProperties: Codable {
 
     // Decodable protocol methods
 
-    public init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: String.self)
 
         myIntegerReq = try container.decode(Int.self, forKey: "myIntegerReq")

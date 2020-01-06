@@ -9,7 +9,9 @@ import Foundation
 
 public struct PlaceCardAllOf: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var placeName: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var placeAddress: String?
 
     public init(placeName: String?, placeAddress: String?) {

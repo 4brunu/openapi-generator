@@ -9,6 +9,7 @@ import Foundation
 
 public struct DogAllOf: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var breed: String?
 
     public init(breed: String?) {

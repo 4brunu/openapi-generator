@@ -9,7 +9,9 @@ import Foundation
 
 public struct Tag: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var id: Int64?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var name: String?
 
     public init(id: Int64?, name: String?) {

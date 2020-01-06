@@ -9,6 +9,7 @@ import Foundation
 
 public struct List: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var _123list: String?
 
     public init(_123list: String?) {
@@ -16,7 +17,7 @@ public struct List: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _123list = "123-list"
+        case _123list
     }
 
 }

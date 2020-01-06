@@ -9,6 +9,7 @@ import Foundation
 
 public struct Client: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var client: String?
 
     public init(client: String?) {

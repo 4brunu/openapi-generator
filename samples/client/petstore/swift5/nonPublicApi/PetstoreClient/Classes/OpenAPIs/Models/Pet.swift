@@ -14,10 +14,15 @@ internal struct Pet: Codable {
         case pending = "pending"
         case sold = "sold"
     }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var id: Int64?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var category: Category?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var name: String
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var photoUrls: [String]
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var tags: [Tag]?
     /** pet status in the store */
     internal var status: Status?

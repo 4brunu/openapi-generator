@@ -9,10 +9,15 @@ import Foundation
 
 internal struct TypeHolderDefault: Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var stringItem: String = "what"
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var numberItem: Double
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var integerItem: Int
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var boolItem: Bool = true
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var arrayItem: [Int]
 
     internal init(stringItem: String, numberItem: Double, integerItem: Int, boolItem: Bool, arrayItem: [Int]) {
@@ -24,11 +29,11 @@ internal struct TypeHolderDefault: Codable {
     }
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
-        case stringItem = "string_item"
-        case numberItem = "number_item"
-        case integerItem = "integer_item"
-        case boolItem = "bool_item"
-        case arrayItem = "array_item"
+        case stringItem
+        case numberItem
+        case integerItem
+        case boolItem
+        case arrayItem
     }
 
 }

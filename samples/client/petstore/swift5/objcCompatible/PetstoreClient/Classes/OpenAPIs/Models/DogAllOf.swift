@@ -7,9 +7,10 @@
 
 import Foundation
 
-public struct DogAllOf: Codable {
+@objc public class DogAllOf: NSObject, Codable {
 
-    public var breed: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var breed: String?
 
     public init(breed: String?) {
         self.breed = breed

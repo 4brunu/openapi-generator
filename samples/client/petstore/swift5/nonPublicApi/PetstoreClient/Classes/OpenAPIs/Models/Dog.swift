@@ -9,13 +9,10 @@ import Foundation
 
 internal struct Dog: Codable {
 
-    internal var className: String
-    internal var color: String? = "red"
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var breed: String?
 
-    internal init(className: String, color: String?, breed: String?) {
-        self.className = className
-        self.color = color
+    internal init(breed: String?) {
         self.breed = breed
     }
 

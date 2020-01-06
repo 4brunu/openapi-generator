@@ -7,15 +7,12 @@
 
 import Foundation
 
-public struct Dog: Codable {
+@objc public class Dog: NSObject, Codable {
 
-    public var className: String
-    public var color: String? = "red"
-    public var breed: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var breed: String?
 
-    public init(className: String, color: String?, breed: String?) {
-        self.className = className
-        self.color = color
+    public init(breed: String?) {
         self.breed = breed
     }
 

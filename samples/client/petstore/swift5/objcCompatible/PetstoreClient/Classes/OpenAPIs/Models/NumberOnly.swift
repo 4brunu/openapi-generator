@@ -7,16 +7,17 @@
 
 import Foundation
 
-public struct NumberOnly: Codable {
+@objc public class NumberOnly: NSObject, Codable {
 
-    public var justNumber: Double?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var justNumber: Double?
 
     public init(justNumber: Double?) {
         self.justNumber = justNumber
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case justNumber = "JustNumber"
+        case justNumber
     }
 
 }

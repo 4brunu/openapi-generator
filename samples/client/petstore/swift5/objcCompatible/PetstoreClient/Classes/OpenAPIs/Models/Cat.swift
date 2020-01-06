@@ -7,20 +7,17 @@
 
 import Foundation
 
-public struct Cat: Codable {
+@objc public class Cat: NSObject, Codable {
 
-    public var className: String
-    public var color: String? = "red"
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var declawed: Bool?
-    public var declawedNum: NSNumber? {
+    @objc public var declawedNum: NSNumber? {
         get {
-            return declawed.map({ return NSNumber(value: $0) })
+            return declawed as? NSNumber
         }
     }
 
-    public init(className: String, color: String?, declawed: Bool?) {
-        self.className = className
-        self.color = color
+    public init(declawed: Bool?) {
         self.declawed = declawed
     }
 

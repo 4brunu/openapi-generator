@@ -9,7 +9,9 @@ import Foundation
 
 public struct SampleSubClassAllOf: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var subClassStringProp: String?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var subClassIntegerProp: Int?
 
     public init(subClassStringProp: String?, subClassIntegerProp: Int?) {

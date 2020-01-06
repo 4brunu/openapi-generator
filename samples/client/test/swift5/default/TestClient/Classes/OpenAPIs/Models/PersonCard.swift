@@ -10,12 +10,12 @@ import Foundation
 /** This is a card object for a Person derived from BaseCard. */
 public struct PersonCard: Codable {
 
-    public var cardType: String
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var firstName: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var lastName: String?
 
-    public init(cardType: String, firstName: String?, lastName: String?) {
-        self.cardType = cardType
+    public init(firstName: String?, lastName: String?) {
         self.firstName = firstName
         self.lastName = lastName
     }

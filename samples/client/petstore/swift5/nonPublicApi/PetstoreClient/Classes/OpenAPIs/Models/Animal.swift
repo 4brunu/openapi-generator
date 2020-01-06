@@ -9,7 +9,9 @@ import Foundation
 
 internal struct Animal: Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var className: String
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var color: String? = "red"
 
     internal init(className: String, color: String?) {

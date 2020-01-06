@@ -9,7 +9,9 @@ import Foundation
 
 public struct HasOnlyReadOnly: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var bar: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var foo: String?
 
     public init(bar: String?, foo: String?) {

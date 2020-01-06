@@ -7,15 +7,21 @@
 
 import Foundation
 
-public struct Capitalization: Codable {
+@objc public class Capitalization: NSObject, Codable {
 
-    public var smallCamel: String?
-    public var capitalCamel: String?
-    public var smallSnake: String?
-    public var capitalSnake: String?
-    public var sCAETHFlowPoints: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var smallCamel: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var capitalCamel: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var smallSnake: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var capitalSnake: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var sCAETHFlowPoints: String?
     /** Name of the pet  */
-    public var ATT_NAME: String?
+    /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var ATT_NAME: String?
 
     public init(smallCamel: String?, capitalCamel: String?, smallSnake: String?, capitalSnake: String?, sCAETHFlowPoints: String?, ATT_NAME: String?) {
         self.smallCamel = smallCamel
@@ -28,10 +34,10 @@ public struct Capitalization: Codable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case smallCamel
-        case capitalCamel = "CapitalCamel"
-        case smallSnake = "small_Snake"
-        case capitalSnake = "Capital_Snake"
-        case sCAETHFlowPoints = "SCA_ETH_Flow_Points"
+        case capitalCamel
+        case smallSnake
+        case capitalSnake
+        case sCAETHFlowPoints
         case ATT_NAME
     }
 

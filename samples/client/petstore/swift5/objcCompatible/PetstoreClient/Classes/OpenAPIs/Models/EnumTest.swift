@@ -7,31 +7,92 @@
 
 import Foundation
 
-public struct EnumTest: Codable {
+@objc public class EnumTest: NSObject, Codable {
 
-    public enum EnumString: String, Codable, CaseIterable {
-        case upper = "UPPER"
-        case lower = "lower"
-        case empty = ""
+    public enum EnumString: Int, Codable, CaseIterable {
+        case upper
+        case lower
+        case empty
+
+        func value() -> String {
+            switch self {
+                case .upper: return "UPPER"
+                case .lower: return "lower"
+                case .empty: return ""
+            }
+        }
+
+        static func fromValue(value: String) -> EnumString? {
+            if  value == "UPPER" { return .upper } else if  value == "lower" { return .lower } else if  value == "" { return .empty }
+            return nil
+        }
     }
-    public enum EnumStringRequired: String, Codable, CaseIterable {
-        case upper = "UPPER"
-        case lower = "lower"
-        case empty = ""
+    public enum EnumStringRequired: Int, Codable, CaseIterable {
+        case upper
+        case lower
+        case empty
+
+        func value() -> String {
+            switch self {
+                case .upper: return "UPPER"
+                case .lower: return "lower"
+                case .empty: return ""
+            }
+        }
+
+        static func fromValue(value: String) -> EnumStringRequired? {
+            if  value == "UPPER" { return .upper } else if  value == "lower" { return .lower } else if  value == "" { return .empty }
+            return nil
+        }
     }
     public enum EnumInteger: Int, Codable, CaseIterable {
-        case _1 = 1
-        case number1 = -1
+        case _1
+        case number1
+
+        func value() -> Int {
+            switch self {
+                case ._1: return 1
+                case .number1: return -1
+            }
+        }
+
+        static func fromValue(value: Int) -> EnumInteger? {
+            if  value == 1 { return ._1 } else if  value == -1 { return .number1 }
+            return nil
+        }
     }
-    public enum EnumNumber: Double, Codable, CaseIterable {
-        case _11 = 1.1
-        case number12 = -1.2
+    public enum EnumNumber: Int, Codable, CaseIterable {
+        case _11
+        case number12
+
+        func value() -> Double {
+            switch self {
+                case ._11: return 1.1
+                case .number12: return -1.2
+            }
+        }
+
+        static func fromValue(value: Double) -> EnumNumber? {
+            if  value == 1.1 { return ._11 } else if  value == -1.2 { return .number12 }
+            return nil
+        }
     }
     public var enumString: EnumString?
-    public var enumStringRequired: EnumStringRequired
+    @objc public var enumStringRequired: EnumStringRequired
     public var enumInteger: EnumInteger?
+    @objc public var enumIntegerNum: NSNumber? {
+        get {
+            return enumInteger as? NSNumber
+        }
+    }
     public var enumNumber: EnumNumber?
-    public var outerEnum: OuterEnum?
+    @objc public var enumNumberNum: NSNumber? {
+        get {
+            return enumNumber as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var outerEnum: OuterEnum?
 
     public init(enumString: EnumString?, enumStringRequired: EnumStringRequired, enumInteger: EnumInteger?, enumNumber: EnumNumber?, outerEnum: OuterEnum?) {
         self.enumString = enumString
@@ -42,10 +103,10 @@ public struct EnumTest: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case enumString = "enum_string"
-        case enumStringRequired = "enum_string_required"
-        case enumInteger = "enum_integer"
-        case enumNumber = "enum_number"
+        case enumString
+        case enumStringRequired
+        case enumInteger
+        case enumNumber
         case outerEnum
     }
 

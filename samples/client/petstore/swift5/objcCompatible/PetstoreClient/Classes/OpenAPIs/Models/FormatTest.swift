@@ -7,21 +7,59 @@
 
 import Foundation
 
-public struct FormatTest: Codable {
+@objc public class FormatTest: NSObject, Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var integer: Int?
+    @objc public var integerNum: NSNumber? {
+        get {
+            return integer as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var int32: Int?
+    @objc public var int32Num: NSNumber? {
+        get {
+            return int32 as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var int64: Int64?
-    public var number: Double
+    @objc public var int64Num: NSNumber? {
+        get {
+            return int64 as? NSNumber
+        }
+    }
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var number: Double
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var float: Float?
+    @objc public var floatNum: NSNumber? {
+        get {
+            return float as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var double: Double?
-    public var string: String?
-    public var byte: Data
-    public var binary: URL?
-    public var date: Date
-    public var dateTime: Date?
-    public var uuid: UUID?
-    public var password: String
+    @objc public var doubleNum: NSNumber? {
+        get {
+            return double as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var string: String?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var byte: Data
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var binary: URL?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var date: Date
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var dateTime: Date?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var uuid: UUID?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var password: String
 
     public init(integer: Int?, int32: Int?, int64: Int64?, number: Double, float: Float?, double: Double?, string: String?, byte: Data, binary: URL?, date: Date, dateTime: Date?, uuid: UUID?, password: String) {
         self.integer = integer

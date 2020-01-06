@@ -7,20 +7,58 @@
 
 import Foundation
 
-public struct Order: Codable {
+@objc public class Order: NSObject, Codable {
 
-    public enum Status: String, Codable, CaseIterable {
-        case placed = "placed"
-        case approved = "approved"
-        case delivered = "delivered"
+    public enum Status: Int, Codable, CaseIterable {
+        case placed
+        case approved
+        case delivered
+
+        func value() -> String {
+            switch self {
+                case .placed: return "placed"
+                case .approved: return "approved"
+                case .delivered: return "delivered"
+            }
+        }
+
+        static func fromValue(value: String) -> Status? {
+            if  value == "placed" { return .placed } else if  value == "approved" { return .approved } else if  value == "delivered" { return .delivered }
+            return nil
+        }
     }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var _id: Int64?
+    @objc public var _idNum: NSNumber? {
+        get {
+            return _id as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var petId: Int64?
+    @objc public var petIdNum: NSNumber? {
+        get {
+            return petId as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var quantity: Int?
-    public var shipDate: Date?
+    @objc public var quantityNum: NSNumber? {
+        get {
+            return quantity as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var shipDate: Date?
     /** Order Status */
     public var status: Status?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var complete: Bool? = false
+    @objc public var completeNum: NSNumber? {
+        get {
+            return complete as? NSNumber
+        }
+    }
 
     public init(_id: Int64?, petId: Int64?, quantity: Int?, shipDate: Date?, status: Status?, complete: Bool?) {
         self._id = _id
@@ -32,7 +70,7 @@ public struct Order: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id = "id"
+        case _id
         case petId
         case quantity
         case shipDate

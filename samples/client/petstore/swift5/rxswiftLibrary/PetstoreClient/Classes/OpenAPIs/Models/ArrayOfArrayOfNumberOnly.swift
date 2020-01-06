@@ -9,6 +9,7 @@ import Foundation
 
 public struct ArrayOfArrayOfNumberOnly: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var arrayArrayNumber: [[Double]]?
 
     public init(arrayArrayNumber: [[Double]]?) {
@@ -16,7 +17,7 @@ public struct ArrayOfArrayOfNumberOnly: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayArrayNumber = "ArrayArrayNumber"
+        case arrayArrayNumber
     }
 
 }

@@ -10,9 +10,13 @@ import Foundation
 /** Model for testing model name same as property name */
 internal struct Name: Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var name: Int
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var snakeCase: Int?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var property: String?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var _123number: Int?
 
     internal init(name: Int, snakeCase: Int?, property: String?, _123number: Int?) {
@@ -24,9 +28,9 @@ internal struct Name: Codable {
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case snakeCase = "snake_case"
+        case snakeCase
         case property
-        case _123number = "123Number"
+        case _123number
     }
 
 }

@@ -7,9 +7,15 @@
 
 import Foundation
 
-public struct CatAllOf: Codable {
+@objc public class CatAllOf: NSObject, Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var declawed: Bool?
+    @objc public var declawedNum: NSNumber? {
+        get {
+            return declawed as? NSNumber
+        }
+    }
 
     public init(declawed: Bool?) {
         self.declawed = declawed

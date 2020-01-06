@@ -9,6 +9,7 @@ import Foundation
 
 public struct SpecialModelName: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var specialPropertyName: Int64?
 
     public init(specialPropertyName: Int64?) {
@@ -16,7 +17,7 @@ public struct SpecialModelName: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case specialPropertyName = "$special[property.name]"
+        case specialPropertyName
     }
 
 }

@@ -7,10 +7,12 @@
 
 import Foundation
 
-public struct ReadOnlyFirst: Codable {
+@objc public class ReadOnlyFirst: NSObject, Codable {
 
-    public var bar: String?
-    public var baz: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var bar: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var baz: String?
 
     public init(bar: String?, baz: String?) {
         self.bar = bar

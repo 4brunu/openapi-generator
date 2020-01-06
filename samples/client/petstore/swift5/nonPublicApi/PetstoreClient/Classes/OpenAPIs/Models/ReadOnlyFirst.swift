@@ -9,7 +9,9 @@ import Foundation
 
 internal struct ReadOnlyFirst: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var bar: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var baz: String?
 
     internal init(bar: String?, baz: String?) {

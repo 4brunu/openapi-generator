@@ -11,10 +11,13 @@ import Foundation
 public struct VariableNameTest: Codable {
 
     /** This snake-case examle_name property name should be converted to a camelCase variable name like exampleName */
+    /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var exampleName: String?
     /** This property name is a reserved word in most languages, including Swift 5. */
+    /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var _for: String?
     /** This model object property name should be unchanged from the JSON property name. */
+    /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var normalName: String?
 
     public init(exampleName: String?, _for: String?, normalName: String?) {
@@ -24,8 +27,8 @@ public struct VariableNameTest: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case exampleName = "example_name"
-        case _for = "for"
+        case exampleName
+        case _for
         case normalName
     }
 

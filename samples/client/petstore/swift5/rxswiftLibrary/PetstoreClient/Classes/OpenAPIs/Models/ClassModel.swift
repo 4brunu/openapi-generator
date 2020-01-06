@@ -10,6 +10,7 @@ import Foundation
 /** Model for testing model with \&quot;_class\&quot; property */
 public struct ClassModel: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var _class: String?
 
     public init(_class: String?) {

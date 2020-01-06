@@ -7,15 +7,39 @@
 
 import Foundation
 
-public struct EnumArrays: Codable {
+@objc public class EnumArrays: NSObject, Codable {
 
-    public enum JustSymbol: String, Codable, CaseIterable {
-        case greaterThanOrEqualTo = ">="
-        case dollar = "$"
+    public enum JustSymbol: Int, Codable, CaseIterable {
+        case greaterThanOrEqualTo
+        case dollar
+
+        func value() -> String {
+            switch self {
+                case .greaterThanOrEqualTo: return ">="
+                case .dollar: return "$"
+            }
+        }
+
+        static func fromValue(value: String) -> JustSymbol? {
+            if  value == ">=" { return .greaterThanOrEqualTo } else if  value == "$" { return .dollar }
+            return nil
+        }
     }
-    public enum ArrayEnum: String, Codable, CaseIterable {
-        case fish = "fish"
-        case crab = "crab"
+    public enum ArrayEnum: Int, Codable, CaseIterable {
+        case fish
+        case crab
+
+        func value() -> String {
+            switch self {
+                case .fish: return "fish"
+                case .crab: return "crab"
+            }
+        }
+
+        static func fromValue(value: String) -> ArrayEnum? {
+            if  value == "fish" { return .fish } else if  value == "crab" { return .crab }
+            return nil
+        }
     }
     public var justSymbol: JustSymbol?
     public var arrayEnum: [ArrayEnum]?
@@ -26,8 +50,8 @@ public struct EnumArrays: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case justSymbol = "just_symbol"
-        case arrayEnum = "array_enum"
+        case justSymbol
+        case arrayEnum
     }
 
 }

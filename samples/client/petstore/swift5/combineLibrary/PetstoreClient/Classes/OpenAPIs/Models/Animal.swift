@@ -9,7 +9,9 @@ import Foundation
 
 public struct Animal: Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var className: String
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var color: String? = "red"
 
     public init(className: String, color: String?) {

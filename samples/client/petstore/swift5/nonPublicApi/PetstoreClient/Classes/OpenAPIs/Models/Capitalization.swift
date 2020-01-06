@@ -9,12 +9,18 @@ import Foundation
 
 internal struct Capitalization: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var smallCamel: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var capitalCamel: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var smallSnake: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var capitalSnake: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var sCAETHFlowPoints: String?
     /** Name of the pet  */
+    /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var ATT_NAME: String?
 
     internal init(smallCamel: String?, capitalCamel: String?, smallSnake: String?, capitalSnake: String?, sCAETHFlowPoints: String?, ATT_NAME: String?) {
@@ -28,10 +34,10 @@ internal struct Capitalization: Codable {
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
         case smallCamel
-        case capitalCamel = "CapitalCamel"
-        case smallSnake = "small_Snake"
-        case capitalSnake = "Capital_Snake"
-        case sCAETHFlowPoints = "SCA_ETH_Flow_Points"
+        case capitalCamel
+        case smallSnake
+        case capitalSnake
+        case sCAETHFlowPoints
         case ATT_NAME
     }
 

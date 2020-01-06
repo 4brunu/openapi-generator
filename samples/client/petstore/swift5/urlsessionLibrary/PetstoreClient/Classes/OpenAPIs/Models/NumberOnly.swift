@@ -9,6 +9,7 @@ import Foundation
 
 public struct NumberOnly: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var justNumber: Double?
 
     public init(justNumber: Double?) {
@@ -16,7 +17,7 @@ public struct NumberOnly: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case justNumber = "JustNumber"
+        case justNumber
     }
 
 }

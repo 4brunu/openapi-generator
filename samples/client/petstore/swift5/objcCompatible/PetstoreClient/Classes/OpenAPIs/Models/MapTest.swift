@@ -7,16 +7,31 @@
 
 import Foundation
 
-public struct MapTest: Codable {
+@objc public class MapTest: NSObject, Codable {
 
-    public enum MapOfEnumString: String, Codable, CaseIterable {
-        case upper = "UPPER"
-        case lower = "lower"
+    public enum MapOfEnumString: Int, Codable, CaseIterable {
+        case upper
+        case lower
+
+        func value() -> String {
+            switch self {
+                case .upper: return "UPPER"
+                case .lower: return "lower"
+            }
+        }
+
+        static func fromValue(value: String) -> MapOfEnumString? {
+            if  value == "UPPER" { return .upper } else if  value == "lower" { return .lower }
+            return nil
+        }
     }
-    public var mapMapOfString: [String: [String: String]]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var mapMapOfString: [String: [String: String]]?
     public var mapOfEnumString: [String: String]?
-    public var directMap: [String: Bool]?
-    public var indirectMap: StringBooleanMap?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var directMap: [String: Bool]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var indirectMap: StringBooleanMap?
 
     public init(mapMapOfString: [String: [String: String]]?, mapOfEnumString: [String: String]?, directMap: [String: Bool]?, indirectMap: StringBooleanMap?) {
         self.mapMapOfString = mapMapOfString
@@ -26,10 +41,10 @@ public struct MapTest: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mapMapOfString = "map_map_of_string"
-        case mapOfEnumString = "map_of_enum_string"
-        case directMap = "direct_map"
-        case indirectMap = "indirect_map"
+        case mapMapOfString
+        case mapOfEnumString
+        case directMap
+        case indirectMap
     }
 
 }

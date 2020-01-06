@@ -9,18 +9,31 @@ import Foundation
 
 internal struct FormatTest: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var integer: Int?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var int32: Int?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var int64: Int64?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var number: Double
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var float: Float?
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var double: Double?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var string: String?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var byte: Data
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var binary: URL?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var date: Date
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var dateTime: Date?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var uuid: UUID?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var password: String
 
     internal init(integer: Int?, int32: Int?, int64: Int64?, number: Double, float: Float?, double: Double?, string: String?, byte: Data, binary: URL?, date: Date, dateTime: Date?, uuid: UUID?, password: String) {

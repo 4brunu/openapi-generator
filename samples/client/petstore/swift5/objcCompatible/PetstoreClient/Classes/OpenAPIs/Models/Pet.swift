@@ -7,18 +7,41 @@
 
 import Foundation
 
-public struct Pet: Codable {
+@objc public class Pet: NSObject, Codable {
 
-    public enum Status: String, Codable, CaseIterable {
-        case available = "available"
-        case pending = "pending"
-        case sold = "sold"
+    public enum Status: Int, Codable, CaseIterable {
+        case available
+        case pending
+        case sold
+
+        func value() -> String {
+            switch self {
+                case .available: return "available"
+                case .pending: return "pending"
+                case .sold: return "sold"
+            }
+        }
+
+        static func fromValue(value: String) -> Status? {
+            if  value == "available" { return .available } else if  value == "pending" { return .pending } else if  value == "sold" { return .sold }
+            return nil
+        }
     }
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var _id: Int64?
-    public var category: Category?
-    public var name: String
-    public var photoUrls: [String]
-    public var tags: [Tag]?
+    @objc public var _idNum: NSNumber? {
+        get {
+            return _id as? NSNumber
+        }
+    }
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var category: Category?
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var name: String
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var photoUrls: [String]
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var tags: [Tag]?
     /** pet status in the store */
     public var status: Status?
 
@@ -32,7 +55,7 @@ public struct Pet: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id = "id"
+        case _id
         case category
         case name
         case photoUrls

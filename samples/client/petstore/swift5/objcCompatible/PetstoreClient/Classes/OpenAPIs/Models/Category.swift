@@ -7,10 +7,17 @@
 
 import Foundation
 
-public struct Category: Codable {
+@objc public class Category: NSObject, Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var _id: Int64?
-    public var name: String = "default-name"
+    @objc public var _idNum: NSNumber? {
+        get {
+            return _id as? NSNumber
+        }
+    }
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var name: String = "default-name"
 
     public init(_id: Int64?, name: String) {
         self._id = _id
@@ -18,7 +25,7 @@ public struct Category: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id = "id"
+        case _id
         case name
     }
 

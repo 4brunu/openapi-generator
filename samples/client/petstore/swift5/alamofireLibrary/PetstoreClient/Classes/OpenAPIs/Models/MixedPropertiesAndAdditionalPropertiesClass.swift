@@ -9,8 +9,11 @@ import Foundation
 
 public struct MixedPropertiesAndAdditionalPropertiesClass: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var uuid: UUID?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var dateTime: Date?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var map: [String: Animal]?
 
     public init(uuid: UUID?, dateTime: Date?, map: [String: Animal]?) {

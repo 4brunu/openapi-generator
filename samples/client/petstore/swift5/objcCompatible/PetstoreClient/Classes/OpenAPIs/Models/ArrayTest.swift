@@ -7,11 +7,14 @@
 
 import Foundation
 
-public struct ArrayTest: Codable {
+@objc public class ArrayTest: NSObject, Codable {
 
-    public var arrayOfString: [String]?
-    public var arrayArrayOfInteger: [[Int64]]?
-    public var arrayArrayOfModel: [[ReadOnlyFirst]]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var arrayOfString: [String]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var arrayArrayOfInteger: [[Int64]]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var arrayArrayOfModel: [[ReadOnlyFirst]]?
 
     public init(arrayOfString: [String]?, arrayArrayOfInteger: [[Int64]]?, arrayArrayOfModel: [[ReadOnlyFirst]]?) {
         self.arrayOfString = arrayOfString
@@ -20,9 +23,9 @@ public struct ArrayTest: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayOfString = "array_of_string"
-        case arrayArrayOfInteger = "array_array_of_integer"
-        case arrayArrayOfModel = "array_array_of_model"
+        case arrayOfString
+        case arrayArrayOfInteger
+        case arrayArrayOfModel
     }
 
 }

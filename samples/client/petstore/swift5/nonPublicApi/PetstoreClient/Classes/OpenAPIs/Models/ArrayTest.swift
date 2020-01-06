@@ -9,8 +9,11 @@ import Foundation
 
 internal struct ArrayTest: Codable {
 
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var arrayOfString: [String]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var arrayArrayOfInteger: [[Int64]]?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     internal var arrayArrayOfModel: [[ReadOnlyFirst]]?
 
     internal init(arrayOfString: [String]?, arrayArrayOfInteger: [[Int64]]?, arrayArrayOfModel: [[ReadOnlyFirst]]?) {
@@ -20,9 +23,9 @@ internal struct ArrayTest: Codable {
     }
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayOfString = "array_of_string"
-        case arrayArrayOfInteger = "array_array_of_integer"
-        case arrayArrayOfModel = "array_array_of_model"
+        case arrayOfString
+        case arrayArrayOfInteger
+        case arrayArrayOfModel
     }
 
 }

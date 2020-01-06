@@ -9,8 +9,11 @@ import Foundation
 
 public struct ApiResponse: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var code: Int?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var type: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var message: String?
 
     public init(code: Int?, type: String?, message: String?) {

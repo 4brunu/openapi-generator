@@ -11,6 +11,7 @@ import Foundation
 public struct File: Codable {
 
     /** Test capitalization */
+    /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var sourceURI: String?
 
     public init(sourceURI: String?) {

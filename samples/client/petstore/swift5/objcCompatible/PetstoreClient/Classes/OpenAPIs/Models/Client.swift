@@ -7,9 +7,10 @@
 
 import Foundation
 
-public struct Client: Codable {
+@objc public class Client: NSObject, Codable {
 
-    public var client: String?
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var client: String?
 
     public init(client: String?) {
         self.client = client

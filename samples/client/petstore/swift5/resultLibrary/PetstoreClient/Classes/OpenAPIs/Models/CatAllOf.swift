@@ -9,6 +9,7 @@ import Foundation
 
 public struct CatAllOf: Codable {
 
+        /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var declawed: Bool?
 
     public init(declawed: Bool?) {

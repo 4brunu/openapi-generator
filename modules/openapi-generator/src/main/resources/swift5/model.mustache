@@ -7,6 +7,10 @@
 
 import Foundation
 
+{{#swiftUseModelNamespace}}
+extension {{projectName}}Model {
+{{/swiftUseModelNamespace}}
+
 {{#description}}
 /** {{description}} */{{/description}}
 {{#isArrayModel}}
@@ -22,3 +26,7 @@ import Foundation
 {{/isArrayModel}}
 {{/model}}
 {{/models}}
+
+{{#swiftUseModelNamespace}}
+}
+{{/swiftUseModelNamespace}}

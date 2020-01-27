@@ -54,6 +54,7 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
     public static final String POD_SCREENSHOTS = "podScreenshots";
     public static final String POD_DOCUMENTATION_URL = "podDocumentationURL";
     public static final String SWIFT_USE_API_NAMESPACE = "swiftUseApiNamespace";
+    public static final String SWIFT_USE_MODEL_NAMESPACE = "swiftUseModelNamespace";
     public static final String DEFAULT_POD_AUTHORS = "OpenAPI Generator";
     public static final String LENIENT_TYPE_CAST = "lenientTypeCast";
     protected static final String LIBRARY_ALAMOFIRE = "alamofire";
@@ -68,6 +69,7 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
     protected boolean objcCompatible = false;
     protected boolean lenientTypeCast = false;
     protected boolean swiftUseApiNamespace;
+    protected boolean swiftUseModelNamespace;
     protected String[] responseAs = new String[0];
     protected String sourceFolder = "Classes" + File.separator + "OpenAPIs";
     protected HashSet objcReservedWords;
@@ -238,6 +240,9 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
         cliOptions.add(new CliOption(SWIFT_USE_API_NAMESPACE,
                 "Flag to make all the API classes inner-class "
                         + "of {{projectName}}API"));
+        cliOptions.add(new CliOption(SWIFT_USE_MODEL_NAMESPACE,
+                "Flag to make all the Model classes inner-class "
+                        + "of {{projectName}}Model"));
         cliOptions.add(new CliOption(CodegenConstants.HIDE_GENERATION_TIMESTAMP,
                 CodegenConstants.HIDE_GENERATION_TIMESTAMP_DESC)
                 .defaultValue(Boolean.TRUE.toString()));
@@ -394,6 +399,16 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
             setSwiftUseApiNamespace(convertPropertyToBooleanAndWriteBack(SWIFT_USE_API_NAMESPACE));
         }
 
+        // Setup swiftUseModelNamespace option, which makes all the Model
+        // classes inner-class of {{projectName}}Model
+        if (additionalProperties.containsKey(SWIFT_USE_MODEL_NAMESPACE)) {
+            setSwiftUseModelNamespace(convertPropertyToBooleanAndWriteBack(SWIFT_USE_MODEL_NAMESPACE));
+        }
+
+        if (swiftUseModelNamespace) {
+            setModelNamePrefix(projectName + "Model.");
+        }
+
         if (!additionalProperties.containsKey(POD_AUTHORS)) {
             additionalProperties.put(POD_AUTHORS, DEFAULT_POD_AUTHORS);
         }
@@ -502,6 +517,36 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
 
     @Override
     public String getTypeDeclaration(Schema p) {
+        //return "Hello?";
+        /*
+        if (swiftUseModelNamespace ) {
+            return projectName + "Model." + getTypeDeclaration(p) + "YOOO";
+        } else {
+            return getTypeDeclaration(p) + "YOOO??";
+        }
+
+         */
+
+        /*
+        if (ModelUtils.isArraySchema(p)) {
+            ArraySchema ap = (ArraySchema) p;
+            Schema inner = ap.getItems();
+            if (swiftUseModelNamespace) {
+                return "[" + projectName + "Model." + getTypeDeclaration(inner) + "]";
+            }
+            return "[" + getTypeDeclaration(inner) + "]";
+        } else if (ModelUtils.isMapSchema(p)) {
+            Schema inner = ModelUtils.getAdditionalProperties(p);
+            if (swiftUseModelNamespace ) {
+                return "[String:" + projectName + "Model." + getTypeDeclaration(inner) + "]";
+            }
+            return "[String:" + getTypeDeclaration(inner) + "]";
+        } else if (swiftUseModelNamespace) {
+            return projectName + "Model." + getTypeDeclaration(p);
+        }
+        return super.getTypeDeclaration(p);
+        */
+
         if (ModelUtils.isArraySchema(p)) {
             ArraySchema ap = (ArraySchema) p;
             Schema inner = ap.getItems();
@@ -559,7 +604,7 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
 
         // camelize the model name
         // phone_number => PhoneNumber
-        name = camelize(name);
+        name = camelize(name, false, false);
 
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
@@ -624,6 +669,7 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
         } else if (ModelUtils.isArraySchema(p)) {
             ArraySchema ap = (ArraySchema) p;
             String inner = getSchemaType(ap.getItems());
+            //return "What?";
             return "[" + inner + "]";
         }
         return null;
@@ -779,6 +825,10 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
 
     public void setSwiftUseApiNamespace(boolean swiftUseApiNamespace) {
         this.swiftUseApiNamespace = swiftUseApiNamespace;
+    }
+
+    public void setSwiftUseModelNamespace(boolean swiftUseModelNamespace) {
+        this.swiftUseModelNamespace = swiftUseModelNamespace;
     }
 
     @Override

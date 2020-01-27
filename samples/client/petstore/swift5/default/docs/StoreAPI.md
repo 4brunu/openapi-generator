@@ -108,7 +108,7 @@ This endpoint does not need any parameter.
 
 # **getOrderById**
 ```swift
-    open class func getOrderById(orderId: Int64, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func getOrderById(orderId: Int64, completion: @escaping (_ data: PetstoreClientModel.Order?, _ error: Error?) -> Void)
 ```
 
 Find purchase order by ID
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Order**](Order.md)
+[**PetstoreClientModel.Order**](PetstoreClientModel.Order.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ No authorization required
 
 # **placeOrder**
 ```swift
-    open class func placeOrder(body: Order, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func placeOrder(body: PetstoreClientModel.Order, completion: @escaping (_ data: PetstoreClientModel.Order?, _ error: Error?) -> Void)
 ```
 
 Place an order for a pet
@@ -168,7 +168,7 @@ Place an order for a pet
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = Order(id: 123, petId: 123, quantity: 123, shipDate: Date(), status: "status_example", complete: false) // Order | order placed for purchasing the pet
+let body = Order(id: 123, petId: 123, quantity: 123, shipDate: Date(), status: "status_example", complete: false) // PetstoreClientModel.Order | order placed for purchasing the pet
 
 // Place an order for a pet
 StoreAPI.placeOrder(body: body) { (response, error) in
@@ -187,11 +187,11 @@ StoreAPI.placeOrder(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Order**](Order.md) | order placed for purchasing the pet | 
+ **body** | [**PetstoreClientModel.Order**](PetstoreClientModel.Order.md) | order placed for purchasing the pet | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**PetstoreClientModel.Order**](PetstoreClientModel.Order.md)
 
 ### Authorization
 

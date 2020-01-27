@@ -7,6 +7,8 @@
 
 import Foundation
 
+extension PetstoreClientAPI {
+
 open class StoreAPI {
     /**
      Delete purchase order by ID
@@ -93,7 +95,7 @@ open class StoreAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getOrderById(orderId: Int64, apiResponseQueue: DispatchQueue = PetstoreClientAPI.apiResponseQueue, completion: @escaping ((_ data: Order?, _ error: Error?) -> Void)) {
+    open class func getOrderById(orderId: Int64, apiResponseQueue: DispatchQueue = PetstoreClientAPI.apiResponseQueue, completion: @escaping ((_ data: PetstoreClientModel.Order?, _ error: Error?) -> Void)) {
         getOrderByIdWithRequestBuilder(orderId: orderId).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -109,9 +111,9 @@ open class StoreAPI {
      - GET /store/order/{order_id}
      - For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions
      - parameter orderId: (path) ID of pet that needs to be fetched 
-     - returns: RequestBuilder<Order> 
+     - returns: RequestBuilder<PetstoreClientModel.Order> 
      */
-    open class func getOrderByIdWithRequestBuilder(orderId: Int64) -> RequestBuilder<Order> {
+    open class func getOrderByIdWithRequestBuilder(orderId: Int64) -> RequestBuilder<PetstoreClientModel.Order> {
         var path = "/store/order/{order_id}"
         let orderIdPreEscape = "\(APIHelper.mapValueToPathItem(orderId))"
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -121,7 +123,7 @@ open class StoreAPI {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Order>.Type = PetstoreClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<PetstoreClientModel.Order>.Type = PetstoreClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -133,7 +135,7 @@ open class StoreAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func placeOrder(body: Order, apiResponseQueue: DispatchQueue = PetstoreClientAPI.apiResponseQueue, completion: @escaping ((_ data: Order?, _ error: Error?) -> Void)) {
+    open class func placeOrder(body: PetstoreClientModel.Order, apiResponseQueue: DispatchQueue = PetstoreClientAPI.apiResponseQueue, completion: @escaping ((_ data: PetstoreClientModel.Order?, _ error: Error?) -> Void)) {
         placeOrderWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -148,18 +150,19 @@ open class StoreAPI {
      Place an order for a pet
      - POST /store/order
      - parameter body: (body) order placed for purchasing the pet 
-     - returns: RequestBuilder<Order> 
+     - returns: RequestBuilder<PetstoreClientModel.Order> 
      */
-    open class func placeOrderWithRequestBuilder(body: Order) -> RequestBuilder<Order> {
+    open class func placeOrderWithRequestBuilder(body: PetstoreClientModel.Order) -> RequestBuilder<PetstoreClientModel.Order> {
         let path = "/store/order"
         let URLString = PetstoreClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Order>.Type = PetstoreClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<PetstoreClientModel.Order>.Type = PetstoreClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
+}
 }

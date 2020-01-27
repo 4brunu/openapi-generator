@@ -14,6 +14,8 @@ open class PetstoreClientAPI {
     public static var apiResponseQueue: DispatchQueue = .main
 }
 
+open class PetstoreClientModel {}
+
 open class RequestBuilder<T> {
     var credential: URLCredential?
     var headers: [String: String]

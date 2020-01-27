@@ -14,6 +14,8 @@ internal class PetstoreClientAPI {
     internal static var apiResponseQueue: DispatchQueue = .main
 }
 
+internal class PetstoreClientModel {}
+
 internal class RequestBuilder<T> {
     var credential: URLCredential?
     var headers: [String: String]

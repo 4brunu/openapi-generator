@@ -69,7 +69,7 @@ No authorization required
 
 # **fakeOuterCompositeSerialize**
 ```swift
-    open class func fakeOuterCompositeSerialize(body: OuterComposite? = nil, completion: @escaping (_ data: OuterComposite?, _ error: Error?) -> Void)
+    open class func fakeOuterCompositeSerialize(body: PetstoreClientModel.OuterComposite? = nil, completion: @escaping (_ data: PetstoreClientModel.OuterComposite?, _ error: Error?) -> Void)
 ```
 
 
@@ -81,7 +81,7 @@ Test serialization of object with outer number type
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = OuterComposite(myNumber: 123, myString: "myString_example", myBoolean: false) // OuterComposite | Input composite as post body (optional)
+let body = OuterComposite(myNumber: 123, myString: "myString_example", myBoolean: false) // PetstoreClientModel.OuterComposite | Input composite as post body (optional)
 
 FakeAPI.fakeOuterCompositeSerialize(body: body) { (response, error) in
     guard error == nil else {
@@ -99,11 +99,11 @@ FakeAPI.fakeOuterCompositeSerialize(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**OuterComposite**](OuterComposite.md) | Input composite as post body | [optional] 
+ **body** | [**PetstoreClientModel.OuterComposite**](PetstoreClientModel.OuterComposite.md) | Input composite as post body | [optional] 
 
 ### Return type
 
-[**OuterComposite**](OuterComposite.md)
+[**PetstoreClientModel.OuterComposite**](PetstoreClientModel.OuterComposite.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ No authorization required
 
 # **testBodyWithFileSchema**
 ```swift
-    open class func testBodyWithFileSchema(body: FileSchemaTestClass, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func testBodyWithFileSchema(body: PetstoreClientModel.FileSchemaTestClass, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 
@@ -228,7 +228,7 @@ For this test, the body for this request much reference a schema named `File`.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = FileSchemaTestClass(file: File(sourceURI: "sourceURI_example"), files: [File(sourceURI: "sourceURI_example")]) // FileSchemaTestClass | 
+let body = FileSchemaTestClass(file: File(sourceURI: "sourceURI_example"), files: [File(sourceURI: "sourceURI_example")]) // PetstoreClientModel.FileSchemaTestClass | 
 
 FakeAPI.testBodyWithFileSchema(body: body) { (response, error) in
     guard error == nil else {
@@ -246,7 +246,7 @@ FakeAPI.testBodyWithFileSchema(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**FileSchemaTestClass**](FileSchemaTestClass.md) |  | 
+ **body** | [**PetstoreClientModel.FileSchemaTestClass**](PetstoreClientModel.FileSchemaTestClass.md) |  | 
 
 ### Return type
 
@@ -265,7 +265,7 @@ No authorization required
 
 # **testBodyWithQueryParams**
 ```swift
-    open class func testBodyWithQueryParams(query: String, body: User, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func testBodyWithQueryParams(query: String, body: PetstoreClientModel.User, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 
@@ -276,7 +276,7 @@ No authorization required
 import PetstoreClient
 
 let query = "query_example" // String | 
-let body = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // User | 
+let body = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // PetstoreClientModel.User | 
 
 FakeAPI.testBodyWithQueryParams(query: query, body: body) { (response, error) in
     guard error == nil else {
@@ -295,7 +295,7 @@ FakeAPI.testBodyWithQueryParams(query: query, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String** |  | 
- **body** | [**User**](User.md) |  | 
+ **body** | [**PetstoreClientModel.User**](PetstoreClientModel.User.md) |  | 
 
 ### Return type
 
@@ -314,7 +314,7 @@ No authorization required
 
 # **testClientModel**
 ```swift
-    open class func testClientModel(body: Client, completion: @escaping (_ data: Client?, _ error: Error?) -> Void)
+    open class func testClientModel(body: PetstoreClientModel.Client, completion: @escaping (_ data: PetstoreClientModel.Client?, _ error: Error?) -> Void)
 ```
 
 To test \"client\" model
@@ -326,7 +326,7 @@ To test \"client\" model
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = Client(client: "client_example") // Client | client model
+let body = Client(client: "client_example") // PetstoreClientModel.Client | client model
 
 // To test \"client\" model
 FakeAPI.testClientModel(body: body) { (response, error) in
@@ -345,11 +345,11 @@ FakeAPI.testClientModel(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Client**](Client.md) | client model | 
+ **body** | [**PetstoreClientModel.Client**](PetstoreClientModel.Client.md) | client model | 
 
 ### Return type
 
-[**Client**](Client.md)
+[**PetstoreClientModel.Client**](PetstoreClientModel.Client.md)
 
 ### Authorization
 
@@ -440,7 +440,7 @@ Void (empty response body)
 
 # **testEnumParameters**
 ```swift
-    open class func testEnumParameters(enumHeaderStringArray: [String]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [String]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [String]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func testEnumParameters(enumHeaderStringArray: [String]? = nil, enumHeaderString: PetstoreClientModel.EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [String]? = nil, enumQueryString: PetstoreClientModel.EnumQueryString_testEnumParameters? = nil, enumQueryInteger: PetstoreClientModel.EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: PetstoreClientModel.EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [String]? = nil, enumFormString: PetstoreClientModel.EnumFormString_testEnumParameters? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 To test enum parameters

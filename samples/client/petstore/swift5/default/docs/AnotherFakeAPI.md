@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **call123testSpecialTags**
 ```swift
-    open class func call123testSpecialTags(body: Client, completion: @escaping (_ data: Client?, _ error: Error?) -> Void)
+    open class func call123testSpecialTags(body: PetstoreClientModel.Client, completion: @escaping (_ data: PetstoreClientModel.Client?, _ error: Error?) -> Void)
 ```
 
 To test special tags
@@ -21,7 +21,7 @@ To test special tags and operation ID starting with number
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = Client(client: "client_example") // Client | client model
+let body = Client(client: "client_example") // PetstoreClientModel.Client | client model
 
 // To test special tags
 AnotherFakeAPI.call123testSpecialTags(body: body) { (response, error) in
@@ -40,11 +40,11 @@ AnotherFakeAPI.call123testSpecialTags(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Client**](Client.md) | client model | 
+ **body** | [**PetstoreClientModel.Client**](PetstoreClientModel.Client.md) | client model | 
 
 ### Return type
 
-[**Client**](Client.md)
+[**PetstoreClientModel.Client**](PetstoreClientModel.Client.md)
 
 ### Authorization
 

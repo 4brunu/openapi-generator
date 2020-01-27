@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 # **addPet**
 ```swift
-    open class func addPet(body: Pet, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addPet(body: PetstoreClientModel.Pet, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Add a new pet to the store
@@ -27,7 +27,7 @@ Add a new pet to the store
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = Pet(id: 123, category: Category(id: 123, name: "name_example"), name: "name_example", photoUrls: ["photoUrls_example"], tags: [Tag(id: 123, name: "name_example")], status: "status_example") // Pet | Pet object that needs to be added to the store
+let body = Pet(id: 123, category: Category(id: 123, name: "name_example"), name: "name_example", photoUrls: ["photoUrls_example"], tags: [Tag(id: 123, name: "name_example")], status: "status_example") // PetstoreClientModel.Pet | Pet object that needs to be added to the store
 
 // Add a new pet to the store
 PetAPI.addPet(body: body) { (response, error) in
@@ -46,7 +46,7 @@ PetAPI.addPet(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Pet**](Pet.md) | Pet object that needs to be added to the store | 
+ **body** | [**PetstoreClientModel.Pet**](PetstoreClientModel.Pet.md) | Pet object that needs to be added to the store | 
 
 ### Return type
 
@@ -115,7 +115,7 @@ Void (empty response body)
 
 # **findPetsByStatus**
 ```swift
-    open class func findPetsByStatus(status: [String], completion: @escaping (_ data: [Pet]?, _ error: Error?) -> Void)
+    open class func findPetsByStatus(status: [String], completion: @escaping (_ data: [PetstoreClientModel.Pet]?, _ error: Error?) -> Void)
 ```
 
 Finds Pets by status
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Pet]**](Pet.md)
+[**[PetstoreClientModel.Pet]**](PetstoreClientModel.Pet.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 # **findPetsByTags**
 ```swift
-    open class func findPetsByTags(tags: [String], completion: @escaping (_ data: [Pet]?, _ error: Error?) -> Void)
+    open class func findPetsByTags(tags: [String], completion: @escaping (_ data: [PetstoreClientModel.Pet]?, _ error: Error?) -> Void)
 ```
 
 Finds Pets by tags
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[Pet]**](Pet.md)
+[**[PetstoreClientModel.Pet]**](PetstoreClientModel.Pet.md)
 
 ### Authorization
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 # **getPetById**
 ```swift
-    open class func getPetById(petId: Int64, completion: @escaping (_ data: Pet?, _ error: Error?) -> Void)
+    open class func getPetById(petId: Int64, completion: @escaping (_ data: PetstoreClientModel.Pet?, _ error: Error?) -> Void)
 ```
 
 Find pet by ID
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Pet**](Pet.md)
+[**PetstoreClientModel.Pet**](PetstoreClientModel.Pet.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 # **updatePet**
 ```swift
-    open class func updatePet(body: Pet, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updatePet(body: PetstoreClientModel.Pet, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update an existing pet
@@ -275,7 +275,7 @@ Update an existing pet
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = Pet(id: 123, category: Category(id: 123, name: "name_example"), name: "name_example", photoUrls: ["photoUrls_example"], tags: [Tag(id: 123, name: "name_example")], status: "status_example") // Pet | Pet object that needs to be added to the store
+let body = Pet(id: 123, category: Category(id: 123, name: "name_example"), name: "name_example", photoUrls: ["photoUrls_example"], tags: [Tag(id: 123, name: "name_example")], status: "status_example") // PetstoreClientModel.Pet | Pet object that needs to be added to the store
 
 // Update an existing pet
 PetAPI.updatePet(body: body) { (response, error) in
@@ -294,7 +294,7 @@ PetAPI.updatePet(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Pet**](Pet.md) | Pet object that needs to be added to the store | 
+ **body** | [**PetstoreClientModel.Pet**](PetstoreClientModel.Pet.md) | Pet object that needs to be added to the store | 
 
 ### Return type
 
@@ -365,7 +365,7 @@ Void (empty response body)
 
 # **uploadFile**
 ```swift
-    open class func uploadFile(petId: Int64, additionalMetadata: String? = nil, file: URL? = nil, completion: @escaping (_ data: ApiResponse?, _ error: Error?) -> Void)
+    open class func uploadFile(petId: Int64, additionalMetadata: String? = nil, file: URL? = nil, completion: @escaping (_ data: PetstoreClientModel.ApiResponse?, _ error: Error?) -> Void)
 ```
 
 uploads an image
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponse**](ApiResponse.md)
+[**PetstoreClientModel.ApiResponse**](PetstoreClientModel.ApiResponse.md)
 
 ### Authorization
 
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 
 # **uploadFileWithRequiredFile**
 ```swift
-    open class func uploadFileWithRequiredFile(petId: Int64, requiredFile: URL, additionalMetadata: String? = nil, completion: @escaping (_ data: ApiResponse?, _ error: Error?) -> Void)
+    open class func uploadFileWithRequiredFile(petId: Int64, requiredFile: URL, additionalMetadata: String? = nil, completion: @escaping (_ data: PetstoreClientModel.ApiResponse?, _ error: Error?) -> Void)
 ```
 
 uploads an image (required)
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponse**](ApiResponse.md)
+[**PetstoreClientModel.ApiResponse**](PetstoreClientModel.ApiResponse.md)
 
 ### Authorization
 

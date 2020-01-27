@@ -14,6 +14,8 @@ open class TestClientAPI {
     public static var apiResponseQueue: DispatchQueue = .main
 }
 
+open class TestClientModel {}
+
 open class RequestBuilder<T> {
     var credential: URLCredential?
     var headers: [String: String]

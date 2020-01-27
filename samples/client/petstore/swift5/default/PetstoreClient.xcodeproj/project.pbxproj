@@ -7,124 +7,444 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02936B1B73E2D9CFA74D9DBE /* PetstoreClientModel.Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED61B06446D32D87C6A514A /* PetstoreClientModel.Dog.swift */; };
 		0299339D13C3571C4C57368A /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7B833748B4F0C7CDA90C6 /* ApiResponse.swift */; };
+		040A5BC47BB8E27448531C6F /* PetstoreClientModelssssDogAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA80ABE62C7CCC2789D3B7C /* PetstoreClientModelssssDogAllOf.swift */; };
+		04E1D99A669B363779AFDA85 /* PetstoreClientModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3A71E382B033D31CB6B323 /* PetstoreClientModelName.swift */; };
+		0593638311BA8B7043425E8C /* PetstoreClientModelssssDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306B608098CCDCC3988CC4D /* PetstoreClientModelssssDList.swift */; };
+		05AD11BC77C4E26855B8CC39 /* PetstoreClientModelEnumTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EF54DEE395357A38DB068 /* PetstoreClientModelEnumTest.swift */; };
+		05B970DCB998AA3284E081AA /* PetstoreClientModelOuterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC8D2F1C9345680B32F798 /* PetstoreClientModelOuterEnum.swift */; };
+		06F0F888C89C07232EA90686 /* PetstoreClientModel.AdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15F9FED66864FB26AC1C27C /* PetstoreClientModel.AdditionalPropertiesClass.swift */; };
+		07DF4C8FEA274DA14E3B945A /* PetstoreClientModelAnimalFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B635653C28E5AB4B83EA092E /* PetstoreClientModelAnimalFarm.swift */; };
 		081C0B80A989B1AAF2665121 /* MapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7986861626C2B1CB49AD7000 /* MapTest.swift */; };
+		08BCCB6D493E7C9A3BE795E4 /* PetstoreClientModelssssTypeHolderDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017944091FBF78E0B5F786D /* PetstoreClientModelssssTypeHolderDefault.swift */; };
+		0BCB50D06784EDB3B0EDE55F /* PetstoreClientModel.CatAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B3A2B6EFC4244182A73F7 /* PetstoreClientModel.CatAllOf.swift */; };
 		0C1E4C682F2D0AF7D9E431EE /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3E1129526A353B963EFD7 /* Dog.swift */; };
+		0C9F002A80398F338556C20D /* PetstoreClientModelssssHasOnlyReadOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EA9137A39653442E8BCE8 /* PetstoreClientModelssssHasOnlyReadOnly.swift */; };
+		0D41A7B2EF1126A40C96E698 /* PetstoreClientModel.DogAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D293BADFBBB9510A80611A6 /* PetstoreClientModel.DogAllOf.swift */; };
+		0DA0644B431CDA83348189AB /* PetstoreClientModelMixedPropertiesAndAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4067EA9EB1C38671B3259 /* PetstoreClientModelMixedPropertiesAndAdditionalPropertiesClass.swift */; };
 		0E6932F1C55BA6880693C478 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B2E9EF856E89FEAA359A3A /* Order.swift */; };
+		10AF28FAAF7AB5D2D0D2B410 /* PetstoreClientModelPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3097EA795E2096FCD53E44B4 /* PetstoreClientModelPet.swift */; };
+		1137697E5FDFA979B7E9DBBB /* PetstoreClientModel.Capitalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29876F6E57232DDB1809074A /* PetstoreClientModel.Capitalization.swift */; };
+		113AB7B35A2A65D444F2CEEA /* PetstoreClientModel.ReadOnlyFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3897F0DD385CD9A70DD67B19 /* PetstoreClientModel.ReadOnlyFirst.swift */; };
+		17645A18917CE07642358788 /* PetstoreClientModel.EnumClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68160DFBBDB01AF1A45F294A /* PetstoreClientModel.EnumClass.swift */; };
+		17E6C64BB5E3CD4248BB0351 /* PetstoreClientModelssssSpecialModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78858955F066E2FB25B968F8 /* PetstoreClientModelssssSpecialModelName.swift */; };
+		183775F0F7455EE109101B1E /* PetstoreClientModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90231C308C2337C064E2B85 /* PetstoreClientModelList.swift */; };
+		1A22836D099C466885F9EE17 /* PetstoreClientModelssssDEnumClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C2021C9041DB0B1202FE4B /* PetstoreClientModelssssDEnumClass.swift */; };
+		1A5826B85407CF3D625431EC /* PetstoreClientModelClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740DDEF79EF49030B63FC3CA /* PetstoreClientModelClassModel.swift */; };
+		1C5608DAC99ECAB7550AB927 /* PetstoreClientModelNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6C79D902A0C53C988AEF86 /* PetstoreClientModelNumberOnly.swift */; };
 		1E6C7C7F271A802DF8099330 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897716962D472FE162B723CB /* APIHelper.swift */; };
 		248F2F0F29E8FDAE9CAD64C5 /* AdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DEF3156BA0D12D0FC5C3C /* AdditionalPropertiesClass.swift */; };
+		25E6808C41F7DEC0037A17E2 /* PetstoreClientModelHasOnlyReadOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3D11D5E12C1C96DFCFD0F /* PetstoreClientModelHasOnlyReadOnly.swift */; };
+		2640EA04F7E235C57A9894D8 /* PetstoreClientModelssssDAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3F2EB49FAC94E487C6C1E5 /* PetstoreClientModelssssDAnimal.swift */; };
+		269AEC4041F1A1A897FC6138 /* PetstoreClientModelssssDDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8BC8BBD527E23B6A9D7A1 /* PetstoreClientModelssssDDog.swift */; };
 		269E3103C458C78EA5726EE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C298FC8929DCB369053F11 /* Extensions.swift */; };
+		27F1C40144D0C092AC96DFBC /* PetstoreClientModelssssList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9AE62807ECA4D3E6AD7EB /* PetstoreClientModelssssList.swift */; };
+		283F39ECB061FA1B44FD0514 /* PetstoreClientModelssssOuterComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590D2889DDD2A5DE920EB8BC /* PetstoreClientModelssssOuterComposite.swift */; };
+		289D6F1CBF50E167DD95B413 /* PetstoreClientModelssssDFormatTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA1B31961FAFEFE9E93EB6 /* PetstoreClientModelssssDFormatTest.swift */; };
 		294CDFA409BC369C0FDC5FB3 /* SpecialModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FD590658E90509C121118 /* SpecialModelName.swift */; };
 		2B441CDFFFDDB343C04F5375 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95568E7C35F119EB4A12B498 /* Animal.swift */; };
+		2BF40588700BA7D17B5FE109 /* PetstoreClientModel.FormatTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CF5E563FFCE66BD21930E /* PetstoreClientModel.FormatTest.swift */; };
 		2C29D5B60E00DDA3878F1BDE /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFEB4C6C257B3BB3CEA36D1 /* Pet.swift */; };
+		2C308C05EBF94C3D90B96691 /* PetstoreClientModelStringBooleanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11978716DAFBACDA958816F2 /* PetstoreClientModelStringBooleanMap.swift */; };
+		2CF9A7E45F61AF3EA1CC34B7 /* PetstoreClientModelReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB077AF7455E48CA03414 /* PetstoreClientModelReturn.swift */; };
+		2DD9CD8791D153E98B9F53C6 /* PetstoreClientModelssssFileSchemaTestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7F2E56D5EA10A55E6F8C0 /* PetstoreClientModelssssFileSchemaTestClass.swift */; };
+		2DFBFAC7975CC929F7F17DA5 /* PetstoreClientModelssssDReadOnlyFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C5A6C0386DFCCE70B1EF11 /* PetstoreClientModelssssDReadOnlyFirst.swift */; };
+		2FEB91DED98DE256D765047B /* PetstoreClientModel.FileSchemaTestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B46BF6773A0FC62095A41F5 /* PetstoreClientModel.FileSchemaTestClass.swift */; };
 		31DFF71D8CCCA0D2D2F8AC90 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5565A447062C7B8F695F451 /* User.swift */; };
+		338F006454F4A064B4836284 /* PetstoreClientModel.Return.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616159F27B4625B9089A00E /* PetstoreClientModel.Return.swift */; };
 		34C26979F4678B5B579D26E8 /* FakeClassnameTags123API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42354B407EC173BEB54E042 /* FakeClassnameTags123API.swift */; };
 		3691B017D3AA18404A563C67 /* ArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65BB72353DA24536A9049BE /* ArrayOfNumberOnly.swift */; };
+		36B7BB500705D6D757D1D977 /* PetstoreClientModelssssDFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8038BAAAF370EBC7B96CD /* PetstoreClientModelssssDFile.swift */; };
+		36D032AB59D5E2523AB19B4E /* PetstoreClientModelssssDFileSchemaTestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214E1DFF65AC095F32AFB2D2 /* PetstoreClientModelssssDFileSchemaTestClass.swift */; };
+		379FCF8177CC83D13CF84409 /* PetstoreClientModelssssDAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AA192ED42EF7C6EB2551D6 /* PetstoreClientModelssssDAdditionalPropertiesClass.swift */; };
 		37DEADD6CD0496690725B8A7 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD994DFAA0DA93C188A4DBA /* Name.swift */; };
+		38A1BFFFDF09502B754D5DA0 /* PetstoreClientModel200Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A784ED6782CF3FEF71EEF411 /* PetstoreClientModel200Response.swift */; };
+		3B1407D10C1417A6EB164E04 /* PetstoreClientModelssssDOuterComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2421A50B81700953DFBD93 /* PetstoreClientModelssssDOuterComposite.swift */; };
+		3C7C7D19D46EECA9E81C8024 /* PetstoreClientModel.Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2CEAED6342F24A6966244 /* PetstoreClientModel.Cat.swift */; };
+		3CEBFBB4FD9BFBC248EB3A8A /* PetstoreClientModelssssClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE87A4936AD1C7180A3EF5 /* PetstoreClientModelssssClassModel.swift */; };
+		3D7AE28C7358554B2482EBF8 /* PetstoreClientModel.HasOnlyReadOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB3F867022FB472DE35506 /* PetstoreClientModel.HasOnlyReadOnly.swift */; };
+		3D830069CE57412EB6E9E2EC /* PetstoreClientModelssssDArrayOfArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5FC11FA93D2E577C374DFE /* PetstoreClientModelssssDArrayOfArrayOfNumberOnly.swift */; };
 		40E3027D2E38D8329C6AB01F /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF825B8F3BADA2B2537D17 /* APIs.swift */; };
 		41A491E9B577C510F927D126 /* OuterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15008AABC804EB6FB4CDAC6 /* OuterEnum.swift */; };
+		42F66E524C88122EF78A1234 /* PetstoreClientModelssssDEnumArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D2976CFE302108AFCE446 /* PetstoreClientModelssssDEnumArrays.swift */; };
 		45B3B29D7A62049F824751F8 /* AnimalFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D22BE01748F51106DE02332 /* AnimalFarm.swift */; };
+		45C195DE9BCE8AC6B8CA3236 /* PetstoreClientModel.SpecialModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901E912389BF2389FCFEFE3A /* PetstoreClientModel.SpecialModelName.swift */; };
+		48DC98CAD460E5AB686DFD0D /* PetstoreClientModel.EnumTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66495953EC17F1ED96A4BF9 /* PetstoreClientModel.EnumTest.swift */; };
+		48F6CF6917D781FB14515218 /* PetstoreClientModelssssEnumArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B164FC0A8185B2B74D5DF7 /* PetstoreClientModelssssEnumArrays.swift */; };
 		4A344DF7ECE721B4BBEDCB4A /* CatAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0F94F512DFBC09F9CC79A /* CatAllOf.swift */; };
+		4AFE37EFD6A5A2667AE6787C /* PetstoreClientModelssssOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89162B0A62182183DC228611 /* PetstoreClientModelssssOrder.swift */; };
 		4B4BE77747413A9188CDABD2 /* ArrayOfArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B8B838B5D9D312F2002EB /* ArrayOfArrayOfNumberOnly.swift */; };
+		4CC6D2841BC16291A5D39C81 /* PetstoreClientModelssssDTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A6ED6D56A1123B2C0FF88 /* PetstoreClientModelssssDTag.swift */; };
+		4D190FCAC824990C9EFFFE86 /* PetstoreClientModelssssApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C684A63B523E5C8E06EDF7AB /* PetstoreClientModelssssApiResponse.swift */; };
+		4EB55709654AB20DAA0ADC67 /* PetstoreClientModelssssTypeHolderExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF10C66D691CF72337D0C7 /* PetstoreClientModelssssTypeHolderExample.swift */; };
+		507A506C5085BDCC89ED4E33 /* PetstoreClientModelssssDCatAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6158454516D3579034D1B9CA /* PetstoreClientModelssssDCatAllOf.swift */; };
+		5453734B8C6B34CE6E034C45 /* PetstoreClientModel.Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A42DECAE912F14BD898D3 /* PetstoreClientModel.Pet.swift */; };
+		5543F2A7DAE0E0C1802109EC /* PetstoreClientModelssssDPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BB33C09B42CA0764D9E2F /* PetstoreClientModelssssDPet.swift */; };
 		555DEA47352B42E49082922B /* NumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E0B16084741FCB82389F58 /* NumberOnly.swift */; };
+		5614900F22B90B9ED621000B /* PetstoreClientModelssssFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671293DFB6CEFBBD29D28F2F /* PetstoreClientModelssssFile.swift */; };
 		5695497F5DBF6C08842755A3 /* TypeHolderDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76F6D4D2AA8084B7EB50E /* TypeHolderDefault.swift */; };
+		56ED6A5310E667D86FF17A7F /* PetstoreClientModelssssD200Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82332BEBBC170C58A4CA754 /* PetstoreClientModelssssD200Response.swift */; };
+		5CAF944226E8926EB9274F31 /* PetstoreClientModelssssReadOnlyFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = F426CFD64F833D47A5094F7D /* PetstoreClientModelssssReadOnlyFirst.swift */; };
+		5E896CE5FB8620A0B7BCE47D /* PetstoreClientModelssssDDogAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A865E6AB800D166419850DBF /* PetstoreClientModelssssDDogAllOf.swift */; };
+		60293768BE226E869792DA61 /* PetstoreClientModelssssCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7208C7976B305721DDD6883 /* PetstoreClientModelssssCategory.swift */; };
 		61322FC4325F1A4FF24ACA48 /* EnumArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10503995D9EFD031A2EFB576 /* EnumArrays.swift */; };
+		6253B7005ACFE3378CB5A0B0 /* PetstoreClientModel.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = E011D89F15DB14B848AB5C00 /* PetstoreClientModel.Name.swift */; };
+		645920928AFD7C0302CAAAE2 /* PetstoreClientModelssssAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32594256C415D6E0CF9ED5F /* PetstoreClientModelssssAnimal.swift */; };
 		64C48E3658CF53EBE8AF82F9 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8D5F382979854D47F18DB1 /* UserAPI.swift */; };
+		64D1751AFD0575308B358A57 /* PetstoreClientModelssssDNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A1A6A0BDAF37A539AFBD0 /* PetstoreClientModelssssDNumberOnly.swift */; };
+		65970AF8DEAB516BCC83B4D0 /* PetstoreClientModel.Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D97782C650C9E16E4D93F5 /* PetstoreClientModel.Category.swift */; };
+		66402A5075D5CEB0C29731EF /* PetstoreClientModelssssMixedPropertiesAndAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913AB53D625A98C4731572A9 /* PetstoreClientModelssssMixedPropertiesAndAdditionalPropertiesClass.swift */; };
+		66904868D19FA6A9DF271E8F /* PetstoreClientModel.Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37537DE5AB1E4D408A01F20 /* PetstoreClientModel.Client.swift */; };
+		679A0EB05135BFD9A22400BB /* PetstoreClientModelTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFB11852BB214590FC6232 /* PetstoreClientModelTag.swift */; };
+		6A55417BF6B33874F0A41C58 /* PetstoreClientModelCapitalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B19B498F0A3BE67022AE61 /* PetstoreClientModelCapitalization.swift */; };
 		6B638A04B34C82B2091D6EDD /* FormatTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156CE41C001C80379B84BDB /* FormatTest.swift */; };
+		6C02D63DF0A5C4B93B0FDBC4 /* PetstoreClientModel.Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB520AAD6DDBC2F2837B85 /* PetstoreClientModel.Order.swift */; };
+		6C32332349F33BF39B001E09 /* PetstoreClientModelssssMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ACC100B0E38386E29C1FF7 /* PetstoreClientModelssssMapTest.swift */; };
 		6FBD978F4D1ED92E7071FFBB /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6F6BB2152ACEE1416D44A /* CodableHelper.swift */; };
+		70234805D3B45D487D6387FA /* PetstoreClientModelssssDClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1FCE5DEAFD2615F7B355A /* PetstoreClientModelssssDClient.swift */; };
+		718EFFA967216187C6CB9B6D /* PetstoreClientModelArrayOfArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AA7BCAD68D3E06900942D2 /* PetstoreClientModelArrayOfArrayOfNumberOnly.swift */; };
 		72547ECFB451A509409311EE /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A444949BBC254798C3B3DD /* Configuration.swift */; };
 		72CE544C52BB33778D1B89B8 /* DogAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21A69C8402A60E01116ABBD /* DogAllOf.swift */; };
+		73ED3654C16D4BFA16A7C685 /* PetstoreClientModelTypeHolderDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C68441A65180E96631699 /* PetstoreClientModelTypeHolderDefault.swift */; };
+		741FCE981B6C39A90E24124E /* PetstoreClientModelssssDReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F04C5086BFA8DEBBE3390F /* PetstoreClientModelssssDReturn.swift */; };
 		7441BBA84C31E06400338F89 /* ClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C30827D8EAF8EA684E7BCEA /* ClassModel.swift */; };
+		74430ECA576A9234C4D0A082 /* PetstoreClientModel.Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49E50AAA7893445FAAC83A /* PetstoreClientModel.Animal.swift */; };
 		7588B7E2960253174ADCCF16 /* JSONEncodingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D710108A69DD8A5297F926 /* JSONEncodingHelper.swift */; };
+		7705BBD7C88E5E9D54C2DEB8 /* PetstoreClientModel.ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E5FA9F83FE8F6F467693 /* PetstoreClientModel.ApiResponse.swift */; };
+		791E08ED00A6948257AADFBA /* PetstoreClientModelssssDArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7E74F1E5CEDA26B6E61DE /* PetstoreClientModelssssDArrayOfNumberOnly.swift */; };
+		79C854A42790709F68354C1B /* PetstoreClientModelssssDCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815FF734DF7EE5AD53158243 /* PetstoreClientModelssssDCat.swift */; };
+		7E6EFA737A151063CD2EEB86 /* PetstoreClientModelssssEnumTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A204A49F5107054DCEDBDC14 /* PetstoreClientModelssssEnumTest.swift */; };
+		7F233D7FE82C6100B97A2D8D /* PetstoreClientModelFormatTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1676B8D81FB26A2BEF7CE48E /* PetstoreClientModelFormatTest.swift */; };
+		7F3A708403D2383789EFF6EB /* PetstoreClientModel.File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38E5410C573407B50F638A /* PetstoreClientModel.File.swift */; };
+		804BE7296C98A2C496C2843B /* PetstoreClientModelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97688893CB35D98EBDE93C49 /* PetstoreClientModelUser.swift */; };
+		8120AD166686B0FED5AB24D1 /* PetstoreClientModel.NumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F85863CA4C6FDBE1BDDD87 /* PetstoreClientModel.NumberOnly.swift */; };
+		830765E48D28042DBB6C9B1B /* PetstoreClientModelssssDCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51339B580AC513673ED7785 /* PetstoreClientModelssssDCategory.swift */; };
+		83BDAB9FB0646563294DF83B /* PetstoreClientModelssssAnimalFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE931FBF02B59DA7CF4BDBE9 /* PetstoreClientModelssssAnimalFarm.swift */; };
+		8435EE7D283F82C942C8127C /* PetstoreClientModelssssEnumClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C496ED201DED9E77C1933A64 /* PetstoreClientModelssssEnumClass.swift */; };
+		8476C9BBA9A330CD6D31E224 /* PetstoreClientModelssssDOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3EB11BA6455A523CB52A1D /* PetstoreClientModelssssDOrder.swift */; };
+		8673DBEAD7FF42AE724A5C5D /* PetstoreClientModelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1019ABFF91D212926A2D0532 /* PetstoreClientModelClient.swift */; };
 		86DE714469BE8BA28AFF710F /* HasOnlyReadOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FBC641752D2E13B150973 /* HasOnlyReadOnly.swift */; };
+		8841C6053B7277C0EE261976 /* PetstoreClientModelssssDMixedPropertiesAndAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA281CAB71FEBF5D349DC1 /* PetstoreClientModelssssDMixedPropertiesAndAdditionalPropertiesClass.swift */; };
+		88FA0318AABADF823F794765 /* PetstoreClientModel.OuterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7553DD775D09DDCF7A4378 /* PetstoreClientModel.OuterEnum.swift */; };
+		8B3278FB71548111458FBDD6 /* PetstoreClientModelssssDSpecialModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44F08FED15C2B7C8FB41FE7 /* PetstoreClientModelssssDSpecialModelName.swift */; };
+		8C402B0F73F3A63B43C346FF /* PetstoreClientModel.StringBooleanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50BFB450B0959D3E28DFF85 /* PetstoreClientModel.StringBooleanMap.swift */; };
+		8F93E2CC380AE2C3D1ECA195 /* PetstoreClientModelCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FC4E9EDC2A484A85650B38 /* PetstoreClientModelCategory.swift */; };
+		90841B371FF7DBBDAB6102D8 /* PetstoreClientModelssssDCapitalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C384C1F49EDD9F2E904B4CD3 /* PetstoreClientModelssssDCapitalization.swift */; };
+		90ABDB73677032F25C93EE0F /* PetstoreClientModel.MixedPropertiesAndAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F77171011A1D559C100F47C /* PetstoreClientModel.MixedPropertiesAndAdditionalPropertiesClass.swift */; };
 		914F4D1FCB17773C067C4E68 /* ReadOnlyFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD42727E001E799E458C292 /* ReadOnlyFirst.swift */; };
 		922BDADAB291907A7FD14314 /* OuterComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E0AD8F60A91F72C7687560 /* OuterComposite.swift */; };
+		942ADD695CAEE62FDA03D2D1 /* PetstoreClientModelssssStringBooleanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170DA2401D9655BB2D3C1F7 /* PetstoreClientModelssssStringBooleanMap.swift */; };
+		95C5CE01B075BF64453F10EA /* PetstoreClientModelOuterComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E58105EAF121E13633EB1F /* PetstoreClientModelOuterComposite.swift */; };
+		96C028486A60DD68EFE3523E /* PetstoreClientModelssssOuterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C85D8927C504699B46A4FC6 /* PetstoreClientModelssssOuterEnum.swift */; };
 		97F7B85BF07A325EEBF92C93 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933D3B2A3AC4577094D0C23 /* File.swift */; };
+		9861B07F598DDFFE4B8181F9 /* PetstoreClientModelssssDClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF0B0ED6EB4D6DECFE4CCF /* PetstoreClientModelssssDClassModel.swift */; };
+		9B8473E58E5F4D307E45B0DE /* PetstoreClientModelssssName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3BEDB3B9E79860F07378E3 /* PetstoreClientModelssssName.swift */; };
 		9CA19AA4483F6EB50270A81E /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6070F581E611FF44AFD40A /* List.swift */; };
 		9CF06ACDA32CB0C3E74E435C /* Model200Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2C3DC2235F0114C2B08E5 /* Model200Response.swift */; };
 		9D22720B1B12BE43D3B45ADE /* JSONDataEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7A27EE12A4DFEA1C0EE35 /* JSONDataEncoding.swift */; };
+		9D8650316AC603521CF323A4 /* PetstoreClientModelssssPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD76B439B7FAA0E67154DA /* PetstoreClientModelssssPet.swift */; };
 		9DA1C6F8B4D6C8595F28C098 /* EnumTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD60AEA646791E0EDE885DE1 /* EnumTest.swift */; };
+		A05DAA0A5CD98BE326F57FD6 /* PetstoreClientModelssss200Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D660BE7CDCA1FFD5D9504D0 /* PetstoreClientModelssss200Response.swift */; };
 		A3E16915AA7FD644C4FE162E /* URLSessionImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F49B24B6239C324722572C /* URLSessionImplementations.swift */; };
 		A6E50CC6845FE58D8C236253 /* Return.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81447828475F76C5CF4F08A /* Return.swift */; };
 		A6E5A5629495DB0ED672B06F /* PetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A019F500E546A3292CE716A /* PetAPI.swift */; };
+		A6F1B4E739641569732C8A9D /* PetstoreClientModelssssCapitalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBE37AA58E8EF2FF2B57BC /* PetstoreClientModelssssCapitalization.swift */; };
 		A85E190556818FFA79896E92 /* ArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0379CDFC55705AE76C998 /* ArrayTest.swift */; };
+		A86B9D2A995877A6395FEC39 /* PetstoreClientModelOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82B484C8C9513C4784ED58 /* PetstoreClientModelOrder.swift */; };
+		AC6CEE8D7AD7274386B8FDC6 /* PetstoreClientModelDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB9BB0C774127677F792D5 /* PetstoreClientModelDog.swift */; };
+		AC81D905B665FCEF0087DA9C /* PetstoreClientModelSpecialModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F79A41A77B86CFE5F852E6C /* PetstoreClientModelSpecialModelName.swift */; };
+		ACD4CE2543D16860D3A89E4C /* PetstoreClientModelssssDArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3337A13EA2E5DE491921F /* PetstoreClientModelssssDArrayTest.swift */; };
 		ACF3037926301D4D6E848745 /* EnumClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C97AE6ACA1E5FB88F5BAA /* EnumClass.swift */; };
+		ACF577589B4B9C8EAD1730DE /* PetstoreClientModelEnumClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C88692EA236EFCE62F85FEA /* PetstoreClientModelEnumClass.swift */; };
 		AD3A3107C12F2634CD22163B /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D138F6DA6160301F9281383E /* SynchronizedDictionary.swift */; };
 		AD594BFB99E31A5E07579237 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913A57E72D723632E9A718F /* Client.swift */; };
+		AF40D028A5811075AEF500D9 /* PetstoreClientModel.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA95AFA3C9D7FD0F1C39F89 /* PetstoreClientModel.List.swift */; };
+		AFCC20D90203062EFC086B1F /* PetstoreClientModel.MapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D5C1806EF1293681BF5173 /* PetstoreClientModel.MapTest.swift */; };
+		B0714A73FB5726E887D768AF /* PetstoreClientModelArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B8B4A8637BA5930BE70A8 /* PetstoreClientModelArrayOfNumberOnly.swift */; };
+		B1CB47662423E5C2842F9D34 /* PetstoreClientModel.AnimalFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30CEE305D2C3D79885093F5 /* PetstoreClientModel.AnimalFarm.swift */; };
 		B301DB1B80F37C757550AA17 /* MixedPropertiesAndAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD714C7CC59BDD18DE8DF4E /* MixedPropertiesAndAdditionalPropertiesClass.swift */; };
 		B3E35FE2773D4A8BA15CFA88 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2896F8BFD1AA2965C8A3015 /* Tag.swift */; };
+		B4305974C8BEE4A6236C494D /* PetstoreClientModel.EnumArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E717EBD7E7BF92314149B43 /* PetstoreClientModel.EnumArrays.swift */; };
 		B637B9432565A6A8E7C73E7F /* OpenISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7A1702ACD8737DED6588CD /* OpenISO8601DateFormatter.swift */; };
+		B973988CD6A7302FDF5244D9 /* PetstoreClientModelssssDEnumTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA6F7A30C7E009F7AA67D43 /* PetstoreClientModelssssDEnumTest.swift */; };
 		BB1F3C6D50B8F0A8CC4F1749 /* Capitalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B38FA00A494D13F4C382A3 /* Capitalization.swift */; };
+		BBE95D3A50E283F8CD42AD84 /* PetstoreClientModel.ArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EEE789DBA1F7A7C42924C /* PetstoreClientModel.ArrayOfNumberOnly.swift */; };
+		BD04ABD5D5756A70C5FBE518 /* PetstoreClientModelssssArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD8943941E465E9F0FD96F2 /* PetstoreClientModelssssArrayOfNumberOnly.swift */; };
+		C0C4B50BC589EDBA28F8A60B /* PetstoreClientModel.TypeHolderDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045F366294B6D8101F58CCD /* PetstoreClientModel.TypeHolderDefault.swift */; };
+		C27B58724C13C3A5F1EC91AE /* PetstoreClientModelssssDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FAF3E533E08BB5AC8C15DF /* PetstoreClientModelssssDUser.swift */; };
+		C52E0A68F0041469A1031D45 /* PetstoreClientModelssssDOuterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE436D89C13937E061733A /* PetstoreClientModelssssDOuterEnum.swift */; };
+		C5CF78A00EA8BF417AE94DE7 /* PetstoreClientModelDogAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6EBE5844A7D13B7342BFC1 /* PetstoreClientModelDogAllOf.swift */; };
+		C9CB7C4216D0174459486DBC /* PetstoreClientModel.ArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C62F4344BF758F816E664 /* PetstoreClientModel.ArrayTest.swift */; };
 		CA9B9B19882EA044EAD0B359 /* AnotherFakeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF24D2714B9C4CF14146E88 /* AnotherFakeAPI.swift */; };
+		CAF3B6BB9C7D82DC1808B782 /* PetstoreClientModelCatAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB76BBA6D4FB65C3FDE796 /* PetstoreClientModelCatAllOf.swift */; };
 		CB68ABDBAADAF6B8D7B93A5D /* StoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53274D99BBDE1B79BF3521C /* StoreAPI.swift */; };
+		CC411EAE2AE02C31BA2E4452 /* PetstoreClientModelssssNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF546B1EA782C5013487709 /* PetstoreClientModelssssNumberOnly.swift */; };
+		CED04DFD2F3E6799CFF53530 /* PetstoreClientModelssssDStringBooleanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C17663978365F7919410C /* PetstoreClientModelssssDStringBooleanMap.swift */; };
+		CEDD33B1A41BD52CFE1967A7 /* PetstoreClientModel.ClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99429F5B51CBB3D3C6F8BC /* PetstoreClientModel.ClassModel.swift */; };
+		CF2840488A5EBCFB86327AAA /* PetstoreClientModelssssReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F805C5B9CFEBC371F82AB72A /* PetstoreClientModelssssReturn.swift */; };
+		D36ED991489B9CFD1F48CC9E /* PetstoreClientModelssssDHasOnlyReadOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A2A35CB83EE94D0F86609E /* PetstoreClientModelssssDHasOnlyReadOnly.swift */; };
 		D3BAB7C7A607392CA838C580 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8699F7966F748ED026A6FB4C /* Models.swift */; };
+		D5AB0769485912203A539BA4 /* PetstoreClientModelEnumArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAADDBFA766ED230EEE084D /* PetstoreClientModelEnumArrays.swift */; };
 		D95A5F83AAA7D5C95A29AB83 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212AA914B7F1793A4E32C119 /* Cat.swift */; };
+		D9793D767E7F89051A17D93C /* PetstoreClientModelssssDTypeHolderDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1E2043E044EE4CB1C0C236 /* PetstoreClientModelssssDTypeHolderDefault.swift */; };
+		D9FDEF13DA0AD16789FC6B55 /* PetstoreClientModel.OuterComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE58FEF0582B931281A1002 /* PetstoreClientModel.OuterComposite.swift */; };
+		DC19CA0BB43101FDA3F984F2 /* PetstoreClientModelssssUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC268EA4805B3EE4828C6B /* PetstoreClientModelssssUser.swift */; };
+		DC940DBF93E24DCE7D955628 /* PetstoreClientModelssssDApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D067DD2553E991F3DC81E012 /* PetstoreClientModelssssDApiResponse.swift */; };
+		DCA218CC6B175FB8EA9663A1 /* PetstoreClientModelssssDTypeHolderExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70559AC398FA2FA3074F0955 /* PetstoreClientModelssssDTypeHolderExample.swift */; };
+		DCD9D41E5A001BC5CC95FCED /* PetstoreClientModel.200Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0D27C0BBC837C1640F1B6 /* PetstoreClientModel.200Response.swift */; };
+		DCF26582FF67C556CC71E976 /* PetstoreClientModelAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE396AB5A3458C1E4E495D /* PetstoreClientModelAnimal.swift */; };
 		DDBD4C0FBA3CD6A4DA3DF376 /* FakeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00950725DC44436C5E238C /* FakeAPI.swift */; };
 		DDF1D589267D56D9BED3C6E5 /* FileSchemaTestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3666552AA854DAF9C480A3 /* FileSchemaTestClass.swift */; };
+		E06C90294261AE4FA6C157D8 /* PetstoreClientModelTypeHolderExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E61BC126A7F89803BA6A390 /* PetstoreClientModelTypeHolderExample.swift */; };
+		E535120ADE2ABC642F81137F /* PetstoreClientModel.TypeHolderExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE10DD1CC7D698FBDF616FE /* PetstoreClientModel.TypeHolderExample.swift */; };
+		E56933183717CF5B2A926819 /* PetstoreClientModelReadOnlyFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB25F2577F1B5A6FBB6B457 /* PetstoreClientModelReadOnlyFirst.swift */; };
+		E5894D1BE624A6705A47CBF3 /* PetstoreClientModel.ArrayOfArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47D8CEE67417EE69A8E4569 /* PetstoreClientModel.ArrayOfArrayOfNumberOnly.swift */; };
+		E5EE40F3A491E7D8D1BC0E8F /* PetstoreClientModelssssDAnimalFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CA8F3628E031846317F866 /* PetstoreClientModelssssDAnimalFarm.swift */; };
+		E5FF310ABB0D6A30F3283B74 /* PetstoreClientModelssssArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DF484D695CD13303427E1B /* PetstoreClientModelssssArrayTest.swift */; };
+		E816DA6F7C8D6CE6FD5A68E9 /* PetstoreClientModel.Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620BE7A6FE8B354EF837F2D /* PetstoreClientModel.Tag.swift */; };
 		E8A58C6414E88AF3EAE45B69 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2985D01F8D60A4B1925C69 /* Category.swift */; };
+		E98F55179B4B3D1A4C280D01 /* PetstoreClientModelssssCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8667989D13B302755B19B42A /* PetstoreClientModelssssCat.swift */; };
+		E9A95404E8444D0624A15329 /* PetstoreClientModelAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48770FF665F7CEE758EBC4C /* PetstoreClientModelAdditionalPropertiesClass.swift */; };
+		EB0D5D48452D68977E00966C /* PetstoreClientModel.User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB76A884A678A79F5A634E7F /* PetstoreClientModel.User.swift */; };
+		EB1001AFC51F470579AF07E4 /* PetstoreClientModelMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D9E3DC5DE286B94854A6B7 /* PetstoreClientModelMapTest.swift */; };
+		ED447D5B6F69588B952F7345 /* PetstoreClientModelssssTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7908AC6E89A62908017E6AD /* PetstoreClientModelssssTag.swift */; };
+		EDCF00D5F95752BA2DF1FDD8 /* PetstoreClientModelApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B65EAA8D4C4E192AAB6689 /* PetstoreClientModelApiResponse.swift */; };
 		EDFC6C5121A43997014049CB /* StringBooleanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DEBABEFE140768CFB70B /* StringBooleanMap.swift */; };
+		F0EA438E37398B7011BCA539 /* PetstoreClientModelssssDName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4AC0E8CF284892EE9D57B /* PetstoreClientModelssssDName.swift */; };
+		F32B5C9630D9D3B8DAA3948E /* PetstoreClientModelssssDMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C69DE0135C95BB57855878B /* PetstoreClientModelssssDMapTest.swift */; };
+		F3D2152BB21724633F11151C /* PetstoreClientModelssssArrayOfArrayOfNumberOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985AAEADDD8508E672B4AB71 /* PetstoreClientModelssssArrayOfArrayOfNumberOnly.swift */; };
+		F3E86B5BF376EF94EE0990F5 /* PetstoreClientModelFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D506871A6499BD1E72C727B5 /* PetstoreClientModelFile.swift */; };
+		F419CB4490CFA25A947D8250 /* PetstoreClientModelssssAdditionalPropertiesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9574C1412DCAF3C04DD2C6 /* PetstoreClientModelssssAdditionalPropertiesClass.swift */; };
+		F554DFDE1766E4BF41A33AF1 /* PetstoreClientModelFileSchemaTestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3E03851D055E140ACF986B /* PetstoreClientModelFileSchemaTestClass.swift */; };
+		FAC24B3FD4D742E8AB11ECE1 /* PetstoreClientModelssssCatAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380B56330DD108A98487D124 /* PetstoreClientModelssssCatAllOf.swift */; };
+		FBB832E282FA534BFA0ED65F /* PetstoreClientModelCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32369F2C3504AA5DB2FBE2D7 /* PetstoreClientModelCat.swift */; };
+		FCCEEDBC29A4517E76D1BEB7 /* PetstoreClientModelssssClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774F6A6DDE76C1D540A4E0DC /* PetstoreClientModelssssClient.swift */; };
+		FD6CEE494AAAF827A1820594 /* PetstoreClientModelssssFormatTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37EB0ADD76417DB9091F355 /* PetstoreClientModelssssFormatTest.swift */; };
+		FE0E7FAF331F04EBB3B003E8 /* PetstoreClientModelArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B957FDA339ADFD9AC9B52B /* PetstoreClientModelArrayTest.swift */; };
+		FE519C4F615109068CB2A946 /* PetstoreClientModelssssDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C705664B1ED8AFDDD92419 /* PetstoreClientModelssssDog.swift */; };
 		FECA2E8C9D0BDFEC459E8996 /* TypeHolderExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B65C66C97F082718DDD703 /* TypeHolderExample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01D97782C650C9E16E4D93F5 /* PetstoreClientModel.Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Category.swift; sourceTree = "<group>"; };
 		02A6F6BB2152ACEE1416D44A /* CodableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
+		03EA281CAB71FEBF5D349DC1 /* PetstoreClientModelssssDMixedPropertiesAndAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDMixedPropertiesAndAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		04FB9BB0C774127677F792D5 /* PetstoreClientModelDog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelDog.swift; sourceTree = "<group>"; };
+		05A2A35CB83EE94D0F86609E /* PetstoreClientModelssssDHasOnlyReadOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDHasOnlyReadOnly.swift; sourceTree = "<group>"; };
+		0AE58FEF0582B931281A1002 /* PetstoreClientModel.OuterComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.OuterComposite.swift; sourceTree = "<group>"; };
+		0E2C17663978365F7919410C /* PetstoreClientModelssssDStringBooleanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDStringBooleanMap.swift; sourceTree = "<group>"; };
+		1019ABFF91D212926A2D0532 /* PetstoreClientModelClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelClient.swift; sourceTree = "<group>"; };
 		10503995D9EFD031A2EFB576 /* EnumArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumArrays.swift; sourceTree = "<group>"; };
 		10A7A27EE12A4DFEA1C0EE35 /* JSONDataEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataEncoding.swift; sourceTree = "<group>"; };
+		11978716DAFBACDA958816F2 /* PetstoreClientModelStringBooleanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelStringBooleanMap.swift; sourceTree = "<group>"; };
 		11F49B24B6239C324722572C /* URLSessionImplementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionImplementations.swift; sourceTree = "<group>"; };
+		138C68441A65180E96631699 /* PetstoreClientModelTypeHolderDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelTypeHolderDefault.swift; sourceTree = "<group>"; };
+		1620BE7A6FE8B354EF837F2D /* PetstoreClientModel.Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Tag.swift; sourceTree = "<group>"; };
 		164AD6EC9C4CCF634D7C4590 /* PetstoreClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PetstoreClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1676B8D81FB26A2BEF7CE48E /* PetstoreClientModelFormatTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelFormatTest.swift; sourceTree = "<group>"; };
+		16B65EAA8D4C4E192AAB6689 /* PetstoreClientModelApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelApiResponse.swift; sourceTree = "<group>"; };
+		18C0D27C0BBC837C1640F1B6 /* PetstoreClientModel.200Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.200Response.swift; sourceTree = "<group>"; };
 		19B65C66C97F082718DDD703 /* TypeHolderExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHolderExample.swift; sourceTree = "<group>"; };
+		1B46BF6773A0FC62095A41F5 /* PetstoreClientModel.FileSchemaTestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.FileSchemaTestClass.swift; sourceTree = "<group>"; };
+		1C69DE0135C95BB57855878B /* PetstoreClientModelssssDMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDMapTest.swift; sourceTree = "<group>"; };
+		1CB7E74F1E5CEDA26B6E61DE /* PetstoreClientModelssssDArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDArrayOfNumberOnly.swift; sourceTree = "<group>"; };
+		1E82B484C8C9513C4784ED58 /* PetstoreClientModelOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelOrder.swift; sourceTree = "<group>"; };
+		1F3EB11BA6455A523CB52A1D /* PetstoreClientModelssssDOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDOrder.swift; sourceTree = "<group>"; };
 		212AA914B7F1793A4E32C119 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		214E1DFF65AC095F32AFB2D2 /* PetstoreClientModelssssDFileSchemaTestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDFileSchemaTestClass.swift; sourceTree = "<group>"; };
+		23CC8D2F1C9345680B32F798 /* PetstoreClientModelOuterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelOuterEnum.swift; sourceTree = "<group>"; };
+		25AA192ED42EF7C6EB2551D6 /* PetstoreClientModelssssDAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		25D5C1806EF1293681BF5173 /* PetstoreClientModel.MapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.MapTest.swift; sourceTree = "<group>"; };
+		26C705664B1ED8AFDDD92419 /* PetstoreClientModelssssDog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDog.swift; sourceTree = "<group>"; };
+		26F85863CA4C6FDBE1BDDD87 /* PetstoreClientModel.NumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.NumberOnly.swift; sourceTree = "<group>"; };
 		27B2E9EF856E89FEAA359A3A /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		28A444949BBC254798C3B3DD /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		29876F6E57232DDB1809074A /* PetstoreClientModel.Capitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Capitalization.swift; sourceTree = "<group>"; };
+		29E2CEAED6342F24A6966244 /* PetstoreClientModel.Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Cat.swift; sourceTree = "<group>"; };
+		2BE10DD1CC7D698FBDF616FE /* PetstoreClientModel.TypeHolderExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.TypeHolderExample.swift; sourceTree = "<group>"; };
+		2D660BE7CDCA1FFD5D9504D0 /* PetstoreClientModelssss200Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssss200Response.swift; sourceTree = "<group>"; };
+		2E61BC126A7F89803BA6A390 /* PetstoreClientModelTypeHolderExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelTypeHolderExample.swift; sourceTree = "<group>"; };
+		3045F366294B6D8101F58CCD /* PetstoreClientModel.TypeHolderDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.TypeHolderDefault.swift; sourceTree = "<group>"; };
+		3097EA795E2096FCD53E44B4 /* PetstoreClientModelPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelPet.swift; sourceTree = "<group>"; };
 		3156CE41C001C80379B84BDB /* FormatTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTest.swift; sourceTree = "<group>"; };
+		32369F2C3504AA5DB2FBE2D7 /* PetstoreClientModelCat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelCat.swift; sourceTree = "<group>"; };
 		35D710108A69DD8A5297F926 /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
 		37DF825B8F3BADA2B2537D17 /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		37E8BC8BBD527E23B6A9D7A1 /* PetstoreClientModelssssDDog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDDog.swift; sourceTree = "<group>"; };
+		380B56330DD108A98487D124 /* PetstoreClientModelssssCatAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssCatAllOf.swift; sourceTree = "<group>"; };
 		386FD590658E90509C121118 /* SpecialModelName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialModelName.swift; sourceTree = "<group>"; };
+		3897F0DD385CD9A70DD67B19 /* PetstoreClientModel.ReadOnlyFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.ReadOnlyFirst.swift; sourceTree = "<group>"; };
 		3933D3B2A3AC4577094D0C23 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		396DEF3156BA0D12D0FC5C3C /* AdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalPropertiesClass.swift; sourceTree = "<group>"; };
 		3AD0F94F512DFBC09F9CC79A /* CatAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAllOf.swift; sourceTree = "<group>"; };
 		3C30827D8EAF8EA684E7BCEA /* ClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassModel.swift; sourceTree = "<group>"; };
+		3CCE396AB5A3458C1E4E495D /* PetstoreClientModelAnimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelAnimal.swift; sourceTree = "<group>"; };
+		3D5EA9137A39653442E8BCE8 /* PetstoreClientModelssssHasOnlyReadOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssHasOnlyReadOnly.swift; sourceTree = "<group>"; };
+		3E3F2EB49FAC94E487C6C1E5 /* PetstoreClientModelssssDAnimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDAnimal.swift; sourceTree = "<group>"; };
+		42AA7BCAD68D3E06900942D2 /* PetstoreClientModelArrayOfArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelArrayOfArrayOfNumberOnly.swift; sourceTree = "<group>"; };
+		42B4AC0E8CF284892EE9D57B /* PetstoreClientModelssssDName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDName.swift; sourceTree = "<group>"; };
+		43E58105EAF121E13633EB1F /* PetstoreClientModelOuterComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelOuterComposite.swift; sourceTree = "<group>"; };
+		45BF0B0ED6EB4D6DECFE4CCF /* PetstoreClientModelssssDClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDClassModel.swift; sourceTree = "<group>"; };
 		47B4DEBABEFE140768CFB70B /* StringBooleanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBooleanMap.swift; sourceTree = "<group>"; };
+		494CF5E563FFCE66BD21930E /* PetstoreClientModel.FormatTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.FormatTest.swift; sourceTree = "<group>"; };
+		4A7553DD775D09DDCF7A4378 /* PetstoreClientModel.OuterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.OuterEnum.swift; sourceTree = "<group>"; };
 		4B2C97AE6ACA1E5FB88F5BAA /* EnumClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumClass.swift; sourceTree = "<group>"; };
 		4B3666552AA854DAF9C480A3 /* FileSchemaTestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSchemaTestClass.swift; sourceTree = "<group>"; };
 		4C7FBC641752D2E13B150973 /* HasOnlyReadOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasOnlyReadOnly.swift; sourceTree = "<group>"; };
+		4EAADDBFA766ED230EEE084D /* PetstoreClientModelEnumArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelEnumArrays.swift; sourceTree = "<group>"; };
+		57AE436D89C13937E061733A /* PetstoreClientModelssssDOuterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDOuterEnum.swift; sourceTree = "<group>"; };
+		583D2976CFE302108AFCE446 /* PetstoreClientModelssssDEnumArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDEnumArrays.swift; sourceTree = "<group>"; };
+		590D2889DDD2A5DE920EB8BC /* PetstoreClientModelssssOuterComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssOuterComposite.swift; sourceTree = "<group>"; };
+		59C3337A13EA2E5DE491921F /* PetstoreClientModelssssDArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDArrayTest.swift; sourceTree = "<group>"; };
+		5A6EBE5844A7D13B7342BFC1 /* PetstoreClientModelDogAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelDogAllOf.swift; sourceTree = "<group>"; };
 		5AD994DFAA0DA93C188A4DBA /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		5C88692EA236EFCE62F85FEA /* PetstoreClientModelEnumClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelEnumClass.swift; sourceTree = "<group>"; };
+		5CFE87A4936AD1C7180A3EF5 /* PetstoreClientModelssssClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssClassModel.swift; sourceTree = "<group>"; };
+		5E9574C1412DCAF3C04DD2C6 /* PetstoreClientModelssssAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		5F0A42DECAE912F14BD898D3 /* PetstoreClientModel.Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Pet.swift; sourceTree = "<group>"; };
+		5F3BEDB3B9E79860F07378E3 /* PetstoreClientModelssssName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssName.swift; sourceTree = "<group>"; };
+		5FA95AFA3C9D7FD0F1C39F89 /* PetstoreClientModel.List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.List.swift; sourceTree = "<group>"; };
+		6158454516D3579034D1B9CA /* PetstoreClientModelssssDCatAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDCatAllOf.swift; sourceTree = "<group>"; };
+		63DF10C66D691CF72337D0C7 /* PetstoreClientModelssssTypeHolderExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssTypeHolderExample.swift; sourceTree = "<group>"; };
+		671293DFB6CEFBBD29D28F2F /* PetstoreClientModelssssFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssFile.swift; sourceTree = "<group>"; };
+		68160DFBBDB01AF1A45F294A /* PetstoreClientModel.EnumClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.EnumClass.swift; sourceTree = "<group>"; };
+		6AA6F7A30C7E009F7AA67D43 /* PetstoreClientModelssssDEnumTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDEnumTest.swift; sourceTree = "<group>"; };
+		6BF546B1EA782C5013487709 /* PetstoreClientModelssssNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssNumberOnly.swift; sourceTree = "<group>"; };
 		6E00950725DC44436C5E238C /* FakeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAPI.swift; sourceTree = "<group>"; };
+		6E717EBD7E7BF92314149B43 /* PetstoreClientModel.EnumArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.EnumArrays.swift; sourceTree = "<group>"; };
 		6F2985D01F8D60A4B1925C69 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		6FD42727E001E799E458C292 /* ReadOnlyFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyFirst.swift; sourceTree = "<group>"; };
+		7017944091FBF78E0B5F786D /* PetstoreClientModelssssTypeHolderDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssTypeHolderDefault.swift; sourceTree = "<group>"; };
+		70559AC398FA2FA3074F0955 /* PetstoreClientModelssssDTypeHolderExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDTypeHolderExample.swift; sourceTree = "<group>"; };
+		72B164FC0A8185B2B74D5DF7 /* PetstoreClientModelssssEnumArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssEnumArrays.swift; sourceTree = "<group>"; };
+		740DDEF79EF49030B63FC3CA /* PetstoreClientModelClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelClassModel.swift; sourceTree = "<group>"; };
+		774F6A6DDE76C1D540A4E0DC /* PetstoreClientModelssssClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssClient.swift; sourceTree = "<group>"; };
+		77CA8F3628E031846317F866 /* PetstoreClientModelssssDAnimalFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDAnimalFarm.swift; sourceTree = "<group>"; };
+		784C62F4344BF758F816E664 /* PetstoreClientModel.ArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.ArrayTest.swift; sourceTree = "<group>"; };
+		78858955F066E2FB25B968F8 /* PetstoreClientModelssssSpecialModelName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssSpecialModelName.swift; sourceTree = "<group>"; };
+		78B9AE62807ECA4D3E6AD7EB /* PetstoreClientModelssssList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssList.swift; sourceTree = "<group>"; };
 		7986861626C2B1CB49AD7000 /* MapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTest.swift; sourceTree = "<group>"; };
 		7A6070F581E611FF44AFD40A /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		7B1B8B838B5D9D312F2002EB /* ArrayOfArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayOfArrayOfNumberOnly.swift; sourceTree = "<group>"; };
+		7BCC268EA4805B3EE4828C6B /* PetstoreClientModelssssUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssUser.swift; sourceTree = "<group>"; };
+		7C85D8927C504699B46A4FC6 /* PetstoreClientModelssssOuterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssOuterEnum.swift; sourceTree = "<group>"; };
 		7C8D5F382979854D47F18DB1 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		7D293BADFBBB9510A80611A6 /* PetstoreClientModel.DogAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.DogAllOf.swift; sourceTree = "<group>"; };
+		7E3A71E382B033D31CB6B323 /* PetstoreClientModelName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelName.swift; sourceTree = "<group>"; };
+		815FF734DF7EE5AD53158243 /* PetstoreClientModelssssDCat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDCat.swift; sourceTree = "<group>"; };
+		823A6ED6D56A1123B2C0FF88 /* PetstoreClientModelssssDTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDTag.swift; sourceTree = "<group>"; };
 		82A2C3DC2235F0114C2B08E5 /* Model200Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model200Response.swift; sourceTree = "<group>"; };
+		83E3D11D5E12C1C96DFCFD0F /* PetstoreClientModelHasOnlyReadOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelHasOnlyReadOnly.swift; sourceTree = "<group>"; };
+		83FAF3E533E08BB5AC8C15DF /* PetstoreClientModelssssDUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDUser.swift; sourceTree = "<group>"; };
+		84A7F2E56D5EA10A55E6F8C0 /* PetstoreClientModelssssFileSchemaTestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssFileSchemaTestClass.swift; sourceTree = "<group>"; };
+		8667989D13B302755B19B42A /* PetstoreClientModelssssCat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssCat.swift; sourceTree = "<group>"; };
 		8699F7966F748ED026A6FB4C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		87FB76BBA6D4FB65C3FDE796 /* PetstoreClientModelCatAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelCatAllOf.swift; sourceTree = "<group>"; };
+		89162B0A62182183DC228611 /* PetstoreClientModelssssOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssOrder.swift; sourceTree = "<group>"; };
 		897716962D472FE162B723CB /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		8ADB520AAD6DDBC2F2837B85 /* PetstoreClientModel.Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Order.swift; sourceTree = "<group>"; };
+		8B2421A50B81700953DFBD93 /* PetstoreClientModelssssDOuterComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDOuterComposite.swift; sourceTree = "<group>"; };
+		8B38E5410C573407B50F638A /* PetstoreClientModel.File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.File.swift; sourceTree = "<group>"; };
 		8D22BE01748F51106DE02332 /* AnimalFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFarm.swift; sourceTree = "<group>"; };
+		8F77171011A1D559C100F47C /* PetstoreClientModel.MixedPropertiesAndAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.MixedPropertiesAndAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		8F79A41A77B86CFE5F852E6C /* PetstoreClientModelSpecialModelName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelSpecialModelName.swift; sourceTree = "<group>"; };
+		901E912389BF2389FCFEFE3A /* PetstoreClientModel.SpecialModelName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.SpecialModelName.swift; sourceTree = "<group>"; };
+		913AB53D625A98C4731572A9 /* PetstoreClientModelssssMixedPropertiesAndAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssMixedPropertiesAndAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		9306B608098CCDCC3988CC4D /* PetstoreClientModelssssDList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDList.swift; sourceTree = "<group>"; };
+		94D9E3DC5DE286B94854A6B7 /* PetstoreClientModelMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelMapTest.swift; sourceTree = "<group>"; };
 		95568E7C35F119EB4A12B498 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		96B957FDA339ADFD9AC9B52B /* PetstoreClientModelArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelArrayTest.swift; sourceTree = "<group>"; };
+		97688893CB35D98EBDE93C49 /* PetstoreClientModelUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelUser.swift; sourceTree = "<group>"; };
+		985AAEADDD8508E672B4AB71 /* PetstoreClientModelssssArrayOfArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssArrayOfArrayOfNumberOnly.swift; sourceTree = "<group>"; };
 		9A019F500E546A3292CE716A /* PetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetAPI.swift; sourceTree = "<group>"; };
+		9A5FC11FA93D2E577C374DFE /* PetstoreClientModelssssDArrayOfArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDArrayOfArrayOfNumberOnly.swift; sourceTree = "<group>"; };
 		9AD714C7CC59BDD18DE8DF4E /* MixedPropertiesAndAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedPropertiesAndAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		9B3E03851D055E140ACF986B /* PetstoreClientModelFileSchemaTestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelFileSchemaTestClass.swift; sourceTree = "<group>"; };
 		9DF24D2714B9C4CF14146E88 /* AnotherFakeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherFakeAPI.swift; sourceTree = "<group>"; };
+		A204A49F5107054DCEDBDC14 /* PetstoreClientModelssssEnumTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssEnumTest.swift; sourceTree = "<group>"; };
 		A21A69C8402A60E01116ABBD /* DogAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogAllOf.swift; sourceTree = "<group>"; };
+		A2C5A6C0386DFCCE70B1EF11 /* PetstoreClientModelssssDReadOnlyFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDReadOnlyFirst.swift; sourceTree = "<group>"; };
+		A30CEE305D2C3D79885093F5 /* PetstoreClientModel.AnimalFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.AnimalFarm.swift; sourceTree = "<group>"; };
+		A32594256C415D6E0CF9ED5F /* PetstoreClientModelssssAnimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssAnimal.swift; sourceTree = "<group>"; };
+		A44F08FED15C2B7C8FB41FE7 /* PetstoreClientModelssssDSpecialModelName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDSpecialModelName.swift; sourceTree = "<group>"; };
+		A50BFB450B0959D3E28DFF85 /* PetstoreClientModel.StringBooleanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.StringBooleanMap.swift; sourceTree = "<group>"; };
+		A51339B580AC513673ED7785 /* PetstoreClientModelssssDCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDCategory.swift; sourceTree = "<group>"; };
 		A53274D99BBDE1B79BF3521C /* StoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAPI.swift; sourceTree = "<group>"; };
+		A6DF484D695CD13303427E1B /* PetstoreClientModelssssArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssArrayTest.swift; sourceTree = "<group>"; };
+		A784ED6782CF3FEF71EEF411 /* PetstoreClientModel200Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel200Response.swift; sourceTree = "<group>"; };
+		A7908AC6E89A62908017E6AD /* PetstoreClientModelssssTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssTag.swift; sourceTree = "<group>"; };
 		A7B38FA00A494D13F4C382A3 /* Capitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capitalization.swift; sourceTree = "<group>"; };
+		A865E6AB800D166419850DBF /* PetstoreClientModelssssDDogAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDDogAllOf.swift; sourceTree = "<group>"; };
 		A8E7B833748B4F0C7CDA90C6 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		A913A57E72D723632E9A718F /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		AC3B3A2B6EFC4244182A73F7 /* PetstoreClientModel.CatAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.CatAllOf.swift; sourceTree = "<group>"; };
+		AF1E2043E044EE4CB1C0C236 /* PetstoreClientModelssssDTypeHolderDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDTypeHolderDefault.swift; sourceTree = "<group>"; };
+		B0DBB077AF7455E48CA03414 /* PetstoreClientModelReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelReturn.swift; sourceTree = "<group>"; };
+		B15F9FED66864FB26AC1C27C /* PetstoreClientModel.AdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.AdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		B18B8B4A8637BA5930BE70A8 /* PetstoreClientModelArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelArrayOfNumberOnly.swift; sourceTree = "<group>"; };
 		B2896F8BFD1AA2965C8A3015 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		B37EB0ADD76417DB9091F355 /* PetstoreClientModelssssFormatTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssFormatTest.swift; sourceTree = "<group>"; };
 		B42354B407EC173BEB54E042 /* FakeClassnameTags123API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeClassnameTags123API.swift; sourceTree = "<group>"; };
+		B48770FF665F7CEE758EBC4C /* PetstoreClientModelAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
+		B616159F27B4625B9089A00E /* PetstoreClientModel.Return.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Return.swift; sourceTree = "<group>"; };
+		B635653C28E5AB4B83EA092E /* PetstoreClientModelAnimalFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelAnimalFarm.swift; sourceTree = "<group>"; };
 		B65BB72353DA24536A9049BE /* ArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayOfNumberOnly.swift; sourceTree = "<group>"; };
+		B66495953EC17F1ED96A4BF9 /* PetstoreClientModel.EnumTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.EnumTest.swift; sourceTree = "<group>"; };
+		B7208C7976B305721DDD6883 /* PetstoreClientModelssssCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssCategory.swift; sourceTree = "<group>"; };
+		B82332BEBBC170C58A4CA754 /* PetstoreClientModelssssD200Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssD200Response.swift; sourceTree = "<group>"; };
+		B88A1A6A0BDAF37A539AFBD0 /* PetstoreClientModelssssDNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDNumberOnly.swift; sourceTree = "<group>"; };
+		B8A4067EA9EB1C38671B3259 /* PetstoreClientModelMixedPropertiesAndAdditionalPropertiesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelMixedPropertiesAndAdditionalPropertiesClass.swift; sourceTree = "<group>"; };
 		B8C298FC8929DCB369053F11 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B8E0B16084741FCB82389F58 /* NumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOnly.swift; sourceTree = "<group>"; };
+		BD6BB33C09B42CA0764D9E2F /* PetstoreClientModelssssDPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDPet.swift; sourceTree = "<group>"; };
+		BE6C79D902A0C53C988AEF86 /* PetstoreClientModelNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelNumberOnly.swift; sourceTree = "<group>"; };
+		BE931FBF02B59DA7CF4BDBE9 /* PetstoreClientModelssssAnimalFarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssAnimalFarm.swift; sourceTree = "<group>"; };
+		BFC8038BAAAF370EBC7B96CD /* PetstoreClientModelssssDFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDFile.swift; sourceTree = "<group>"; };
+		C0ACC100B0E38386E29C1FF7 /* PetstoreClientModelssssMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssMapTest.swift; sourceTree = "<group>"; };
 		C15008AABC804EB6FB4CDAC6 /* OuterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterEnum.swift; sourceTree = "<group>"; };
+		C170DA2401D9655BB2D3C1F7 /* PetstoreClientModelssssStringBooleanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssStringBooleanMap.swift; sourceTree = "<group>"; };
+		C384C1F49EDD9F2E904B4CD3 /* PetstoreClientModelssssDCapitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDCapitalization.swift; sourceTree = "<group>"; };
+		C496ED201DED9E77C1933A64 /* PetstoreClientModelssssEnumClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssEnumClass.swift; sourceTree = "<group>"; };
+		C5CD76B439B7FAA0E67154DA /* PetstoreClientModelssssPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssPet.swift; sourceTree = "<group>"; };
+		C684A63B523E5C8E06EDF7AB /* PetstoreClientModelssssApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssApiResponse.swift; sourceTree = "<group>"; };
 		C6C3E1129526A353B963EFD7 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		C6D1FCE5DEAFD2615F7B355A /* PetstoreClientModelssssDClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDClient.swift; sourceTree = "<group>"; };
 		C81447828475F76C5CF4F08A /* Return.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Return.swift; sourceTree = "<group>"; };
+		C95EEE789DBA1F7A7C42924C /* PetstoreClientModel.ArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.ArrayOfNumberOnly.swift; sourceTree = "<group>"; };
+		CECFB11852BB214590FC6232 /* PetstoreClientModelTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelTag.swift; sourceTree = "<group>"; };
+		D067DD2553E991F3DC81E012 /* PetstoreClientModelssssDApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDApiResponse.swift; sourceTree = "<group>"; };
 		D138F6DA6160301F9281383E /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
+		D37537DE5AB1E4D408A01F20 /* PetstoreClientModel.Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Client.swift; sourceTree = "<group>"; };
+		D3FC4E9EDC2A484A85650B38 /* PetstoreClientModelCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelCategory.swift; sourceTree = "<group>"; };
+		D47D8CEE67417EE69A8E4569 /* PetstoreClientModel.ArrayOfArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.ArrayOfArrayOfNumberOnly.swift; sourceTree = "<group>"; };
+		D506871A6499BD1E72C727B5 /* PetstoreClientModelFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelFile.swift; sourceTree = "<group>"; };
+		DAA80ABE62C7CCC2789D3B7C /* PetstoreClientModelssssDogAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDogAllOf.swift; sourceTree = "<group>"; };
+		DD99429F5B51CBB3D3C6F8BC /* PetstoreClientModel.ClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.ClassModel.swift; sourceTree = "<group>"; };
+		DDD8943941E465E9F0FD96F2 /* PetstoreClientModelssssArrayOfNumberOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssArrayOfNumberOnly.swift; sourceTree = "<group>"; };
+		DDDB3F867022FB472DE35506 /* PetstoreClientModel.HasOnlyReadOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.HasOnlyReadOnly.swift; sourceTree = "<group>"; };
+		DDEA1B31961FAFEFE9E93EB6 /* PetstoreClientModelssssDFormatTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDFormatTest.swift; sourceTree = "<group>"; };
+		DF49E50AAA7893445FAAC83A /* PetstoreClientModel.Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Animal.swift; sourceTree = "<group>"; };
+		E011D89F15DB14B848AB5C00 /* PetstoreClientModel.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Name.swift; sourceTree = "<group>"; };
+		E32EF54DEE395357A38DB068 /* PetstoreClientModelEnumTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelEnumTest.swift; sourceTree = "<group>"; };
 		E5565A447062C7B8F695F451 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E5F04C5086BFA8DEBBE3390F /* PetstoreClientModelssssDReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDReturn.swift; sourceTree = "<group>"; };
+		E7FBE37AA58E8EF2FF2B57BC /* PetstoreClientModelssssCapitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssCapitalization.swift; sourceTree = "<group>"; };
+		E8B19B498F0A3BE67022AE61 /* PetstoreClientModelCapitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelCapitalization.swift; sourceTree = "<group>"; };
+		EB76A884A678A79F5A634E7F /* PetstoreClientModel.User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.User.swift; sourceTree = "<group>"; };
+		EBB25F2577F1B5A6FBB6B457 /* PetstoreClientModelReadOnlyFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelReadOnlyFirst.swift; sourceTree = "<group>"; };
 		EBC76F6D4D2AA8084B7EB50E /* TypeHolderDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHolderDefault.swift; sourceTree = "<group>"; };
 		ECFEB4C6C257B3BB3CEA36D1 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		F0B1E5FA9F83FE8F6F467693 /* PetstoreClientModel.ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.ApiResponse.swift; sourceTree = "<group>"; };
 		F1A0379CDFC55705AE76C998 /* ArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTest.swift; sourceTree = "<group>"; };
+		F426CFD64F833D47A5094F7D /* PetstoreClientModelssssReadOnlyFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssReadOnlyFirst.swift; sourceTree = "<group>"; };
 		F4E0AD8F60A91F72C7687560 /* OuterComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterComposite.swift; sourceTree = "<group>"; };
+		F6C2021C9041DB0B1202FE4B /* PetstoreClientModelssssDEnumClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssDEnumClass.swift; sourceTree = "<group>"; };
+		F805C5B9CFEBC371F82AB72A /* PetstoreClientModelssssReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelssssReturn.swift; sourceTree = "<group>"; };
+		F90231C308C2337C064E2B85 /* PetstoreClientModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModelList.swift; sourceTree = "<group>"; };
 		FD60AEA646791E0EDE885DE1 /* EnumTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTest.swift; sourceTree = "<group>"; };
 		FD7A1702ACD8737DED6588CD /* OpenISO8601DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenISO8601DateFormatter.swift; sourceTree = "<group>"; };
+		FED61B06446D32D87C6A514A /* PetstoreClientModel.Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetstoreClientModel.Dog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -163,6 +483,166 @@
 				F4E0AD8F60A91F72C7687560 /* OuterComposite.swift */,
 				C15008AABC804EB6FB4CDAC6 /* OuterEnum.swift */,
 				ECFEB4C6C257B3BB3CEA36D1 /* Pet.swift */,
+				18C0D27C0BBC837C1640F1B6 /* PetstoreClientModel.200Response.swift */,
+				B15F9FED66864FB26AC1C27C /* PetstoreClientModel.AdditionalPropertiesClass.swift */,
+				DF49E50AAA7893445FAAC83A /* PetstoreClientModel.Animal.swift */,
+				A30CEE305D2C3D79885093F5 /* PetstoreClientModel.AnimalFarm.swift */,
+				F0B1E5FA9F83FE8F6F467693 /* PetstoreClientModel.ApiResponse.swift */,
+				D47D8CEE67417EE69A8E4569 /* PetstoreClientModel.ArrayOfArrayOfNumberOnly.swift */,
+				C95EEE789DBA1F7A7C42924C /* PetstoreClientModel.ArrayOfNumberOnly.swift */,
+				784C62F4344BF758F816E664 /* PetstoreClientModel.ArrayTest.swift */,
+				29876F6E57232DDB1809074A /* PetstoreClientModel.Capitalization.swift */,
+				29E2CEAED6342F24A6966244 /* PetstoreClientModel.Cat.swift */,
+				AC3B3A2B6EFC4244182A73F7 /* PetstoreClientModel.CatAllOf.swift */,
+				01D97782C650C9E16E4D93F5 /* PetstoreClientModel.Category.swift */,
+				DD99429F5B51CBB3D3C6F8BC /* PetstoreClientModel.ClassModel.swift */,
+				D37537DE5AB1E4D408A01F20 /* PetstoreClientModel.Client.swift */,
+				FED61B06446D32D87C6A514A /* PetstoreClientModel.Dog.swift */,
+				7D293BADFBBB9510A80611A6 /* PetstoreClientModel.DogAllOf.swift */,
+				6E717EBD7E7BF92314149B43 /* PetstoreClientModel.EnumArrays.swift */,
+				68160DFBBDB01AF1A45F294A /* PetstoreClientModel.EnumClass.swift */,
+				B66495953EC17F1ED96A4BF9 /* PetstoreClientModel.EnumTest.swift */,
+				8B38E5410C573407B50F638A /* PetstoreClientModel.File.swift */,
+				1B46BF6773A0FC62095A41F5 /* PetstoreClientModel.FileSchemaTestClass.swift */,
+				494CF5E563FFCE66BD21930E /* PetstoreClientModel.FormatTest.swift */,
+				DDDB3F867022FB472DE35506 /* PetstoreClientModel.HasOnlyReadOnly.swift */,
+				5FA95AFA3C9D7FD0F1C39F89 /* PetstoreClientModel.List.swift */,
+				25D5C1806EF1293681BF5173 /* PetstoreClientModel.MapTest.swift */,
+				8F77171011A1D559C100F47C /* PetstoreClientModel.MixedPropertiesAndAdditionalPropertiesClass.swift */,
+				E011D89F15DB14B848AB5C00 /* PetstoreClientModel.Name.swift */,
+				26F85863CA4C6FDBE1BDDD87 /* PetstoreClientModel.NumberOnly.swift */,
+				8ADB520AAD6DDBC2F2837B85 /* PetstoreClientModel.Order.swift */,
+				0AE58FEF0582B931281A1002 /* PetstoreClientModel.OuterComposite.swift */,
+				4A7553DD775D09DDCF7A4378 /* PetstoreClientModel.OuterEnum.swift */,
+				5F0A42DECAE912F14BD898D3 /* PetstoreClientModel.Pet.swift */,
+				3897F0DD385CD9A70DD67B19 /* PetstoreClientModel.ReadOnlyFirst.swift */,
+				B616159F27B4625B9089A00E /* PetstoreClientModel.Return.swift */,
+				901E912389BF2389FCFEFE3A /* PetstoreClientModel.SpecialModelName.swift */,
+				A50BFB450B0959D3E28DFF85 /* PetstoreClientModel.StringBooleanMap.swift */,
+				1620BE7A6FE8B354EF837F2D /* PetstoreClientModel.Tag.swift */,
+				3045F366294B6D8101F58CCD /* PetstoreClientModel.TypeHolderDefault.swift */,
+				2BE10DD1CC7D698FBDF616FE /* PetstoreClientModel.TypeHolderExample.swift */,
+				EB76A884A678A79F5A634E7F /* PetstoreClientModel.User.swift */,
+				A784ED6782CF3FEF71EEF411 /* PetstoreClientModel200Response.swift */,
+				B48770FF665F7CEE758EBC4C /* PetstoreClientModelAdditionalPropertiesClass.swift */,
+				3CCE396AB5A3458C1E4E495D /* PetstoreClientModelAnimal.swift */,
+				B635653C28E5AB4B83EA092E /* PetstoreClientModelAnimalFarm.swift */,
+				16B65EAA8D4C4E192AAB6689 /* PetstoreClientModelApiResponse.swift */,
+				42AA7BCAD68D3E06900942D2 /* PetstoreClientModelArrayOfArrayOfNumberOnly.swift */,
+				B18B8B4A8637BA5930BE70A8 /* PetstoreClientModelArrayOfNumberOnly.swift */,
+				96B957FDA339ADFD9AC9B52B /* PetstoreClientModelArrayTest.swift */,
+				E8B19B498F0A3BE67022AE61 /* PetstoreClientModelCapitalization.swift */,
+				32369F2C3504AA5DB2FBE2D7 /* PetstoreClientModelCat.swift */,
+				87FB76BBA6D4FB65C3FDE796 /* PetstoreClientModelCatAllOf.swift */,
+				D3FC4E9EDC2A484A85650B38 /* PetstoreClientModelCategory.swift */,
+				740DDEF79EF49030B63FC3CA /* PetstoreClientModelClassModel.swift */,
+				1019ABFF91D212926A2D0532 /* PetstoreClientModelClient.swift */,
+				04FB9BB0C774127677F792D5 /* PetstoreClientModelDog.swift */,
+				5A6EBE5844A7D13B7342BFC1 /* PetstoreClientModelDogAllOf.swift */,
+				4EAADDBFA766ED230EEE084D /* PetstoreClientModelEnumArrays.swift */,
+				5C88692EA236EFCE62F85FEA /* PetstoreClientModelEnumClass.swift */,
+				E32EF54DEE395357A38DB068 /* PetstoreClientModelEnumTest.swift */,
+				D506871A6499BD1E72C727B5 /* PetstoreClientModelFile.swift */,
+				9B3E03851D055E140ACF986B /* PetstoreClientModelFileSchemaTestClass.swift */,
+				1676B8D81FB26A2BEF7CE48E /* PetstoreClientModelFormatTest.swift */,
+				83E3D11D5E12C1C96DFCFD0F /* PetstoreClientModelHasOnlyReadOnly.swift */,
+				F90231C308C2337C064E2B85 /* PetstoreClientModelList.swift */,
+				94D9E3DC5DE286B94854A6B7 /* PetstoreClientModelMapTest.swift */,
+				B8A4067EA9EB1C38671B3259 /* PetstoreClientModelMixedPropertiesAndAdditionalPropertiesClass.swift */,
+				7E3A71E382B033D31CB6B323 /* PetstoreClientModelName.swift */,
+				BE6C79D902A0C53C988AEF86 /* PetstoreClientModelNumberOnly.swift */,
+				1E82B484C8C9513C4784ED58 /* PetstoreClientModelOrder.swift */,
+				43E58105EAF121E13633EB1F /* PetstoreClientModelOuterComposite.swift */,
+				23CC8D2F1C9345680B32F798 /* PetstoreClientModelOuterEnum.swift */,
+				3097EA795E2096FCD53E44B4 /* PetstoreClientModelPet.swift */,
+				EBB25F2577F1B5A6FBB6B457 /* PetstoreClientModelReadOnlyFirst.swift */,
+				B0DBB077AF7455E48CA03414 /* PetstoreClientModelReturn.swift */,
+				8F79A41A77B86CFE5F852E6C /* PetstoreClientModelSpecialModelName.swift */,
+				2D660BE7CDCA1FFD5D9504D0 /* PetstoreClientModelssss200Response.swift */,
+				5E9574C1412DCAF3C04DD2C6 /* PetstoreClientModelssssAdditionalPropertiesClass.swift */,
+				A32594256C415D6E0CF9ED5F /* PetstoreClientModelssssAnimal.swift */,
+				BE931FBF02B59DA7CF4BDBE9 /* PetstoreClientModelssssAnimalFarm.swift */,
+				C684A63B523E5C8E06EDF7AB /* PetstoreClientModelssssApiResponse.swift */,
+				985AAEADDD8508E672B4AB71 /* PetstoreClientModelssssArrayOfArrayOfNumberOnly.swift */,
+				DDD8943941E465E9F0FD96F2 /* PetstoreClientModelssssArrayOfNumberOnly.swift */,
+				A6DF484D695CD13303427E1B /* PetstoreClientModelssssArrayTest.swift */,
+				E7FBE37AA58E8EF2FF2B57BC /* PetstoreClientModelssssCapitalization.swift */,
+				8667989D13B302755B19B42A /* PetstoreClientModelssssCat.swift */,
+				380B56330DD108A98487D124 /* PetstoreClientModelssssCatAllOf.swift */,
+				B7208C7976B305721DDD6883 /* PetstoreClientModelssssCategory.swift */,
+				5CFE87A4936AD1C7180A3EF5 /* PetstoreClientModelssssClassModel.swift */,
+				774F6A6DDE76C1D540A4E0DC /* PetstoreClientModelssssClient.swift */,
+				B82332BEBBC170C58A4CA754 /* PetstoreClientModelssssD200Response.swift */,
+				25AA192ED42EF7C6EB2551D6 /* PetstoreClientModelssssDAdditionalPropertiesClass.swift */,
+				3E3F2EB49FAC94E487C6C1E5 /* PetstoreClientModelssssDAnimal.swift */,
+				77CA8F3628E031846317F866 /* PetstoreClientModelssssDAnimalFarm.swift */,
+				D067DD2553E991F3DC81E012 /* PetstoreClientModelssssDApiResponse.swift */,
+				9A5FC11FA93D2E577C374DFE /* PetstoreClientModelssssDArrayOfArrayOfNumberOnly.swift */,
+				1CB7E74F1E5CEDA26B6E61DE /* PetstoreClientModelssssDArrayOfNumberOnly.swift */,
+				59C3337A13EA2E5DE491921F /* PetstoreClientModelssssDArrayTest.swift */,
+				C384C1F49EDD9F2E904B4CD3 /* PetstoreClientModelssssDCapitalization.swift */,
+				815FF734DF7EE5AD53158243 /* PetstoreClientModelssssDCat.swift */,
+				6158454516D3579034D1B9CA /* PetstoreClientModelssssDCatAllOf.swift */,
+				A51339B580AC513673ED7785 /* PetstoreClientModelssssDCategory.swift */,
+				45BF0B0ED6EB4D6DECFE4CCF /* PetstoreClientModelssssDClassModel.swift */,
+				C6D1FCE5DEAFD2615F7B355A /* PetstoreClientModelssssDClient.swift */,
+				37E8BC8BBD527E23B6A9D7A1 /* PetstoreClientModelssssDDog.swift */,
+				A865E6AB800D166419850DBF /* PetstoreClientModelssssDDogAllOf.swift */,
+				583D2976CFE302108AFCE446 /* PetstoreClientModelssssDEnumArrays.swift */,
+				F6C2021C9041DB0B1202FE4B /* PetstoreClientModelssssDEnumClass.swift */,
+				6AA6F7A30C7E009F7AA67D43 /* PetstoreClientModelssssDEnumTest.swift */,
+				BFC8038BAAAF370EBC7B96CD /* PetstoreClientModelssssDFile.swift */,
+				214E1DFF65AC095F32AFB2D2 /* PetstoreClientModelssssDFileSchemaTestClass.swift */,
+				DDEA1B31961FAFEFE9E93EB6 /* PetstoreClientModelssssDFormatTest.swift */,
+				05A2A35CB83EE94D0F86609E /* PetstoreClientModelssssDHasOnlyReadOnly.swift */,
+				9306B608098CCDCC3988CC4D /* PetstoreClientModelssssDList.swift */,
+				1C69DE0135C95BB57855878B /* PetstoreClientModelssssDMapTest.swift */,
+				03EA281CAB71FEBF5D349DC1 /* PetstoreClientModelssssDMixedPropertiesAndAdditionalPropertiesClass.swift */,
+				42B4AC0E8CF284892EE9D57B /* PetstoreClientModelssssDName.swift */,
+				B88A1A6A0BDAF37A539AFBD0 /* PetstoreClientModelssssDNumberOnly.swift */,
+				26C705664B1ED8AFDDD92419 /* PetstoreClientModelssssDog.swift */,
+				DAA80ABE62C7CCC2789D3B7C /* PetstoreClientModelssssDogAllOf.swift */,
+				1F3EB11BA6455A523CB52A1D /* PetstoreClientModelssssDOrder.swift */,
+				8B2421A50B81700953DFBD93 /* PetstoreClientModelssssDOuterComposite.swift */,
+				57AE436D89C13937E061733A /* PetstoreClientModelssssDOuterEnum.swift */,
+				BD6BB33C09B42CA0764D9E2F /* PetstoreClientModelssssDPet.swift */,
+				A2C5A6C0386DFCCE70B1EF11 /* PetstoreClientModelssssDReadOnlyFirst.swift */,
+				E5F04C5086BFA8DEBBE3390F /* PetstoreClientModelssssDReturn.swift */,
+				A44F08FED15C2B7C8FB41FE7 /* PetstoreClientModelssssDSpecialModelName.swift */,
+				0E2C17663978365F7919410C /* PetstoreClientModelssssDStringBooleanMap.swift */,
+				823A6ED6D56A1123B2C0FF88 /* PetstoreClientModelssssDTag.swift */,
+				AF1E2043E044EE4CB1C0C236 /* PetstoreClientModelssssDTypeHolderDefault.swift */,
+				70559AC398FA2FA3074F0955 /* PetstoreClientModelssssDTypeHolderExample.swift */,
+				83FAF3E533E08BB5AC8C15DF /* PetstoreClientModelssssDUser.swift */,
+				72B164FC0A8185B2B74D5DF7 /* PetstoreClientModelssssEnumArrays.swift */,
+				C496ED201DED9E77C1933A64 /* PetstoreClientModelssssEnumClass.swift */,
+				A204A49F5107054DCEDBDC14 /* PetstoreClientModelssssEnumTest.swift */,
+				671293DFB6CEFBBD29D28F2F /* PetstoreClientModelssssFile.swift */,
+				84A7F2E56D5EA10A55E6F8C0 /* PetstoreClientModelssssFileSchemaTestClass.swift */,
+				B37EB0ADD76417DB9091F355 /* PetstoreClientModelssssFormatTest.swift */,
+				3D5EA9137A39653442E8BCE8 /* PetstoreClientModelssssHasOnlyReadOnly.swift */,
+				78B9AE62807ECA4D3E6AD7EB /* PetstoreClientModelssssList.swift */,
+				C0ACC100B0E38386E29C1FF7 /* PetstoreClientModelssssMapTest.swift */,
+				913AB53D625A98C4731572A9 /* PetstoreClientModelssssMixedPropertiesAndAdditionalPropertiesClass.swift */,
+				5F3BEDB3B9E79860F07378E3 /* PetstoreClientModelssssName.swift */,
+				6BF546B1EA782C5013487709 /* PetstoreClientModelssssNumberOnly.swift */,
+				89162B0A62182183DC228611 /* PetstoreClientModelssssOrder.swift */,
+				590D2889DDD2A5DE920EB8BC /* PetstoreClientModelssssOuterComposite.swift */,
+				7C85D8927C504699B46A4FC6 /* PetstoreClientModelssssOuterEnum.swift */,
+				C5CD76B439B7FAA0E67154DA /* PetstoreClientModelssssPet.swift */,
+				F426CFD64F833D47A5094F7D /* PetstoreClientModelssssReadOnlyFirst.swift */,
+				F805C5B9CFEBC371F82AB72A /* PetstoreClientModelssssReturn.swift */,
+				78858955F066E2FB25B968F8 /* PetstoreClientModelssssSpecialModelName.swift */,
+				C170DA2401D9655BB2D3C1F7 /* PetstoreClientModelssssStringBooleanMap.swift */,
+				A7908AC6E89A62908017E6AD /* PetstoreClientModelssssTag.swift */,
+				7017944091FBF78E0B5F786D /* PetstoreClientModelssssTypeHolderDefault.swift */,
+				63DF10C66D691CF72337D0C7 /* PetstoreClientModelssssTypeHolderExample.swift */,
+				7BCC268EA4805B3EE4828C6B /* PetstoreClientModelssssUser.swift */,
+				11978716DAFBACDA958816F2 /* PetstoreClientModelStringBooleanMap.swift */,
+				CECFB11852BB214590FC6232 /* PetstoreClientModelTag.swift */,
+				138C68441A65180E96631699 /* PetstoreClientModelTypeHolderDefault.swift */,
+				2E61BC126A7F89803BA6A390 /* PetstoreClientModelTypeHolderExample.swift */,
+				97688893CB35D98EBDE93C49 /* PetstoreClientModelUser.swift */,
 				6FD42727E001E799E458C292 /* ReadOnlyFirst.swift */,
 				C81447828475F76C5CF4F08A /* Return.swift */,
 				386FD590658E90509C121118 /* SpecialModelName.swift */,
@@ -333,6 +813,166 @@
 				41A491E9B577C510F927D126 /* OuterEnum.swift in Sources */,
 				2C29D5B60E00DDA3878F1BDE /* Pet.swift in Sources */,
 				A6E5A5629495DB0ED672B06F /* PetAPI.swift in Sources */,
+				DCD9D41E5A001BC5CC95FCED /* PetstoreClientModel.200Response.swift in Sources */,
+				06F0F888C89C07232EA90686 /* PetstoreClientModel.AdditionalPropertiesClass.swift in Sources */,
+				74430ECA576A9234C4D0A082 /* PetstoreClientModel.Animal.swift in Sources */,
+				B1CB47662423E5C2842F9D34 /* PetstoreClientModel.AnimalFarm.swift in Sources */,
+				7705BBD7C88E5E9D54C2DEB8 /* PetstoreClientModel.ApiResponse.swift in Sources */,
+				E5894D1BE624A6705A47CBF3 /* PetstoreClientModel.ArrayOfArrayOfNumberOnly.swift in Sources */,
+				BBE95D3A50E283F8CD42AD84 /* PetstoreClientModel.ArrayOfNumberOnly.swift in Sources */,
+				C9CB7C4216D0174459486DBC /* PetstoreClientModel.ArrayTest.swift in Sources */,
+				1137697E5FDFA979B7E9DBBB /* PetstoreClientModel.Capitalization.swift in Sources */,
+				3C7C7D19D46EECA9E81C8024 /* PetstoreClientModel.Cat.swift in Sources */,
+				0BCB50D06784EDB3B0EDE55F /* PetstoreClientModel.CatAllOf.swift in Sources */,
+				65970AF8DEAB516BCC83B4D0 /* PetstoreClientModel.Category.swift in Sources */,
+				CEDD33B1A41BD52CFE1967A7 /* PetstoreClientModel.ClassModel.swift in Sources */,
+				66904868D19FA6A9DF271E8F /* PetstoreClientModel.Client.swift in Sources */,
+				02936B1B73E2D9CFA74D9DBE /* PetstoreClientModel.Dog.swift in Sources */,
+				0D41A7B2EF1126A40C96E698 /* PetstoreClientModel.DogAllOf.swift in Sources */,
+				B4305974C8BEE4A6236C494D /* PetstoreClientModel.EnumArrays.swift in Sources */,
+				17645A18917CE07642358788 /* PetstoreClientModel.EnumClass.swift in Sources */,
+				48DC98CAD460E5AB686DFD0D /* PetstoreClientModel.EnumTest.swift in Sources */,
+				7F3A708403D2383789EFF6EB /* PetstoreClientModel.File.swift in Sources */,
+				2FEB91DED98DE256D765047B /* PetstoreClientModel.FileSchemaTestClass.swift in Sources */,
+				2BF40588700BA7D17B5FE109 /* PetstoreClientModel.FormatTest.swift in Sources */,
+				3D7AE28C7358554B2482EBF8 /* PetstoreClientModel.HasOnlyReadOnly.swift in Sources */,
+				AF40D028A5811075AEF500D9 /* PetstoreClientModel.List.swift in Sources */,
+				AFCC20D90203062EFC086B1F /* PetstoreClientModel.MapTest.swift in Sources */,
+				90ABDB73677032F25C93EE0F /* PetstoreClientModel.MixedPropertiesAndAdditionalPropertiesClass.swift in Sources */,
+				6253B7005ACFE3378CB5A0B0 /* PetstoreClientModel.Name.swift in Sources */,
+				8120AD166686B0FED5AB24D1 /* PetstoreClientModel.NumberOnly.swift in Sources */,
+				6C02D63DF0A5C4B93B0FDBC4 /* PetstoreClientModel.Order.swift in Sources */,
+				D9FDEF13DA0AD16789FC6B55 /* PetstoreClientModel.OuterComposite.swift in Sources */,
+				88FA0318AABADF823F794765 /* PetstoreClientModel.OuterEnum.swift in Sources */,
+				5453734B8C6B34CE6E034C45 /* PetstoreClientModel.Pet.swift in Sources */,
+				113AB7B35A2A65D444F2CEEA /* PetstoreClientModel.ReadOnlyFirst.swift in Sources */,
+				338F006454F4A064B4836284 /* PetstoreClientModel.Return.swift in Sources */,
+				45C195DE9BCE8AC6B8CA3236 /* PetstoreClientModel.SpecialModelName.swift in Sources */,
+				8C402B0F73F3A63B43C346FF /* PetstoreClientModel.StringBooleanMap.swift in Sources */,
+				E816DA6F7C8D6CE6FD5A68E9 /* PetstoreClientModel.Tag.swift in Sources */,
+				C0C4B50BC589EDBA28F8A60B /* PetstoreClientModel.TypeHolderDefault.swift in Sources */,
+				E535120ADE2ABC642F81137F /* PetstoreClientModel.TypeHolderExample.swift in Sources */,
+				EB0D5D48452D68977E00966C /* PetstoreClientModel.User.swift in Sources */,
+				38A1BFFFDF09502B754D5DA0 /* PetstoreClientModel200Response.swift in Sources */,
+				E9A95404E8444D0624A15329 /* PetstoreClientModelAdditionalPropertiesClass.swift in Sources */,
+				DCF26582FF67C556CC71E976 /* PetstoreClientModelAnimal.swift in Sources */,
+				07DF4C8FEA274DA14E3B945A /* PetstoreClientModelAnimalFarm.swift in Sources */,
+				EDCF00D5F95752BA2DF1FDD8 /* PetstoreClientModelApiResponse.swift in Sources */,
+				718EFFA967216187C6CB9B6D /* PetstoreClientModelArrayOfArrayOfNumberOnly.swift in Sources */,
+				B0714A73FB5726E887D768AF /* PetstoreClientModelArrayOfNumberOnly.swift in Sources */,
+				FE0E7FAF331F04EBB3B003E8 /* PetstoreClientModelArrayTest.swift in Sources */,
+				6A55417BF6B33874F0A41C58 /* PetstoreClientModelCapitalization.swift in Sources */,
+				FBB832E282FA534BFA0ED65F /* PetstoreClientModelCat.swift in Sources */,
+				CAF3B6BB9C7D82DC1808B782 /* PetstoreClientModelCatAllOf.swift in Sources */,
+				8F93E2CC380AE2C3D1ECA195 /* PetstoreClientModelCategory.swift in Sources */,
+				1A5826B85407CF3D625431EC /* PetstoreClientModelClassModel.swift in Sources */,
+				8673DBEAD7FF42AE724A5C5D /* PetstoreClientModelClient.swift in Sources */,
+				AC6CEE8D7AD7274386B8FDC6 /* PetstoreClientModelDog.swift in Sources */,
+				C5CF78A00EA8BF417AE94DE7 /* PetstoreClientModelDogAllOf.swift in Sources */,
+				D5AB0769485912203A539BA4 /* PetstoreClientModelEnumArrays.swift in Sources */,
+				ACF577589B4B9C8EAD1730DE /* PetstoreClientModelEnumClass.swift in Sources */,
+				05AD11BC77C4E26855B8CC39 /* PetstoreClientModelEnumTest.swift in Sources */,
+				F3E86B5BF376EF94EE0990F5 /* PetstoreClientModelFile.swift in Sources */,
+				F554DFDE1766E4BF41A33AF1 /* PetstoreClientModelFileSchemaTestClass.swift in Sources */,
+				7F233D7FE82C6100B97A2D8D /* PetstoreClientModelFormatTest.swift in Sources */,
+				25E6808C41F7DEC0037A17E2 /* PetstoreClientModelHasOnlyReadOnly.swift in Sources */,
+				183775F0F7455EE109101B1E /* PetstoreClientModelList.swift in Sources */,
+				EB1001AFC51F470579AF07E4 /* PetstoreClientModelMapTest.swift in Sources */,
+				0DA0644B431CDA83348189AB /* PetstoreClientModelMixedPropertiesAndAdditionalPropertiesClass.swift in Sources */,
+				04E1D99A669B363779AFDA85 /* PetstoreClientModelName.swift in Sources */,
+				1C5608DAC99ECAB7550AB927 /* PetstoreClientModelNumberOnly.swift in Sources */,
+				A86B9D2A995877A6395FEC39 /* PetstoreClientModelOrder.swift in Sources */,
+				95C5CE01B075BF64453F10EA /* PetstoreClientModelOuterComposite.swift in Sources */,
+				05B970DCB998AA3284E081AA /* PetstoreClientModelOuterEnum.swift in Sources */,
+				10AF28FAAF7AB5D2D0D2B410 /* PetstoreClientModelPet.swift in Sources */,
+				E56933183717CF5B2A926819 /* PetstoreClientModelReadOnlyFirst.swift in Sources */,
+				2CF9A7E45F61AF3EA1CC34B7 /* PetstoreClientModelReturn.swift in Sources */,
+				AC81D905B665FCEF0087DA9C /* PetstoreClientModelSpecialModelName.swift in Sources */,
+				2C308C05EBF94C3D90B96691 /* PetstoreClientModelStringBooleanMap.swift in Sources */,
+				679A0EB05135BFD9A22400BB /* PetstoreClientModelTag.swift in Sources */,
+				73ED3654C16D4BFA16A7C685 /* PetstoreClientModelTypeHolderDefault.swift in Sources */,
+				E06C90294261AE4FA6C157D8 /* PetstoreClientModelTypeHolderExample.swift in Sources */,
+				804BE7296C98A2C496C2843B /* PetstoreClientModelUser.swift in Sources */,
+				A05DAA0A5CD98BE326F57FD6 /* PetstoreClientModelssss200Response.swift in Sources */,
+				F419CB4490CFA25A947D8250 /* PetstoreClientModelssssAdditionalPropertiesClass.swift in Sources */,
+				645920928AFD7C0302CAAAE2 /* PetstoreClientModelssssAnimal.swift in Sources */,
+				83BDAB9FB0646563294DF83B /* PetstoreClientModelssssAnimalFarm.swift in Sources */,
+				4D190FCAC824990C9EFFFE86 /* PetstoreClientModelssssApiResponse.swift in Sources */,
+				F3D2152BB21724633F11151C /* PetstoreClientModelssssArrayOfArrayOfNumberOnly.swift in Sources */,
+				BD04ABD5D5756A70C5FBE518 /* PetstoreClientModelssssArrayOfNumberOnly.swift in Sources */,
+				E5FF310ABB0D6A30F3283B74 /* PetstoreClientModelssssArrayTest.swift in Sources */,
+				A6F1B4E739641569732C8A9D /* PetstoreClientModelssssCapitalization.swift in Sources */,
+				E98F55179B4B3D1A4C280D01 /* PetstoreClientModelssssCat.swift in Sources */,
+				FAC24B3FD4D742E8AB11ECE1 /* PetstoreClientModelssssCatAllOf.swift in Sources */,
+				60293768BE226E869792DA61 /* PetstoreClientModelssssCategory.swift in Sources */,
+				3CEBFBB4FD9BFBC248EB3A8A /* PetstoreClientModelssssClassModel.swift in Sources */,
+				FCCEEDBC29A4517E76D1BEB7 /* PetstoreClientModelssssClient.swift in Sources */,
+				56ED6A5310E667D86FF17A7F /* PetstoreClientModelssssD200Response.swift in Sources */,
+				379FCF8177CC83D13CF84409 /* PetstoreClientModelssssDAdditionalPropertiesClass.swift in Sources */,
+				2640EA04F7E235C57A9894D8 /* PetstoreClientModelssssDAnimal.swift in Sources */,
+				E5EE40F3A491E7D8D1BC0E8F /* PetstoreClientModelssssDAnimalFarm.swift in Sources */,
+				DC940DBF93E24DCE7D955628 /* PetstoreClientModelssssDApiResponse.swift in Sources */,
+				3D830069CE57412EB6E9E2EC /* PetstoreClientModelssssDArrayOfArrayOfNumberOnly.swift in Sources */,
+				791E08ED00A6948257AADFBA /* PetstoreClientModelssssDArrayOfNumberOnly.swift in Sources */,
+				ACD4CE2543D16860D3A89E4C /* PetstoreClientModelssssDArrayTest.swift in Sources */,
+				90841B371FF7DBBDAB6102D8 /* PetstoreClientModelssssDCapitalization.swift in Sources */,
+				79C854A42790709F68354C1B /* PetstoreClientModelssssDCat.swift in Sources */,
+				507A506C5085BDCC89ED4E33 /* PetstoreClientModelssssDCatAllOf.swift in Sources */,
+				830765E48D28042DBB6C9B1B /* PetstoreClientModelssssDCategory.swift in Sources */,
+				9861B07F598DDFFE4B8181F9 /* PetstoreClientModelssssDClassModel.swift in Sources */,
+				70234805D3B45D487D6387FA /* PetstoreClientModelssssDClient.swift in Sources */,
+				269AEC4041F1A1A897FC6138 /* PetstoreClientModelssssDDog.swift in Sources */,
+				5E896CE5FB8620A0B7BCE47D /* PetstoreClientModelssssDDogAllOf.swift in Sources */,
+				42F66E524C88122EF78A1234 /* PetstoreClientModelssssDEnumArrays.swift in Sources */,
+				1A22836D099C466885F9EE17 /* PetstoreClientModelssssDEnumClass.swift in Sources */,
+				B973988CD6A7302FDF5244D9 /* PetstoreClientModelssssDEnumTest.swift in Sources */,
+				36B7BB500705D6D757D1D977 /* PetstoreClientModelssssDFile.swift in Sources */,
+				36D032AB59D5E2523AB19B4E /* PetstoreClientModelssssDFileSchemaTestClass.swift in Sources */,
+				289D6F1CBF50E167DD95B413 /* PetstoreClientModelssssDFormatTest.swift in Sources */,
+				D36ED991489B9CFD1F48CC9E /* PetstoreClientModelssssDHasOnlyReadOnly.swift in Sources */,
+				0593638311BA8B7043425E8C /* PetstoreClientModelssssDList.swift in Sources */,
+				F32B5C9630D9D3B8DAA3948E /* PetstoreClientModelssssDMapTest.swift in Sources */,
+				8841C6053B7277C0EE261976 /* PetstoreClientModelssssDMixedPropertiesAndAdditionalPropertiesClass.swift in Sources */,
+				F0EA438E37398B7011BCA539 /* PetstoreClientModelssssDName.swift in Sources */,
+				64D1751AFD0575308B358A57 /* PetstoreClientModelssssDNumberOnly.swift in Sources */,
+				8476C9BBA9A330CD6D31E224 /* PetstoreClientModelssssDOrder.swift in Sources */,
+				3B1407D10C1417A6EB164E04 /* PetstoreClientModelssssDOuterComposite.swift in Sources */,
+				C52E0A68F0041469A1031D45 /* PetstoreClientModelssssDOuterEnum.swift in Sources */,
+				5543F2A7DAE0E0C1802109EC /* PetstoreClientModelssssDPet.swift in Sources */,
+				2DFBFAC7975CC929F7F17DA5 /* PetstoreClientModelssssDReadOnlyFirst.swift in Sources */,
+				741FCE981B6C39A90E24124E /* PetstoreClientModelssssDReturn.swift in Sources */,
+				8B3278FB71548111458FBDD6 /* PetstoreClientModelssssDSpecialModelName.swift in Sources */,
+				CED04DFD2F3E6799CFF53530 /* PetstoreClientModelssssDStringBooleanMap.swift in Sources */,
+				4CC6D2841BC16291A5D39C81 /* PetstoreClientModelssssDTag.swift in Sources */,
+				D9793D767E7F89051A17D93C /* PetstoreClientModelssssDTypeHolderDefault.swift in Sources */,
+				DCA218CC6B175FB8EA9663A1 /* PetstoreClientModelssssDTypeHolderExample.swift in Sources */,
+				C27B58724C13C3A5F1EC91AE /* PetstoreClientModelssssDUser.swift in Sources */,
+				FE519C4F615109068CB2A946 /* PetstoreClientModelssssDog.swift in Sources */,
+				040A5BC47BB8E27448531C6F /* PetstoreClientModelssssDogAllOf.swift in Sources */,
+				48F6CF6917D781FB14515218 /* PetstoreClientModelssssEnumArrays.swift in Sources */,
+				8435EE7D283F82C942C8127C /* PetstoreClientModelssssEnumClass.swift in Sources */,
+				7E6EFA737A151063CD2EEB86 /* PetstoreClientModelssssEnumTest.swift in Sources */,
+				5614900F22B90B9ED621000B /* PetstoreClientModelssssFile.swift in Sources */,
+				2DD9CD8791D153E98B9F53C6 /* PetstoreClientModelssssFileSchemaTestClass.swift in Sources */,
+				FD6CEE494AAAF827A1820594 /* PetstoreClientModelssssFormatTest.swift in Sources */,
+				0C9F002A80398F338556C20D /* PetstoreClientModelssssHasOnlyReadOnly.swift in Sources */,
+				27F1C40144D0C092AC96DFBC /* PetstoreClientModelssssList.swift in Sources */,
+				6C32332349F33BF39B001E09 /* PetstoreClientModelssssMapTest.swift in Sources */,
+				66402A5075D5CEB0C29731EF /* PetstoreClientModelssssMixedPropertiesAndAdditionalPropertiesClass.swift in Sources */,
+				9B8473E58E5F4D307E45B0DE /* PetstoreClientModelssssName.swift in Sources */,
+				CC411EAE2AE02C31BA2E4452 /* PetstoreClientModelssssNumberOnly.swift in Sources */,
+				4AFE37EFD6A5A2667AE6787C /* PetstoreClientModelssssOrder.swift in Sources */,
+				283F39ECB061FA1B44FD0514 /* PetstoreClientModelssssOuterComposite.swift in Sources */,
+				96C028486A60DD68EFE3523E /* PetstoreClientModelssssOuterEnum.swift in Sources */,
+				9D8650316AC603521CF323A4 /* PetstoreClientModelssssPet.swift in Sources */,
+				5CAF944226E8926EB9274F31 /* PetstoreClientModelssssReadOnlyFirst.swift in Sources */,
+				CF2840488A5EBCFB86327AAA /* PetstoreClientModelssssReturn.swift in Sources */,
+				17E6C64BB5E3CD4248BB0351 /* PetstoreClientModelssssSpecialModelName.swift in Sources */,
+				942ADD695CAEE62FDA03D2D1 /* PetstoreClientModelssssStringBooleanMap.swift in Sources */,
+				ED447D5B6F69588B952F7345 /* PetstoreClientModelssssTag.swift in Sources */,
+				08BCCB6D493E7C9A3BE795E4 /* PetstoreClientModelssssTypeHolderDefault.swift in Sources */,
+				4EB55709654AB20DAA0ADC67 /* PetstoreClientModelssssTypeHolderExample.swift in Sources */,
+				DC19CA0BB43101FDA3F984F2 /* PetstoreClientModelssssUser.swift in Sources */,
 				914F4D1FCB17773C067C4E68 /* ReadOnlyFirst.swift in Sources */,
 				A6E50CC6845FE58D8C236253 /* Return.swift in Sources */,
 				294CDFA409BC369C0FDC5FB3 /* SpecialModelName.swift in Sources */,

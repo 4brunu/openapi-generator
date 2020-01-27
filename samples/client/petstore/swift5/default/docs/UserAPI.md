@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **createUser**
 ```swift
-    open class func createUser(body: User, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func createUser(body: PetstoreClientModel.User, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Create user
@@ -28,7 +28,7 @@ This can only be done by the logged in user.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // User | Created user object
+let body = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // PetstoreClientModel.User | Created user object
 
 // Create user
 UserAPI.createUser(body: body) { (response, error) in
@@ -47,7 +47,7 @@ UserAPI.createUser(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**User**](User.md) | Created user object | 
+ **body** | [**PetstoreClientModel.User**](PetstoreClientModel.User.md) | Created user object | 
 
 ### Return type
 
@@ -66,7 +66,7 @@ No authorization required
 
 # **createUsersWithArrayInput**
 ```swift
-    open class func createUsersWithArrayInput(body: [User], completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func createUsersWithArrayInput(body: [PetstoreClientModel.User], completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Creates list of users with given input array
@@ -76,7 +76,7 @@ Creates list of users with given input array
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = [User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [User] | List of user object
+let body = [User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [PetstoreClientModel.User] | List of user object
 
 // Creates list of users with given input array
 UserAPI.createUsersWithArrayInput(body: body) { (response, error) in
@@ -95,7 +95,7 @@ UserAPI.createUsersWithArrayInput(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**[User]**](User.md) | List of user object | 
+ **body** | [**[PetstoreClientModel.User]**](PetstoreClientModel.User.md) | List of user object | 
 
 ### Return type
 
@@ -114,7 +114,7 @@ No authorization required
 
 # **createUsersWithListInput**
 ```swift
-    open class func createUsersWithListInput(body: [User], completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func createUsersWithListInput(body: [PetstoreClientModel.User], completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Creates list of users with given input array
@@ -124,7 +124,7 @@ Creates list of users with given input array
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import PetstoreClient
 
-let body = [User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [User] | List of user object
+let body = [User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [PetstoreClientModel.User] | List of user object
 
 // Creates list of users with given input array
 UserAPI.createUsersWithListInput(body: body) { (response, error) in
@@ -143,7 +143,7 @@ UserAPI.createUsersWithListInput(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**[User]**](User.md) | List of user object | 
+ **body** | [**[PetstoreClientModel.User]**](PetstoreClientModel.User.md) | List of user object | 
 
 ### Return type
 
@@ -212,7 +212,7 @@ No authorization required
 
 # **getUserByName**
 ```swift
-    open class func getUserByName(username: String, completion: @escaping (_ data: User?, _ error: Error?) -> Void)
+    open class func getUserByName(username: String, completion: @escaping (_ data: PetstoreClientModel.User?, _ error: Error?) -> Void)
 ```
 
 Get user by user name
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**PetstoreClientModel.User**](PetstoreClientModel.User.md)
 
 ### Authorization
 
@@ -354,7 +354,7 @@ No authorization required
 
 # **updateUser**
 ```swift
-    open class func updateUser(username: String, body: User, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateUser(username: String, body: PetstoreClientModel.User, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Updated user
@@ -367,7 +367,7 @@ This can only be done by the logged in user.
 import PetstoreClient
 
 let username = "username_example" // String | name that need to be deleted
-let body = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // User | Updated user object
+let body = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // PetstoreClientModel.User | Updated user object
 
 // Updated user
 UserAPI.updateUser(username: username, body: body) { (response, error) in
@@ -387,7 +387,7 @@ UserAPI.updateUser(username: username, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String** | name that need to be deleted | 
- **body** | [**User**](User.md) | Updated user object | 
+ **body** | [**PetstoreClientModel.User**](PetstoreClientModel.User.md) | Updated user object | 
 
 ### Return type
 

@@ -63,6 +63,18 @@ public class StringUtils {
      * @return camelized string
      */
     public static String camelize(String word, boolean lowercaseFirstLetter) {
+        return camelize(word, lowercaseFirstLetter, true);
+    }
+
+    /**
+     * Camelize name (parameter, property, method, etc)
+     *
+     * @param word                 string to be camelize
+     * @param lowercaseFirstLetter lower case for first letter if set to true
+     * @param caseOutDots remove dots and upper case the first letter after the dot
+     * @return camelized string
+     */
+    public static String camelize(String word, boolean lowercaseFirstLetter, boolean caseOutDots) {
         // Replace all slashes with dots (package separator)
         Pattern p = Pattern.compile("\\/(.?)");
         Matcher m = p.matcher(word);
@@ -72,14 +84,16 @@ public class StringUtils {
         }
 
         // case out dots
-        String[] parts = word.split("\\.");
-        StringBuilder f = new StringBuilder();
-        for (String z : parts) {
-            if (z.length() > 0) {
-                f.append(Character.toUpperCase(z.charAt(0))).append(z.substring(1));
+        if (caseOutDots) {
+            String[] parts = word.split("\\.");
+            StringBuilder f = new StringBuilder();
+            for (String z : parts) {
+                if (z.length() > 0) {
+                    f.append(Character.toUpperCase(z.charAt(0))).append(z.substring(1));
+                }
             }
+            word = f.toString();
         }
-        word = f.toString();
 
         m = p.matcher(word);
         while (m.find()) {

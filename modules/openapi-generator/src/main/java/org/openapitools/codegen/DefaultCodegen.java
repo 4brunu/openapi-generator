@@ -2252,6 +2252,11 @@ public class DefaultCodegen implements CodegenConfig {
                 postProcessModelProperty(m, prop);
             }
         }
+        if (m.allVars != null) {
+            for (CodegenProperty prop : m.allVars) {
+                postProcessModelProperty(m, prop);
+            }
+        }
 
         if (sortModelPropertiesByRequiredFlag) {
             Collections.sort(m.vars, new Comparator<CodegenProperty>() {

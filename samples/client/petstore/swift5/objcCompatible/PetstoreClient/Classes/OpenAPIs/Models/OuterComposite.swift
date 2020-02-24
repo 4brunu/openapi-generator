@@ -17,7 +17,7 @@ import Foundation
     public var myBoolean: Bool?
     @objc public var myBooleanNum: NSNumber? {
         get {
-            return myBoolean as? NSNumber
+            return myBoolean as NSNumber?
         }
     }
 

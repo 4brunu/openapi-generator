@@ -15,7 +15,7 @@ import Foundation
     public var name: Int?
     @objc public var nameNum: NSNumber? {
         get {
-            return name as? NSNumber
+            return name as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */

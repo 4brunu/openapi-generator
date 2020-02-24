@@ -82,13 +82,13 @@ import Foundation
     public var enumInteger: EnumInteger?
     @objc public var enumIntegerNum: NSNumber? {
         get {
-            return enumInteger as? NSNumber
+            return enumInteger as NSNumber?
         }
     }
     public var enumNumber: EnumNumber?
     @objc public var enumNumberNum: NSNumber? {
         get {
-            return enumNumber as? NSNumber
+            return enumNumber as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */

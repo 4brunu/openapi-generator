@@ -13,7 +13,7 @@ import Foundation
     public var specialPropertyName: Int64?
     @objc public var specialPropertyNameNum: NSNumber? {
         get {
-            return specialPropertyName as? NSNumber
+            return specialPropertyName as NSNumber?
         }
     }
 

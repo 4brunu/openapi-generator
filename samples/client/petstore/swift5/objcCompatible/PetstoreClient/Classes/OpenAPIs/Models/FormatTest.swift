@@ -13,21 +13,21 @@ import Foundation
     public var integer: Int?
     @objc public var integerNum: NSNumber? {
         get {
-            return integer as? NSNumber
+            return integer as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var int32: Int?
     @objc public var int32Num: NSNumber? {
         get {
-            return int32 as? NSNumber
+            return int32 as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var int64: Int64?
     @objc public var int64Num: NSNumber? {
         get {
-            return int64 as? NSNumber
+            return int64 as NSNumber?
         }
     }
         /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
@@ -36,14 +36,14 @@ import Foundation
     public var float: Float?
     @objc public var floatNum: NSNumber? {
         get {
-            return float as? NSNumber
+            return float as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var double: Double?
     @objc public var doubleNum: NSNumber? {
         get {
-            return double as? NSNumber
+            return double as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */

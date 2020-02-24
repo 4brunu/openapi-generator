@@ -31,7 +31,7 @@ import Foundation
     public var _id: Int64?
     @objc public var _idNum: NSNumber? {
         get {
-            return _id as? NSNumber
+            return _id as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */

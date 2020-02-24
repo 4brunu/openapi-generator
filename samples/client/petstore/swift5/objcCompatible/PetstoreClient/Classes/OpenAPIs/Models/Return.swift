@@ -15,7 +15,7 @@ import Foundation
     public var _return: Int?
     @objc public var _returnNum: NSNumber? {
         get {
-            return _return as? NSNumber
+            return _return as NSNumber?
         }
     }
 

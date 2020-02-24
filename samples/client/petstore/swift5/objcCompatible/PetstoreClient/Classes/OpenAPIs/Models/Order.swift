@@ -31,21 +31,21 @@ import Foundation
     public var _id: Int64?
     @objc public var _idNum: NSNumber? {
         get {
-            return _id as? NSNumber
+            return _id as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var petId: Int64?
     @objc public var petIdNum: NSNumber? {
         get {
-            return petId as? NSNumber
+            return petId as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var quantity: Int?
     @objc public var quantityNum: NSNumber? {
         get {
-            return quantity as? NSNumber
+            return quantity as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
@@ -56,7 +56,7 @@ import Foundation
     public var complete: Bool? = false
     @objc public var completeNum: NSNumber? {
         get {
-            return complete as? NSNumber
+            return complete as NSNumber?
         }
     }
 

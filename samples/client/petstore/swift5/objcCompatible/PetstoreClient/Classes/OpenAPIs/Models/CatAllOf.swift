@@ -13,7 +13,7 @@ import Foundation
     public var declawed: Bool?
     @objc public var declawedNum: NSNumber? {
         get {
-            return declawed as? NSNumber
+            return declawed as NSNumber?
         }
     }
 

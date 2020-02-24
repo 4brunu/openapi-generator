@@ -17,7 +17,7 @@ import Foundation
     public var snakeCase: Int?
     @objc public var snakeCaseNum: NSNumber? {
         get {
-            return snakeCase as? NSNumber
+            return snakeCase as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
@@ -26,7 +26,7 @@ import Foundation
     public var _123number: Int?
     @objc public var _123numberNum: NSNumber? {
         get {
-            return _123number as? NSNumber
+            return _123number as NSNumber?
         }
     }
 

@@ -13,7 +13,7 @@ import Foundation
     public var code: Int?
     @objc public var codeNum: NSNumber? {
         get {
-            return code as? NSNumber
+            return code as NSNumber?
         }
     }
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */

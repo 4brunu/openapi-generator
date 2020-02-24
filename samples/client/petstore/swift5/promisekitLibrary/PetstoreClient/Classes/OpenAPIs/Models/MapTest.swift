@@ -29,10 +29,10 @@ public struct MapTest: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mapMapOfString
-        case mapOfEnumString
-        case directMap
-        case indirectMap
+        case mapMapOfString = "map_map_of_string"
+        case mapOfEnumString = "map_of_enum_string"
+        case directMap = "direct_map"
+        case indirectMap = "indirect_map"
     }
 
 }

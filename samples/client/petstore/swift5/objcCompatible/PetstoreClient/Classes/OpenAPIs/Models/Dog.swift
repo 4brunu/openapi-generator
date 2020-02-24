@@ -9,11 +9,23 @@ import Foundation
 
 @objc public class Dog: NSObject, Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var _className: String
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var color: String? = "red"
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     @objc public var breed: String?
 
-    public init(breed: String?) {
+    public init(_className: String, color: String?, breed: String?) {
+        self._className = _className
+        self.color = color
         self.breed = breed
+    }
+
+    public enum CodingKeys: String, CodingKey, CaseIterable {
+        case _className = "className"
+        case color
+        case breed
     }
 
 }

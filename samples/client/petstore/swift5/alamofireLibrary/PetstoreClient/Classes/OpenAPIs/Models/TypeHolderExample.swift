@@ -29,11 +29,11 @@ public struct TypeHolderExample: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case stringItem
-        case numberItem
-        case integerItem
-        case boolItem
-        case arrayItem
+        case stringItem = "string_item"
+        case numberItem = "number_item"
+        case integerItem = "integer_item"
+        case boolItem = "bool_item"
+        case arrayItem = "array_item"
     }
 
 }

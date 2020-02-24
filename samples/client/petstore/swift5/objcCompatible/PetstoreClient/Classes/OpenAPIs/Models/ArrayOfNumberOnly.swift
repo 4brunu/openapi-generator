@@ -17,7 +17,7 @@ import Foundation
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayNumber
+        case arrayNumber = "ArrayNumber"
     }
 
 }

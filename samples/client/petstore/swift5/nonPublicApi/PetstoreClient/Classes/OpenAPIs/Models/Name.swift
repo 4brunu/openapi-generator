@@ -28,9 +28,9 @@ internal struct Name: Codable {
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case snakeCase
+        case snakeCase = "snake_case"
         case property
-        case _123number
+        case _123number = "123Number"
     }
 
 }

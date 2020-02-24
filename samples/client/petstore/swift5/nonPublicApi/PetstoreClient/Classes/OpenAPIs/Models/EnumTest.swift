@@ -43,10 +43,10 @@ internal struct EnumTest: Codable {
     }
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
-        case enumString
-        case enumStringRequired
-        case enumInteger
-        case enumNumber
+        case enumString = "enum_string"
+        case enumStringRequired = "enum_string_required"
+        case enumInteger = "enum_integer"
+        case enumNumber = "enum_number"
         case outerEnum
     }
 

@@ -17,7 +17,7 @@ public struct SpecialModelName: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case specialPropertyName
+        case specialPropertyName = "$special[property.name]"
     }
 
 }

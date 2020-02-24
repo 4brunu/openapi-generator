@@ -22,7 +22,7 @@ public struct Model200Response: Codable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case _class
+        case _class = "class"
     }
 
 }

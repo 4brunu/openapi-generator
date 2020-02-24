@@ -17,7 +17,7 @@ public struct List: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _123list
+        case _123list = "123-list"
     }
 
 }

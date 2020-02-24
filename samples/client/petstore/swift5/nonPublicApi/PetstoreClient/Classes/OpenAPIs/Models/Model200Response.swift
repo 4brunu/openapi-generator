@@ -22,7 +22,7 @@ internal struct Model200Response: Codable {
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case _class
+        case _class = "class"
     }
 
 }

@@ -23,9 +23,9 @@ internal struct OuterComposite: Codable {
     }
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
-        case myNumber
-        case myString
-        case myBoolean
+        case myNumber = "my_number"
+        case myString = "my_string"
+        case myBoolean = "my_boolean"
     }
 
 }

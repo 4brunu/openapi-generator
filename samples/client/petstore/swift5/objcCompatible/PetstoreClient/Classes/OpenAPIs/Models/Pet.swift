@@ -55,7 +55,7 @@ import Foundation
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id
+        case _id = "id"
         case category
         case name
         case photoUrls

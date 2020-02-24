@@ -17,7 +17,7 @@ internal struct ArrayOfNumberOnly: Codable {
     }
 
     internal enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayNumber
+        case arrayNumber = "ArrayNumber"
     }
 
 }

@@ -9,10 +9,16 @@ import Foundation
 
 internal struct Cat: Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    internal var className: String
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    internal var color: String? = "red"
         /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     internal var declawed: Bool?
 
-    internal init(declawed: Bool?) {
+    internal init(className: String, color: String?, declawed: Bool?) {
+        self.className = className
+        self.color = color
         self.declawed = declawed
     }
 

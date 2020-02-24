@@ -17,7 +17,7 @@ public struct NumberOnly: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case justNumber
+        case justNumber = "JustNumber"
     }
 
 }

@@ -10,12 +10,15 @@ import Foundation
 /** This is a card object for a Person derived from BaseCard. */
 public struct PlaceCard: Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    public var cardType: String
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var placeName: String?
         /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
     public var placeAddress: String?
 
-    public init(placeName: String?, placeAddress: String?) {
+    public init(cardType: String, placeName: String?, placeAddress: String?) {
+        self.cardType = cardType
         self.placeName = placeName
         self.placeAddress = placeAddress
     }

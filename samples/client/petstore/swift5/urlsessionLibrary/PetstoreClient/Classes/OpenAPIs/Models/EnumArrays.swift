@@ -26,8 +26,8 @@ public struct EnumArrays: Codable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case justSymbol
-        case arrayEnum
+        case justSymbol = "just_symbol"
+        case arrayEnum = "array_enum"
     }
 
 }

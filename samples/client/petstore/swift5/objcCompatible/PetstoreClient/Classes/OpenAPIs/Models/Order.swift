@@ -70,7 +70,7 @@ import Foundation
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id
+        case _id = "id"
         case petId
         case quantity
         case shipDate

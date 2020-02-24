@@ -20,8 +20,8 @@ import Foundation
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case mapString
-        case mapMapString
+        case mapString = "map_string"
+        case mapMapString = "map_map_string"
     }
 
 }

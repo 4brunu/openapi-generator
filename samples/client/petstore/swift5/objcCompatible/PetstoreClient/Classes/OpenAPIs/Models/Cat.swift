@@ -9,6 +9,10 @@ import Foundation
 
 @objc public class Cat: NSObject, Codable {
 
+        /** DEBUG - required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var _className: String
+        /** DEBUG - !required|!isNullable|!vendorExtensions.x-swift-optional-scalar */
+    @objc public var color: String? = "red"
         /** DEBUG - !required|!isNullable|vendorExtensions.x-swift-optional-scalar */
     public var declawed: Bool?
     @objc public var declawedNum: NSNumber? {
@@ -17,8 +21,16 @@ import Foundation
         }
     }
 
-    public init(declawed: Bool?) {
+    public init(_className: String, color: String?, declawed: Bool?) {
+        self._className = _className
+        self.color = color
         self.declawed = declawed
+    }
+
+    public enum CodingKeys: String, CodingKey, CaseIterable {
+        case _className = "className"
+        case color
+        case declawed
     }
 
 }

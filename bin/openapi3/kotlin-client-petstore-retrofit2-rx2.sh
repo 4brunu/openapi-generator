@@ -35,3 +35,5 @@ rm -rf $samplePath
 
 echo "Generating Kotling client..."
 java $JAVA_OPTS -jar $executable $ags
+
+cp CI/samples.ci/client/petstore/kotlin-client/pom.xml $samplePath

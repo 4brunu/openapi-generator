@@ -25,11 +25,15 @@ then
   mvn clean package
 fi
 
-export JAVA_OPTS="${JAVA_OPTS} -Xmx1024M -DloggerPath=conf/log4j.properties"
-ags="generate -i modules/openapi-generator/src/test/resources/3_0/petstore-with-depreacted-fields.yaml -t modules/openapi-generator/src/main/resources/kotlin-client -g kotlin --artifact-id kotlin-petstore-deprecated -o samples/openapi3/client/petstore/kotlin-deprecated $@"
+samplePath="samples/openapi3/client/petstore/kotlin-deprecated"
 
-echo "Cleaning previously generated files if any from samples/openapi3/client/petstore/kotlin-deprecated"
-rm -rf samples/openapi3/client/petstore/kotlin-deprecated
+export JAVA_OPTS="${JAVA_OPTS} -Xmx1024M -DloggerPath=conf/log4j.properties"
+ags="generate -i modules/openapi-generator/src/test/resources/3_0/petstore-with-depreacted-fields.yaml -t modules/openapi-generator/src/main/resources/kotlin-client -g kotlin --artifact-id kotlin-petstore-deprecated -o $samplePath $@"
+
+echo "Cleaning previously generated files if any from $samplePath"
+rm -rf $samplePath
 
 echo "Generating Kotling client..."
 java $JAVA_OPTS -jar $executable $ags
+
+cp CI/samples.ci/client/petstore/kotlin-client/pom.xml $samplePath

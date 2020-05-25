@@ -25,10 +25,15 @@ then
   mvn -B clean package
 fi
 
+samplePath="samples/client/petstore/kotlin-threetenbp"
+
 # if you've executed sbt assembly previously it will use that instead.
 export JAVA_OPTS="${JAVA_OPTS} -Xmx1024M -DloggerPath=conf/log4j.properties"
-ags="generate -t modules/openapi-generator/src/main/resources/kotlin-client -i modules/openapi-generator/src/test/resources/2_0/petstore.yaml -g kotlin --artifact-id kotlin-petstore-threetenbp --additional-properties dateLibrary=threetenbp -o samples/client/petstore/kotlin-threetenbp $@"
+ags="generate -t modules/openapi-generator/src/main/resources/kotlin-client -i modules/openapi-generator/src/test/resources/2_0/petstore.yaml -g kotlin --artifact-id kotlin-petstore-threetenbp --additional-properties dateLibrary=threetenbp -o $samplePath $@"
+
+echo "Cleaning previously generated files if any from $samplePath"
+rm -rf $samplePath
 
 java ${JAVA_OPTS} -jar ${executable} ${ags}
 
-cp CI/samples.ci/client/petstore/kotlin-threetenbp/pom.xml samples/client/petstore/kotlin-threetenbp/pom.xml
+cp CI/samples.ci/client/petstore/kotlin-client/pom.xml $samplePath

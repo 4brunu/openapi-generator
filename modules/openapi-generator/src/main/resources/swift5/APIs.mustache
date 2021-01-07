@@ -19,7 +19,7 @@ import Foundation
     var credential: URLCredential?
     var headers: [String: String]
     {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} let parameters: [String: Any]?
-    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} let method: String
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} let method: RequestHTTPMethod
     {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} let URLString: String
 
     /// Optional block to obtain a reference to the request's progress instance when available.{{#useURLSession}}
@@ -27,7 +27,7 @@ import Foundation
     /// If you need to get the request's progress in older OS versions, please use Alamofire http client.{{/useURLSession}}
     {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} var onProgressReady: ((Progress) -> Void)?
 
-    required {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} init(method: String, URLString: String, parameters: [String: Any]?, headers: [String: String] = [:]) {
+    required {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} init(method: RequestHTTPMethod, URLString: String, parameters: [String: Any]?, headers: [String: String] = [:]) {
         self.method = method
         self.URLString = URLString
         self.parameters = parameters

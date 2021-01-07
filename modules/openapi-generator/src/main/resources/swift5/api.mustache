@@ -262,7 +262,7 @@ extension {{projectName}}API {
 
         let requestBuilder: RequestBuilder<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}>.Type = {{projectName}}API.requestBuilderFactory.{{#returnType}}getBuilder(){{/returnType}}{{^returnType}}getNonDecodableBuilder(){{/returnType}}
 
-        return requestBuilder.init(method: "{{httpMethod}}", URLString: (url?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return requestBuilder.init(method: .{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}, URLString: (url?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
 
 {{/operation}}

@@ -142,7 +142,7 @@ private var managerStore = SynchronizedDictionary<String, Alamofire.SessionManag
         }
 
         if let encoding = encoding {
-            let request = makeRequest(manager: manager, method: xMethod, encoding: encoding, headers: headers)
+            let request = makeRequest(manager: manager, method: method, encoding: encoding, headers: headers)
             if let onProgressReady = self.onProgressReady {
                 onProgressReady(request.progress)
             }

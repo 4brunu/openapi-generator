@@ -10,11 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-@available(*, deprecated, renamed: "PetstoreClient.EnumTest")
-public typealias EnumTest = PetstoreClient.EnumTest
-
-extension PetstoreClient {
-
 public final class EnumTest: Codable, Hashable {
 
     public enum EnumString: String, Codable, CaseIterable {
@@ -87,4 +82,3 @@ public final class EnumTest: Codable, Hashable {
     }
 }
 
-}

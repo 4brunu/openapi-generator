@@ -11,8 +11,8 @@ import PromiseKit
 import AnyCodable
 #endif
 
-open class AnotherFakeAPI {
 
+protocol AnotherFakeAPI {
     /**
      To test special tags
      
@@ -20,7 +20,27 @@ open class AnotherFakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Client>
      */
-    open class func call123testSpecialTags( body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Client> {
+    static func call123testSpecialTags( body: Client, apiResponseQueue: DispatchQueue) -> Promise<Client>
+
+    /**
+     To test special tags
+     - PATCH /another-fake/dummy
+     - To test special tags and operation ID starting with number
+     - parameter body: (body) client model 
+     - returns: RequestBuilder<Client> 
+     */
+    static func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client>
+}
+
+extension AnotherFakeAPI {
+    /**
+     To test special tags
+     
+     - parameter body: (body) client model 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Client>
+     */
+    static func call123testSpecialTags( body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Client> {
         let deferred = Promise<Client>.pending()
         call123testSpecialTagsWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -40,7 +60,7 @@ open class AnotherFakeAPI {
      - parameter body: (body) client model 
      - returns: RequestBuilder<Client> 
      */
-    open class func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
+    static func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
         let path = "/another-fake/dummy"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

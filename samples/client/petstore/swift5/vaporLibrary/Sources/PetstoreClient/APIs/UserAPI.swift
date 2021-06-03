@@ -11,8 +11,49 @@ import Vapor
 import AnyCodable
 #endif
 
-open class UserAPI {
+        enum CreateUser {
+            case http0(value: Void, raw: ClientResponse)
+        }
 
+        enum CreateUsersWithArrayInput {
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum CreateUsersWithListInput {
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum DeleteUser {
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum GetUserByName {
+            case http200(value: User, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: User, raw: ClientResponse)
+        }
+
+        enum LoginUser {
+            case http200(value: String, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http0(value: String, raw: ClientResponse)
+        }
+
+        enum LogoutUser {
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum UpdateUser {
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+
+protocol UserAPI {
     /**
      Create user
      POST /user
@@ -20,7 +61,140 @@ open class UserAPI {
      - parameter body: (body) Created user object 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func createUserRaw(body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func createUserRaw(body: User, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Create user
+     POST /user
+     This can only be done by the logged in user.
+     - parameter body: (body) Created user object 
+     - returns: `EventLoopFuture` of `CreateUser` 
+     */
+    static func createUser(body: User, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<CreateUser>
+    /**
+     Creates list of users with given input array
+     POST /user/createWithArray
+     - parameter body: (body) List of user object 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func createUsersWithArrayInputRaw(body: [User], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Creates list of users with given input array
+     POST /user/createWithArray
+     - parameter body: (body) List of user object 
+     - returns: `EventLoopFuture` of `CreateUsersWithArrayInput` 
+     */
+    static func createUsersWithArrayInput(body: [User], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<CreateUsersWithArrayInput>
+    /**
+     Creates list of users with given input array
+     POST /user/createWithList
+     - parameter body: (body) List of user object 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func createUsersWithListInputRaw(body: [User], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Creates list of users with given input array
+     POST /user/createWithList
+     - parameter body: (body) List of user object 
+     - returns: `EventLoopFuture` of `CreateUsersWithListInput` 
+     */
+    static func createUsersWithListInput(body: [User], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<CreateUsersWithListInput>
+    /**
+     Delete user
+     DELETE /user/{username}
+     This can only be done by the logged in user.
+     - parameter username: (path) The name that needs to be deleted 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func deleteUserRaw(username: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Delete user
+     DELETE /user/{username}
+     This can only be done by the logged in user.
+     - parameter username: (path) The name that needs to be deleted 
+     - returns: `EventLoopFuture` of `DeleteUser` 
+     */
+    static func deleteUser(username: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<DeleteUser>
+    /**
+     Get user by user name
+     GET /user/{username}
+     - parameter username: (path) The name that needs to be fetched. Use user1 for testing. 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func getUserByNameRaw(username: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Get user by user name
+     GET /user/{username}
+     - parameter username: (path) The name that needs to be fetched. Use user1 for testing. 
+     - returns: `EventLoopFuture` of `GetUserByName` 
+     */
+    static func getUserByName(username: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<GetUserByName>
+    /**
+     Logs user into the system
+     GET /user/login
+     - responseHeaders: [X-Rate-Limit(Int), X-Expires-After(Date)]
+     - parameter username: (query) The user name for login 
+     - parameter password: (query) The password for login in clear text 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func loginUserRaw(username: String, password: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Logs user into the system
+     GET /user/login
+     - responseHeaders: [X-Rate-Limit(Int), X-Expires-After(Date)]
+     - parameter username: (query) The user name for login 
+     - parameter password: (query) The password for login in clear text 
+     - returns: `EventLoopFuture` of `LoginUser` 
+     */
+    static func loginUser(username: String, password: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<LoginUser>
+    /**
+     Logs out current logged in user session
+     GET /user/logout
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func logoutUserRaw(headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Logs out current logged in user session
+     GET /user/logout
+     - returns: `EventLoopFuture` of `LogoutUser` 
+     */
+    static func logoutUser(headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<LogoutUser>
+    /**
+     Updated user
+     PUT /user/{username}
+     This can only be done by the logged in user.
+     - parameter username: (path) name that need to be deleted 
+     - parameter body: (body) Updated user object 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func updateUserRaw(username: String, body: User, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Updated user
+     PUT /user/{username}
+     This can only be done by the logged in user.
+     - parameter username: (path) name that need to be deleted 
+     - parameter body: (body) Updated user object 
+     - returns: `EventLoopFuture` of `UpdateUser` 
+     */
+    static func updateUser(username: String, body: User, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<UpdateUser>
+}
+
+extension UserAPI {
+    /**
+     Create user
+     POST /user
+     This can only be done by the logged in user.
+     - parameter body: (body) Created user object 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func createUserRaw(body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/user"
         let URLString = PetstoreClient.basePath + path
 
@@ -38,10 +212,6 @@ open class UserAPI {
         }
     }
 
-    public enum CreateUser {
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Create user
      POST /user
@@ -49,7 +219,7 @@ open class UserAPI {
      - parameter body: (body) Created user object 
      - returns: `EventLoopFuture` of `CreateUser` 
      */
-    open class func createUser(body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateUser> {
+    static func createUser(body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateUser> {
         return createUserRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> CreateUser in
             switch response.status.code {
             default:
@@ -58,14 +228,13 @@ open class UserAPI {
         }
     }
 
-
     /**
      Creates list of users with given input array
      POST /user/createWithArray
      - parameter body: (body) List of user object 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func createUsersWithArrayInputRaw(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func createUsersWithArrayInputRaw(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/user/createWithArray"
         let URLString = PetstoreClient.basePath + path
 
@@ -83,17 +252,13 @@ open class UserAPI {
         }
     }
 
-    public enum CreateUsersWithArrayInput {
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Creates list of users with given input array
      POST /user/createWithArray
      - parameter body: (body) List of user object 
      - returns: `EventLoopFuture` of `CreateUsersWithArrayInput` 
      */
-    open class func createUsersWithArrayInput(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateUsersWithArrayInput> {
+    static func createUsersWithArrayInput(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateUsersWithArrayInput> {
         return createUsersWithArrayInputRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> CreateUsersWithArrayInput in
             switch response.status.code {
             default:
@@ -102,14 +267,13 @@ open class UserAPI {
         }
     }
 
-
     /**
      Creates list of users with given input array
      POST /user/createWithList
      - parameter body: (body) List of user object 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func createUsersWithListInputRaw(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func createUsersWithListInputRaw(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/user/createWithList"
         let URLString = PetstoreClient.basePath + path
 
@@ -127,17 +291,13 @@ open class UserAPI {
         }
     }
 
-    public enum CreateUsersWithListInput {
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Creates list of users with given input array
      POST /user/createWithList
      - parameter body: (body) List of user object 
      - returns: `EventLoopFuture` of `CreateUsersWithListInput` 
      */
-    open class func createUsersWithListInput(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateUsersWithListInput> {
+    static func createUsersWithListInput(body: [User], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateUsersWithListInput> {
         return createUsersWithListInputRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> CreateUsersWithListInput in
             switch response.status.code {
             default:
@@ -146,7 +306,6 @@ open class UserAPI {
         }
     }
 
-
     /**
      Delete user
      DELETE /user/{username}
@@ -154,7 +313,7 @@ open class UserAPI {
      - parameter username: (path) The name that needs to be deleted 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func deleteUserRaw(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func deleteUserRaw(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/user/{username}"
         let usernamePreEscape = String(describing: username)
         let usernamePostEscape = usernamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -174,12 +333,6 @@ open class UserAPI {
         }
     }
 
-    public enum DeleteUser {
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Delete user
      DELETE /user/{username}
@@ -187,7 +340,7 @@ open class UserAPI {
      - parameter username: (path) The name that needs to be deleted 
      - returns: `EventLoopFuture` of `DeleteUser` 
      */
-    open class func deleteUser(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<DeleteUser> {
+    static func deleteUser(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<DeleteUser> {
         return deleteUserRaw(username: username, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> DeleteUser in
             switch response.status.code {
             case 400:
@@ -200,14 +353,13 @@ open class UserAPI {
         }
     }
 
-
     /**
      Get user by user name
      GET /user/{username}
      - parameter username: (path) The name that needs to be fetched. Use user1 for testing. 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func getUserByNameRaw(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func getUserByNameRaw(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/user/{username}"
         let usernamePreEscape = String(describing: username)
         let usernamePostEscape = usernamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -227,20 +379,13 @@ open class UserAPI {
         }
     }
 
-    public enum GetUserByName {
-        case http200(value: User, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: User, raw: ClientResponse)
-    }
-
     /**
      Get user by user name
      GET /user/{username}
      - parameter username: (path) The name that needs to be fetched. Use user1 for testing. 
      - returns: `EventLoopFuture` of `GetUserByName` 
      */
-    open class func getUserByName(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetUserByName> {
+    static func getUserByName(username: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetUserByName> {
         return getUserByNameRaw(username: username, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> GetUserByName in
             switch response.status.code {
             case 200:
@@ -255,7 +400,6 @@ open class UserAPI {
         }
     }
 
-
     /**
      Logs user into the system
      GET /user/login
@@ -264,7 +408,7 @@ open class UserAPI {
      - parameter password: (query) The password for login in clear text 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func loginUserRaw(username: String, password: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func loginUserRaw(username: String, password: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/user/login"
         let URLString = PetstoreClient.basePath + path
 
@@ -285,12 +429,6 @@ open class UserAPI {
         }
     }
 
-    public enum LoginUser {
-        case http200(value: String, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http0(value: String, raw: ClientResponse)
-    }
-
     /**
      Logs user into the system
      GET /user/login
@@ -299,7 +437,7 @@ open class UserAPI {
      - parameter password: (query) The password for login in clear text 
      - returns: `EventLoopFuture` of `LoginUser` 
      */
-    open class func loginUser(username: String, password: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<LoginUser> {
+    static func loginUser(username: String, password: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<LoginUser> {
         return loginUserRaw(username: username, password: password, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> LoginUser in
             switch response.status.code {
             case 200:
@@ -312,13 +450,12 @@ open class UserAPI {
         }
     }
 
-
     /**
      Logs out current logged in user session
      GET /user/logout
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func logoutUserRaw(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func logoutUserRaw(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/user/logout"
         let URLString = PetstoreClient.basePath + path
 
@@ -335,16 +472,12 @@ open class UserAPI {
         }
     }
 
-    public enum LogoutUser {
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Logs out current logged in user session
      GET /user/logout
      - returns: `EventLoopFuture` of `LogoutUser` 
      */
-    open class func logoutUser(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<LogoutUser> {
+    static func logoutUser(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<LogoutUser> {
         return logoutUserRaw(headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> LogoutUser in
             switch response.status.code {
             default:
@@ -352,7 +485,6 @@ open class UserAPI {
             }
         }
     }
-
 
     /**
      Updated user
@@ -362,7 +494,7 @@ open class UserAPI {
      - parameter body: (body) Updated user object 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func updateUserRaw(username: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func updateUserRaw(username: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/user/{username}"
         let usernamePreEscape = String(describing: username)
         let usernamePostEscape = usernamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -383,12 +515,6 @@ open class UserAPI {
         }
     }
 
-    public enum UpdateUser {
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Updated user
      PUT /user/{username}
@@ -397,7 +523,7 @@ open class UserAPI {
      - parameter body: (body) Updated user object 
      - returns: `EventLoopFuture` of `UpdateUser` 
      */
-    open class func updateUser(username: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UpdateUser> {
+    static func updateUser(username: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UpdateUser> {
         return updateUserRaw(username: username, body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> UpdateUser in
             switch response.status.code {
             case 400:

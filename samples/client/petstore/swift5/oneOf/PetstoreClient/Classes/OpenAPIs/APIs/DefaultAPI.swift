@@ -10,14 +10,29 @@ import Foundation
 import AnyCodable
 #endif
 
-open class DefaultAPI {
 
+protocol DefaultAPI {
     /**
 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func rootGet(apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue, completion: @escaping ((_ data: Fruit?, _ error: Error?) -> Void)) {
+    static func rootGet(apiResponseQueue: DispatchQueue, completion: @escaping ((_ data: Fruit?, _ error: Error?) -> Void))
+
+    /**
+     - GET /
+     - returns: RequestBuilder<Fruit> 
+     */
+    static func rootGetWithRequestBuilder() -> RequestBuilder<Fruit>
+}
+
+extension DefaultAPI {
+    /**
+
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    static func rootGet(apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue, completion: @escaping ((_ data: Fruit?, _ error: Error?) -> Void)) {
         rootGetWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -32,7 +47,7 @@ open class DefaultAPI {
      - GET /
      - returns: RequestBuilder<Fruit> 
      */
-    open class func rootGetWithRequestBuilder() -> RequestBuilder<Fruit> {
+    static func rootGetWithRequestBuilder() -> RequestBuilder<Fruit> {
         let path = "/"
         let URLString = PetstoreClient.basePath + path
         let parameters: [String: Any]? = nil

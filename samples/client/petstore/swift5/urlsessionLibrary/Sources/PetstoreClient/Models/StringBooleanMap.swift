@@ -10,11 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-@available(*, deprecated, renamed: "PetstoreClient.StringBooleanMap")
-public typealias StringBooleanMap = PetstoreClient.StringBooleanMap
-
-extension PetstoreClient {
-
 public final class StringBooleanMap: Codable, Hashable {
 
 
@@ -63,4 +58,3 @@ public final class StringBooleanMap: Codable, Hashable {
     }
 }
 
-}

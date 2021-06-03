@@ -10,11 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-@available(*, deprecated, renamed: "PetstoreClient.Cat")
-public typealias Cat = PetstoreClient.Cat
-
-extension PetstoreClient {
-
 public final class Cat: Codable, Hashable {
 
     public var className: String
@@ -57,4 +52,3 @@ public final class Cat: Codable, Hashable {
     }
 }
 
-}

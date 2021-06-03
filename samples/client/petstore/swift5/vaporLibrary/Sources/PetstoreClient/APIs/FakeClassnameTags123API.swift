@@ -11,8 +11,13 @@ import Vapor
 import AnyCodable
 #endif
 
-open class FakeClassnameTags123API {
+        enum TestClassname {
+            case http200(value: Client, raw: ClientResponse)
+            case http0(value: Client, raw: ClientResponse)
+        }
 
+
+protocol FakeClassnameTags123API {
     /**
      To test class name in snake case
      PATCH /fake_classname_test
@@ -23,7 +28,33 @@ open class FakeClassnameTags123API {
      - parameter body: (body) client model 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testClassnameRaw(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testClassnameRaw(body: Client, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     To test class name in snake case
+     PATCH /fake_classname_test
+     To test class name in snake case
+     - API Key:
+       - type: apiKey api_key_query (QUERY)
+       - name: api_key_query
+     - parameter body: (body) client model 
+     - returns: `EventLoopFuture` of `TestClassname` 
+     */
+    static func testClassname(body: Client, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestClassname>
+}
+
+extension FakeClassnameTags123API {
+    /**
+     To test class name in snake case
+     PATCH /fake_classname_test
+     To test class name in snake case
+     - API Key:
+       - type: apiKey api_key_query (QUERY)
+       - name: api_key_query
+     - parameter body: (body) client model 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testClassnameRaw(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake_classname_test"
         let URLString = PetstoreClient.basePath + path
 
@@ -41,11 +72,6 @@ open class FakeClassnameTags123API {
         }
     }
 
-    public enum TestClassname {
-        case http200(value: Client, raw: ClientResponse)
-        case http0(value: Client, raw: ClientResponse)
-    }
-
     /**
      To test class name in snake case
      PATCH /fake_classname_test
@@ -56,7 +82,7 @@ open class FakeClassnameTags123API {
      - parameter body: (body) client model 
      - returns: `EventLoopFuture` of `TestClassname` 
      */
-    open class func testClassname(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestClassname> {
+    static func testClassname(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestClassname> {
         return testClassnameRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestClassname in
             switch response.status.code {
             case 200:

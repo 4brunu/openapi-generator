@@ -10,11 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-@available(*, deprecated, renamed: "PetstoreClient.ArrayOfNumberOnly")
-public typealias ArrayOfNumberOnly = PetstoreClient.ArrayOfNumberOnly
-
-extension PetstoreClient {
-
 public final class ArrayOfNumberOnly: Codable, Hashable {
 
     public var arrayNumber: [Double]?
@@ -45,4 +40,3 @@ public final class ArrayOfNumberOnly: Codable, Hashable {
     }
 }
 
-}

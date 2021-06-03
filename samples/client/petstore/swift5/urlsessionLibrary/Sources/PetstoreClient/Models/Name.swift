@@ -10,11 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-@available(*, deprecated, renamed: "PetstoreClient.Name")
-public typealias Name = PetstoreClient.Name
-
-extension PetstoreClient {
-
 /** Model for testing model name same as property name */
 public final class Name: Codable, Hashable {
 
@@ -64,4 +59,3 @@ public final class Name: Codable, Hashable {
     }
 }
 
-}

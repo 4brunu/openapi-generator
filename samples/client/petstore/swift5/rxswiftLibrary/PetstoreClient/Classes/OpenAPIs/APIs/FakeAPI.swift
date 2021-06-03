@@ -10,16 +10,332 @@ import RxSwift
 #if canImport(AnyCodable)
 import AnyCodable
 #endif
+    /**
+     * enum for parameter enumHeaderStringArray
+     */
+    enum EnumHeaderStringArray_testEnumParameters: String, CaseIterable {
+        case greaterThan = ">"
+        case dollar = "$"
+    }
 
-open class FakeAPI {
+    /**
+     * enum for parameter enumHeaderString
+     */
+    enum EnumHeaderString_testEnumParameters: String, CaseIterable {
+        case abc = "_abc"
+        case efg = "-efg"
+        case xyz = "(xyz)"
+    }
 
+    /**
+     * enum for parameter enumQueryStringArray
+     */
+    enum EnumQueryStringArray_testEnumParameters: String, CaseIterable {
+        case greaterThan = ">"
+        case dollar = "$"
+    }
+
+    /**
+     * enum for parameter enumQueryString
+     */
+    enum EnumQueryString_testEnumParameters: String, CaseIterable {
+        case abc = "_abc"
+        case efg = "-efg"
+        case xyz = "(xyz)"
+    }
+
+    /**
+     * enum for parameter enumQueryInteger
+     */
+    enum EnumQueryInteger_testEnumParameters: Int, CaseIterable {
+        case _1 = 1
+        case number2 = -2
+    }
+
+    /**
+     * enum for parameter enumQueryDouble
+     */
+    enum EnumQueryDouble_testEnumParameters: Double, CaseIterable {
+        case _11 = 1.1
+        case number12 = -1.2
+    }
+
+    /**
+     * enum for parameter enumFormStringArray
+     */
+    enum EnumFormStringArray_testEnumParameters: String, CaseIterable {
+        case greaterThan = ">"
+        case dollar = "$"
+    }
+
+    /**
+     * enum for parameter enumFormString
+     */
+    enum EnumFormString_testEnumParameters: String, CaseIterable {
+        case abc = "_abc"
+        case efg = "-efg"
+        case xyz = "(xyz)"
+    }
+
+
+
+protocol FakeAPI {
     /**
 
      - parameter body: (body) Input boolean as post body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Bool>
      */
-    open class func fakeOuterBooleanSerialize(body: Bool? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Bool> {
+    static func fakeOuterBooleanSerialize(body: Bool, apiResponseQueue: DispatchQueue) -> Observable<Bool>
+
+    /**
+     - POST /fake/outer/boolean
+     - Test serialization of outer boolean types
+     - parameter body: (body) Input boolean as post body (optional)
+     - returns: RequestBuilder<Bool> 
+     */
+    static func fakeOuterBooleanSerializeWithRequestBuilder(body: Bool) -> RequestBuilder<Bool>
+    /**
+
+     - parameter body: (body) Input composite as post body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<OuterComposite>
+     */
+    static func fakeOuterCompositeSerialize(body: OuterComposite, apiResponseQueue: DispatchQueue) -> Observable<OuterComposite>
+
+    /**
+     - POST /fake/outer/composite
+     - Test serialization of object with outer number type
+     - parameter body: (body) Input composite as post body (optional)
+     - returns: RequestBuilder<OuterComposite> 
+     */
+    static func fakeOuterCompositeSerializeWithRequestBuilder(body: OuterComposite) -> RequestBuilder<OuterComposite>
+    /**
+
+     - parameter body: (body) Input number as post body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Double>
+     */
+    static func fakeOuterNumberSerialize(body: Double, apiResponseQueue: DispatchQueue) -> Observable<Double>
+
+    /**
+     - POST /fake/outer/number
+     - Test serialization of outer number types
+     - parameter body: (body) Input number as post body (optional)
+     - returns: RequestBuilder<Double> 
+     */
+    static func fakeOuterNumberSerializeWithRequestBuilder(body: Double) -> RequestBuilder<Double>
+    /**
+
+     - parameter body: (body) Input string as post body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<String>
+     */
+    static func fakeOuterStringSerialize(body: String, apiResponseQueue: DispatchQueue) -> Observable<String>
+
+    /**
+     - POST /fake/outer/string
+     - Test serialization of outer string types
+     - parameter body: (body) Input string as post body (optional)
+     - returns: RequestBuilder<String> 
+     */
+    static func fakeOuterStringSerializeWithRequestBuilder(body: String) -> RequestBuilder<String>
+    /**
+
+     - parameter body: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    static func testBodyWithFileSchema(body: FileSchemaTestClass, apiResponseQueue: DispatchQueue) -> Observable<Void>
+
+    /**
+     - PUT /fake/body-with-file-schema
+     - For this test, the body for this request much reference a schema named `File`.
+     - parameter body: (body)  
+     - returns: RequestBuilder<Void> 
+     */
+    static func testBodyWithFileSchemaWithRequestBuilder(body: FileSchemaTestClass) -> RequestBuilder<Void>
+    /**
+
+     - parameter query: (query)  
+     - parameter body: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    static func testBodyWithQueryParams(query: String, body: User, apiResponseQueue: DispatchQueue) -> Observable<Void>
+
+    /**
+     - PUT /fake/body-with-query-params
+     - parameter query: (query)  
+     - parameter body: (body)  
+     - returns: RequestBuilder<Void> 
+     */
+    static func testBodyWithQueryParamsWithRequestBuilder(query: String, body: User) -> RequestBuilder<Void>
+    /**
+     To test \"client\" model
+     
+     - parameter body: (body) client model 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Client>
+     */
+    static func testClientModel(body: Client, apiResponseQueue: DispatchQueue) -> Observable<Client>
+
+    /**
+     To test \"client\" model
+     - PATCH /fake
+     - To test \"client\" model
+     - parameter body: (body) client model 
+     - returns: RequestBuilder<Client> 
+     */
+    static func testClientModelWithRequestBuilder(body: Client) -> RequestBuilder<Client>
+    /**
+     Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+     
+     - parameter number: (form) None 
+     - parameter double: (form) None 
+     - parameter patternWithoutDelimiter: (form) None 
+     - parameter byte: (form) None 
+     - parameter integer: (form) None (optional)
+     - parameter int32: (form) None (optional)
+     - parameter int64: (form) None (optional)
+     - parameter float: (form) None (optional)
+     - parameter string: (form) None (optional)
+     - parameter binary: (form) None (optional)
+     - parameter date: (form) None (optional)
+     - parameter dateTime: (form) None (optional)
+     - parameter password: (form) None (optional)
+     - parameter callback: (form) None (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    static func testEndpointParameters(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int, int32: Int, int64: Int64, float: Float, string: String, binary: URL, date: Date, dateTime: Date, password: String, callback: String, apiResponseQueue: DispatchQueue) -> Observable<Void>
+
+    /**
+     Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+     - POST /fake
+     - Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+     - BASIC:
+       - type: http
+       - name: http_basic_test
+     - parameter number: (form) None 
+     - parameter double: (form) None 
+     - parameter patternWithoutDelimiter: (form) None 
+     - parameter byte: (form) None 
+     - parameter integer: (form) None (optional)
+     - parameter int32: (form) None (optional)
+     - parameter int64: (form) None (optional)
+     - parameter float: (form) None (optional)
+     - parameter string: (form) None (optional)
+     - parameter binary: (form) None (optional)
+     - parameter date: (form) None (optional)
+     - parameter dateTime: (form) None (optional)
+     - parameter password: (form) None (optional)
+     - parameter callback: (form) None (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    static func testEndpointParametersWithRequestBuilder(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int, int32: Int, int64: Int64, float: Float, string: String, binary: URL, date: Date, dateTime: Date, password: String, callback: String) -> RequestBuilder<Void>
+    /**
+     To test enum parameters
+     
+     - parameter enumHeaderStringArray: (header) Header parameter enum test (string array) (optional)
+     - parameter enumHeaderString: (header) Header parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryStringArray: (query) Query parameter enum test (string array) (optional)
+     - parameter enumQueryString: (query) Query parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryInteger: (query) Query parameter enum test (double) (optional)
+     - parameter enumQueryDouble: (query) Query parameter enum test (double) (optional)
+     - parameter enumFormStringArray: (form) Form parameter enum test (string array) (optional, default to .dollar)
+     - parameter enumFormString: (form) Form parameter enum test (string) (optional, default to .efg)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    static func testEnumParameters(enumHeaderStringArray: [String], enumHeaderString: EnumHeaderString_testEnumParameters, enumQueryStringArray: [String], enumQueryString: EnumQueryString_testEnumParameters, enumQueryInteger: EnumQueryInteger_testEnumParameters, enumQueryDouble: EnumQueryDouble_testEnumParameters, enumFormStringArray: [String], enumFormString: EnumFormString_testEnumParameters, apiResponseQueue: DispatchQueue) -> Observable<Void>
+
+    /**
+     To test enum parameters
+     - GET /fake
+     - To test enum parameters
+     - parameter enumHeaderStringArray: (header) Header parameter enum test (string array) (optional)
+     - parameter enumHeaderString: (header) Header parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryStringArray: (query) Query parameter enum test (string array) (optional)
+     - parameter enumQueryString: (query) Query parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryInteger: (query) Query parameter enum test (double) (optional)
+     - parameter enumQueryDouble: (query) Query parameter enum test (double) (optional)
+     - parameter enumFormStringArray: (form) Form parameter enum test (string array) (optional, default to .dollar)
+     - parameter enumFormString: (form) Form parameter enum test (string) (optional, default to .efg)
+     - returns: RequestBuilder<Void> 
+     */
+    static func testEnumParametersWithRequestBuilder(enumHeaderStringArray: [String], enumHeaderString: EnumHeaderString_testEnumParameters, enumQueryStringArray: [String], enumQueryString: EnumQueryString_testEnumParameters, enumQueryInteger: EnumQueryInteger_testEnumParameters, enumQueryDouble: EnumQueryDouble_testEnumParameters, enumFormStringArray: [String], enumFormString: EnumFormString_testEnumParameters) -> RequestBuilder<Void>
+    /**
+     Fake endpoint to test group parameters (optional)
+     
+     - parameter requiredStringGroup: (query) Required String in group parameters 
+     - parameter requiredBooleanGroup: (header) Required Boolean in group parameters 
+     - parameter requiredInt64Group: (query) Required Integer in group parameters 
+     - parameter stringGroup: (query) String in group parameters (optional)
+     - parameter booleanGroup: (header) Boolean in group parameters (optional)
+     - parameter int64Group: (query) Integer in group parameters (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    static func testGroupParameters(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int, booleanGroup: Bool, int64Group: Int64, apiResponseQueue: DispatchQueue) -> Observable<Void>
+
+    /**
+     Fake endpoint to test group parameters (optional)
+     - DELETE /fake
+     - Fake endpoint to test group parameters (optional)
+     - parameter requiredStringGroup: (query) Required String in group parameters 
+     - parameter requiredBooleanGroup: (header) Required Boolean in group parameters 
+     - parameter requiredInt64Group: (query) Required Integer in group parameters 
+     - parameter stringGroup: (query) String in group parameters (optional)
+     - parameter booleanGroup: (header) Boolean in group parameters (optional)
+     - parameter int64Group: (query) Integer in group parameters (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    static func testGroupParametersWithRequestBuilder(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int, booleanGroup: Bool, int64Group: Int64) -> RequestBuilder<Void>
+    /**
+     test inline additionalProperties
+     
+     - parameter param: (body) request body 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    static func testInlineAdditionalProperties(param: [String: String], apiResponseQueue: DispatchQueue) -> Observable<Void>
+
+    /**
+     test inline additionalProperties
+     - POST /fake/inline-additionalProperties
+     - parameter param: (body) request body 
+     - returns: RequestBuilder<Void> 
+     */
+    static func testInlineAdditionalPropertiesWithRequestBuilder(param: [String: String]) -> RequestBuilder<Void>
+    /**
+     test json serialization of form data
+     
+     - parameter param: (form) field1 
+     - parameter param2: (form) field2 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    static func testJsonFormData(param: String, param2: String, apiResponseQueue: DispatchQueue) -> Observable<Void>
+
+    /**
+     test json serialization of form data
+     - GET /fake/jsonFormData
+     - parameter param: (form) field1 
+     - parameter param2: (form) field2 
+     - returns: RequestBuilder<Void> 
+     */
+    static func testJsonFormDataWithRequestBuilder(param: String, param2: String) -> RequestBuilder<Void>
+}
+
+extension FakeAPI {
+    /**
+
+     - parameter body: (body) Input boolean as post body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Bool>
+     */
+    static func fakeOuterBooleanSerialize(body: Bool? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Bool> {
         return Observable.create { observer -> Disposable in
             fakeOuterBooleanSerializeWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -40,7 +356,7 @@ open class FakeAPI {
      - parameter body: (body) Input boolean as post body (optional)
      - returns: RequestBuilder<Bool> 
      */
-    open class func fakeOuterBooleanSerializeWithRequestBuilder(body: Bool? = nil) -> RequestBuilder<Bool> {
+    static func fakeOuterBooleanSerializeWithRequestBuilder(body: Bool? = nil) -> RequestBuilder<Bool> {
         let path = "/fake/outer/boolean"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -57,14 +373,13 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
 
      - parameter body: (body) Input composite as post body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<OuterComposite>
      */
-    open class func fakeOuterCompositeSerialize(body: OuterComposite? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<OuterComposite> {
+    static func fakeOuterCompositeSerialize(body: OuterComposite? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<OuterComposite> {
         return Observable.create { observer -> Disposable in
             fakeOuterCompositeSerializeWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -85,7 +400,7 @@ open class FakeAPI {
      - parameter body: (body) Input composite as post body (optional)
      - returns: RequestBuilder<OuterComposite> 
      */
-    open class func fakeOuterCompositeSerializeWithRequestBuilder(body: OuterComposite? = nil) -> RequestBuilder<OuterComposite> {
+    static func fakeOuterCompositeSerializeWithRequestBuilder(body: OuterComposite? = nil) -> RequestBuilder<OuterComposite> {
         let path = "/fake/outer/composite"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -102,14 +417,13 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
 
      - parameter body: (body) Input number as post body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Double>
      */
-    open class func fakeOuterNumberSerialize(body: Double? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Double> {
+    static func fakeOuterNumberSerialize(body: Double? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Double> {
         return Observable.create { observer -> Disposable in
             fakeOuterNumberSerializeWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -130,7 +444,7 @@ open class FakeAPI {
      - parameter body: (body) Input number as post body (optional)
      - returns: RequestBuilder<Double> 
      */
-    open class func fakeOuterNumberSerializeWithRequestBuilder(body: Double? = nil) -> RequestBuilder<Double> {
+    static func fakeOuterNumberSerializeWithRequestBuilder(body: Double? = nil) -> RequestBuilder<Double> {
         let path = "/fake/outer/number"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -147,14 +461,13 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
 
      - parameter body: (body) Input string as post body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<String>
      */
-    open class func fakeOuterStringSerialize(body: String? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<String> {
+    static func fakeOuterStringSerialize(body: String? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<String> {
         return Observable.create { observer -> Disposable in
             fakeOuterStringSerializeWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -175,7 +488,7 @@ open class FakeAPI {
      - parameter body: (body) Input string as post body (optional)
      - returns: RequestBuilder<String> 
      */
-    open class func fakeOuterStringSerializeWithRequestBuilder(body: String? = nil) -> RequestBuilder<String> {
+    static func fakeOuterStringSerializeWithRequestBuilder(body: String? = nil) -> RequestBuilder<String> {
         let path = "/fake/outer/string"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -192,14 +505,13 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
 
      - parameter body: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func testBodyWithFileSchema(body: FileSchemaTestClass, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
+    static func testBodyWithFileSchema(body: FileSchemaTestClass, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             testBodyWithFileSchemaWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -220,7 +532,7 @@ open class FakeAPI {
      - parameter body: (body)  
      - returns: RequestBuilder<Void> 
      */
-    open class func testBodyWithFileSchemaWithRequestBuilder(body: FileSchemaTestClass) -> RequestBuilder<Void> {
+    static func testBodyWithFileSchemaWithRequestBuilder(body: FileSchemaTestClass) -> RequestBuilder<Void> {
         let path = "/fake/body-with-file-schema"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -237,7 +549,6 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "PUT", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
 
      - parameter query: (query)  
@@ -245,7 +556,7 @@ open class FakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func testBodyWithQueryParams(query: String, body: User, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
+    static func testBodyWithQueryParams(query: String, body: User, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             testBodyWithQueryParamsWithRequestBuilder(query: query, body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -266,7 +577,7 @@ open class FakeAPI {
      - parameter body: (body)  
      - returns: RequestBuilder<Void> 
      */
-    open class func testBodyWithQueryParamsWithRequestBuilder(query: String, body: User) -> RequestBuilder<Void> {
+    static func testBodyWithQueryParamsWithRequestBuilder(query: String, body: User) -> RequestBuilder<Void> {
         let path = "/fake/body-with-query-params"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -286,7 +597,6 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "PUT", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      To test \"client\" model
      
@@ -294,7 +604,7 @@ open class FakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Client>
      */
-    open class func testClientModel(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Client> {
+    static func testClientModel(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Client> {
         return Observable.create { observer -> Disposable in
             testClientModelWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -316,7 +626,7 @@ open class FakeAPI {
      - parameter body: (body) client model 
      - returns: RequestBuilder<Client> 
      */
-    open class func testClientModelWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
+    static func testClientModelWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -333,7 +643,6 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "PATCH", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
      
@@ -354,7 +663,7 @@ open class FakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func testEndpointParameters(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: URL? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
+    static func testEndpointParameters(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: URL? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             testEndpointParametersWithRequestBuilder(number: number, double: double, patternWithoutDelimiter: patternWithoutDelimiter, byte: byte, integer: integer, int32: int32, int64: int64, float: float, string: string, binary: binary, date: date, dateTime: dateTime, password: password, callback: callback).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -392,7 +701,7 @@ open class FakeAPI {
      - parameter callback: (form) None (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func testEndpointParametersWithRequestBuilder(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: URL? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil) -> RequestBuilder<Void> {
+    static func testEndpointParametersWithRequestBuilder(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: URL? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil) -> RequestBuilder<Void> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
         let formParams: [String: Any?] = [
@@ -427,74 +736,6 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
-    /**
-     * enum for parameter enumHeaderStringArray
-     */
-    public enum EnumHeaderStringArray_testEnumParameters: String, CaseIterable {
-        case greaterThan = ">"
-        case dollar = "$"
-    }
-
-    /**
-     * enum for parameter enumHeaderString
-     */
-    public enum EnumHeaderString_testEnumParameters: String, CaseIterable {
-        case abc = "_abc"
-        case efg = "-efg"
-        case xyz = "(xyz)"
-    }
-
-    /**
-     * enum for parameter enumQueryStringArray
-     */
-    public enum EnumQueryStringArray_testEnumParameters: String, CaseIterable {
-        case greaterThan = ">"
-        case dollar = "$"
-    }
-
-    /**
-     * enum for parameter enumQueryString
-     */
-    public enum EnumQueryString_testEnumParameters: String, CaseIterable {
-        case abc = "_abc"
-        case efg = "-efg"
-        case xyz = "(xyz)"
-    }
-
-    /**
-     * enum for parameter enumQueryInteger
-     */
-    public enum EnumQueryInteger_testEnumParameters: Int, CaseIterable {
-        case _1 = 1
-        case number2 = -2
-    }
-
-    /**
-     * enum for parameter enumQueryDouble
-     */
-    public enum EnumQueryDouble_testEnumParameters: Double, CaseIterable {
-        case _11 = 1.1
-        case number12 = -1.2
-    }
-
-    /**
-     * enum for parameter enumFormStringArray
-     */
-    public enum EnumFormStringArray_testEnumParameters: String, CaseIterable {
-        case greaterThan = ">"
-        case dollar = "$"
-    }
-
-    /**
-     * enum for parameter enumFormString
-     */
-    public enum EnumFormString_testEnumParameters: String, CaseIterable {
-        case abc = "_abc"
-        case efg = "-efg"
-        case xyz = "(xyz)"
-    }
-
     /**
      To test enum parameters
      
@@ -509,7 +750,7 @@ open class FakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func testEnumParameters(enumHeaderStringArray: [String]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [String]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [String]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
+    static func testEnumParameters(enumHeaderStringArray: [String]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [String]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [String]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             testEnumParametersWithRequestBuilder(enumHeaderStringArray: enumHeaderStringArray, enumHeaderString: enumHeaderString, enumQueryStringArray: enumQueryStringArray, enumQueryString: enumQueryString, enumQueryInteger: enumQueryInteger, enumQueryDouble: enumQueryDouble, enumFormStringArray: enumFormStringArray, enumFormString: enumFormString).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -538,7 +779,7 @@ open class FakeAPI {
      - parameter enumFormString: (form) Form parameter enum test (string) (optional, default to .efg)
      - returns: RequestBuilder<Void> 
      */
-    open class func testEnumParametersWithRequestBuilder(enumHeaderStringArray: [String]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [String]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [String]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil) -> RequestBuilder<Void> {
+    static func testEnumParametersWithRequestBuilder(enumHeaderStringArray: [String]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [String]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [String]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil) -> RequestBuilder<Void> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
         let formParams: [String: Any?] = [
@@ -569,7 +810,6 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Fake endpoint to test group parameters (optional)
      
@@ -582,7 +822,7 @@ open class FakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func testGroupParameters(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
+    static func testGroupParameters(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             testGroupParametersWithRequestBuilder(requiredStringGroup: requiredStringGroup, requiredBooleanGroup: requiredBooleanGroup, requiredInt64Group: requiredInt64Group, stringGroup: stringGroup, booleanGroup: booleanGroup, int64Group: int64Group).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -609,7 +849,7 @@ open class FakeAPI {
      - parameter int64Group: (query) Integer in group parameters (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func testGroupParametersWithRequestBuilder(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil) -> RequestBuilder<Void> {
+    static func testGroupParametersWithRequestBuilder(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil) -> RequestBuilder<Void> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
         let parameters: [String: Any]? = nil
@@ -633,7 +873,6 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "DELETE", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      test inline additionalProperties
      
@@ -641,7 +880,7 @@ open class FakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func testInlineAdditionalProperties(param: [String: String], apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
+    static func testInlineAdditionalProperties(param: [String: String], apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             testInlineAdditionalPropertiesWithRequestBuilder(param: param).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -662,7 +901,7 @@ open class FakeAPI {
      - parameter param: (body) request body 
      - returns: RequestBuilder<Void> 
      */
-    open class func testInlineAdditionalPropertiesWithRequestBuilder(param: [String: String]) -> RequestBuilder<Void> {
+    static func testInlineAdditionalPropertiesWithRequestBuilder(param: [String: String]) -> RequestBuilder<Void> {
         let path = "/fake/inline-additionalProperties"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: param)
@@ -679,7 +918,6 @@ open class FakeAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      test json serialization of form data
      
@@ -688,7 +926,7 @@ open class FakeAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func testJsonFormData(param: String, param2: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
+    static func testJsonFormData(param: String, param2: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
             testJsonFormDataWithRequestBuilder(param: param, param2: param2).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -710,7 +948,7 @@ open class FakeAPI {
      - parameter param2: (form) field2 
      - returns: RequestBuilder<Void> 
      */
-    open class func testJsonFormDataWithRequestBuilder(param: String, param2: String) -> RequestBuilder<Void> {
+    static func testJsonFormDataWithRequestBuilder(param: String, param2: String) -> RequestBuilder<Void> {
         let path = "/fake/jsonFormData"
         let URLString = PetstoreClient.basePath + path
         let formParams: [String: Any?] = [

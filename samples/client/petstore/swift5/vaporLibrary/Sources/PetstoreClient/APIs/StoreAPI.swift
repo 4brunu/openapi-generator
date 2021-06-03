@@ -11,8 +11,32 @@ import Vapor
 import AnyCodable
 #endif
 
-open class StoreAPI {
+        enum DeleteOrder {
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
 
+        enum GetInventory {
+            case http200(value: [String: Int], raw: ClientResponse)
+            case http0(value: [String: Int], raw: ClientResponse)
+        }
+
+        enum GetOrderById {
+            case http200(value: Order, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: Order, raw: ClientResponse)
+        }
+
+        enum PlaceOrder {
+            case http200(value: Order, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http0(value: Order, raw: ClientResponse)
+        }
+
+
+protocol StoreAPI {
     /**
      Delete purchase order by ID
      DELETE /store/order/{order_id}
@@ -20,7 +44,80 @@ open class StoreAPI {
      - parameter orderId: (path) ID of the order that needs to be deleted 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func deleteOrderRaw(orderId: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func deleteOrderRaw(orderId: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Delete purchase order by ID
+     DELETE /store/order/{order_id}
+     For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
+     - parameter orderId: (path) ID of the order that needs to be deleted 
+     - returns: `EventLoopFuture` of `DeleteOrder` 
+     */
+    static func deleteOrder(orderId: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<DeleteOrder>
+    /**
+     Returns pet inventories by status
+     GET /store/inventory
+     Returns a map of status codes to quantities
+     - API Key:
+       - type: apiKey api_key 
+       - name: api_key
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func getInventoryRaw(headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Returns pet inventories by status
+     GET /store/inventory
+     Returns a map of status codes to quantities
+     - API Key:
+       - type: apiKey api_key 
+       - name: api_key
+     - returns: `EventLoopFuture` of `GetInventory` 
+     */
+    static func getInventory(headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<GetInventory>
+    /**
+     Find purchase order by ID
+     GET /store/order/{order_id}
+     For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions
+     - parameter orderId: (path) ID of pet that needs to be fetched 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func getOrderByIdRaw(orderId: Int64, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Find purchase order by ID
+     GET /store/order/{order_id}
+     For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions
+     - parameter orderId: (path) ID of pet that needs to be fetched 
+     - returns: `EventLoopFuture` of `GetOrderById` 
+     */
+    static func getOrderById(orderId: Int64, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<GetOrderById>
+    /**
+     Place an order for a pet
+     POST /store/order
+     - parameter body: (body) order placed for purchasing the pet 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func placeOrderRaw(body: Order, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Place an order for a pet
+     POST /store/order
+     - parameter body: (body) order placed for purchasing the pet 
+     - returns: `EventLoopFuture` of `PlaceOrder` 
+     */
+    static func placeOrder(body: Order, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<PlaceOrder>
+}
+
+extension StoreAPI {
+    /**
+     Delete purchase order by ID
+     DELETE /store/order/{order_id}
+     For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
+     - parameter orderId: (path) ID of the order that needs to be deleted 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func deleteOrderRaw(orderId: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/store/order/{order_id}"
         let orderIdPreEscape = String(describing: orderId)
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -40,12 +137,6 @@ open class StoreAPI {
         }
     }
 
-    public enum DeleteOrder {
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Delete purchase order by ID
      DELETE /store/order/{order_id}
@@ -53,7 +144,7 @@ open class StoreAPI {
      - parameter orderId: (path) ID of the order that needs to be deleted 
      - returns: `EventLoopFuture` of `DeleteOrder` 
      */
-    open class func deleteOrder(orderId: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<DeleteOrder> {
+    static func deleteOrder(orderId: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<DeleteOrder> {
         return deleteOrderRaw(orderId: orderId, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> DeleteOrder in
             switch response.status.code {
             case 400:
@@ -66,7 +157,6 @@ open class StoreAPI {
         }
     }
 
-
     /**
      Returns pet inventories by status
      GET /store/inventory
@@ -76,7 +166,7 @@ open class StoreAPI {
        - name: api_key
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func getInventoryRaw(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func getInventoryRaw(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/store/inventory"
         let URLString = PetstoreClient.basePath + path
 
@@ -93,11 +183,6 @@ open class StoreAPI {
         }
     }
 
-    public enum GetInventory {
-        case http200(value: [String: Int], raw: ClientResponse)
-        case http0(value: [String: Int], raw: ClientResponse)
-    }
-
     /**
      Returns pet inventories by status
      GET /store/inventory
@@ -107,7 +192,7 @@ open class StoreAPI {
        - name: api_key
      - returns: `EventLoopFuture` of `GetInventory` 
      */
-    open class func getInventory(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetInventory> {
+    static func getInventory(headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetInventory> {
         return getInventoryRaw(headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> GetInventory in
             switch response.status.code {
             case 200:
@@ -118,7 +203,6 @@ open class StoreAPI {
         }
     }
 
-
     /**
      Find purchase order by ID
      GET /store/order/{order_id}
@@ -126,7 +210,7 @@ open class StoreAPI {
      - parameter orderId: (path) ID of pet that needs to be fetched 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func getOrderByIdRaw(orderId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func getOrderByIdRaw(orderId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/store/order/{order_id}"
         let orderIdPreEscape = String(describing: orderId)
         let orderIdPostEscape = orderIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -146,13 +230,6 @@ open class StoreAPI {
         }
     }
 
-    public enum GetOrderById {
-        case http200(value: Order, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: Order, raw: ClientResponse)
-    }
-
     /**
      Find purchase order by ID
      GET /store/order/{order_id}
@@ -160,7 +237,7 @@ open class StoreAPI {
      - parameter orderId: (path) ID of pet that needs to be fetched 
      - returns: `EventLoopFuture` of `GetOrderById` 
      */
-    open class func getOrderById(orderId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetOrderById> {
+    static func getOrderById(orderId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetOrderById> {
         return getOrderByIdRaw(orderId: orderId, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> GetOrderById in
             switch response.status.code {
             case 200:
@@ -175,14 +252,13 @@ open class StoreAPI {
         }
     }
 
-
     /**
      Place an order for a pet
      POST /store/order
      - parameter body: (body) order placed for purchasing the pet 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func placeOrderRaw(body: Order, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func placeOrderRaw(body: Order, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/store/order"
         let URLString = PetstoreClient.basePath + path
 
@@ -200,19 +276,13 @@ open class StoreAPI {
         }
     }
 
-    public enum PlaceOrder {
-        case http200(value: Order, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http0(value: Order, raw: ClientResponse)
-    }
-
     /**
      Place an order for a pet
      POST /store/order
      - parameter body: (body) order placed for purchasing the pet 
      - returns: `EventLoopFuture` of `PlaceOrder` 
      */
-    open class func placeOrder(body: Order, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<PlaceOrder> {
+    static func placeOrder(body: Order, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<PlaceOrder> {
         return placeOrderRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> PlaceOrder in
             switch response.status.code {
             case 200:

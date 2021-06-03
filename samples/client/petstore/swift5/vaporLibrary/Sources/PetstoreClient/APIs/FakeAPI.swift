@@ -11,8 +11,147 @@ import Vapor
 import AnyCodable
 #endif
 
-open class FakeAPI {
+        enum CreateXmlItem {
+            case http200(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
 
+        enum FakeOuterBooleanSerialize {
+            case http200(value: Bool, raw: ClientResponse)
+            case http0(value: Bool, raw: ClientResponse)
+        }
+
+        enum FakeOuterCompositeSerialize {
+            case http200(value: OuterComposite, raw: ClientResponse)
+            case http0(value: OuterComposite, raw: ClientResponse)
+        }
+
+        enum FakeOuterNumberSerialize {
+            case http200(value: Double, raw: ClientResponse)
+            case http0(value: Double, raw: ClientResponse)
+        }
+
+        enum FakeOuterStringSerialize {
+            case http200(value: String, raw: ClientResponse)
+            case http0(value: String, raw: ClientResponse)
+        }
+
+        enum TestBodyWithFileSchema {
+            case http200(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum TestBodyWithQueryParams {
+            case http200(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum TestClientModel {
+            case http200(value: Client, raw: ClientResponse)
+            case http0(value: Client, raw: ClientResponse)
+        }
+
+        enum TestEndpointParameters {
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+    /**
+     * enum for parameter enumHeaderStringArray
+     */
+    enum EnumHeaderStringArray_testEnumParameters: String, CaseIterable, Content {
+        case greaterThan = ">"
+        case dollar = "$"
+    }
+
+    /**
+     * enum for parameter enumHeaderString
+     */
+    enum EnumHeaderString_testEnumParameters: String, CaseIterable, Content {
+        case abc = "_abc"
+        case efg = "-efg"
+        case xyz = "(xyz)"
+    }
+
+    /**
+     * enum for parameter enumQueryStringArray
+     */
+    enum EnumQueryStringArray_testEnumParameters: String, CaseIterable, Content {
+        case greaterThan = ">"
+        case dollar = "$"
+    }
+
+    /**
+     * enum for parameter enumQueryString
+     */
+    enum EnumQueryString_testEnumParameters: String, CaseIterable, Content {
+        case abc = "_abc"
+        case efg = "-efg"
+        case xyz = "(xyz)"
+    }
+
+    /**
+     * enum for parameter enumQueryInteger
+     */
+    enum EnumQueryInteger_testEnumParameters: Int, CaseIterable, Content {
+        case _1 = 1
+        case number2 = -2
+    }
+
+    /**
+     * enum for parameter enumQueryDouble
+     */
+    enum EnumQueryDouble_testEnumParameters: Double, CaseIterable, Content {
+        case _11 = 1.1
+        case number12 = -1.2
+    }
+
+    /**
+     * enum for parameter enumFormStringArray
+     */
+    enum EnumFormStringArray_testEnumParameters: String, CaseIterable, Content {
+        case greaterThan = ">"
+        case dollar = "$"
+    }
+
+    /**
+     * enum for parameter enumFormString
+     */
+    enum EnumFormString_testEnumParameters: String, CaseIterable, Content {
+        case abc = "_abc"
+        case efg = "-efg"
+        case xyz = "(xyz)"
+    }
+
+
+        enum TestEnumParameters {
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum TestGroupParameters {
+            case http400(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum TestInlineAdditionalProperties {
+            case http200(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum TestJsonFormData {
+            case http200(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum TestQueryParameterCollectionFormat {
+            case http200(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+
+protocol FakeAPI {
     /**
      creates an XmlItem
      POST /fake/create_xml_item
@@ -20,7 +159,296 @@ open class FakeAPI {
      - parameter xmlItem: (body) XmlItem Body 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func createXmlItemRaw(xmlItem: XmlItem, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func createXmlItemRaw(xmlItem: XmlItem, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     creates an XmlItem
+     POST /fake/create_xml_item
+     this route creates an XmlItem
+     - parameter xmlItem: (body) XmlItem Body 
+     - returns: `EventLoopFuture` of `CreateXmlItem` 
+     */
+    static func createXmlItem(xmlItem: XmlItem, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<CreateXmlItem>
+    /**
+     POST /fake/outer/boolean
+     Test serialization of outer boolean types
+     - parameter body: (body) Input boolean as post body (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func fakeOuterBooleanSerializeRaw(body: Bool, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     POST /fake/outer/boolean
+     Test serialization of outer boolean types
+     - parameter body: (body) Input boolean as post body (optional)
+     - returns: `EventLoopFuture` of `FakeOuterBooleanSerialize` 
+     */
+    static func fakeOuterBooleanSerialize(body: Bool, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<FakeOuterBooleanSerialize>
+    /**
+     POST /fake/outer/composite
+     Test serialization of object with outer number type
+     - parameter body: (body) Input composite as post body (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func fakeOuterCompositeSerializeRaw(body: OuterComposite, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     POST /fake/outer/composite
+     Test serialization of object with outer number type
+     - parameter body: (body) Input composite as post body (optional)
+     - returns: `EventLoopFuture` of `FakeOuterCompositeSerialize` 
+     */
+    static func fakeOuterCompositeSerialize(body: OuterComposite, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<FakeOuterCompositeSerialize>
+    /**
+     POST /fake/outer/number
+     Test serialization of outer number types
+     - parameter body: (body) Input number as post body (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func fakeOuterNumberSerializeRaw(body: Double, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     POST /fake/outer/number
+     Test serialization of outer number types
+     - parameter body: (body) Input number as post body (optional)
+     - returns: `EventLoopFuture` of `FakeOuterNumberSerialize` 
+     */
+    static func fakeOuterNumberSerialize(body: Double, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<FakeOuterNumberSerialize>
+    /**
+     POST /fake/outer/string
+     Test serialization of outer string types
+     - parameter body: (body) Input string as post body (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func fakeOuterStringSerializeRaw(body: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     POST /fake/outer/string
+     Test serialization of outer string types
+     - parameter body: (body) Input string as post body (optional)
+     - returns: `EventLoopFuture` of `FakeOuterStringSerialize` 
+     */
+    static func fakeOuterStringSerialize(body: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<FakeOuterStringSerialize>
+    /**
+     PUT /fake/body-with-file-schema
+     For this test, the body for this request much reference a schema named `File`.
+     - parameter body: (body)  
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testBodyWithFileSchemaRaw(body: FileSchemaTestClass, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     PUT /fake/body-with-file-schema
+     For this test, the body for this request much reference a schema named `File`.
+     - parameter body: (body)  
+     - returns: `EventLoopFuture` of `TestBodyWithFileSchema` 
+     */
+    static func testBodyWithFileSchema(body: FileSchemaTestClass, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestBodyWithFileSchema>
+    /**
+     PUT /fake/body-with-query-params
+     - parameter query: (query)  
+     - parameter body: (body)  
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testBodyWithQueryParamsRaw(query: String, body: User, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     PUT /fake/body-with-query-params
+     - parameter query: (query)  
+     - parameter body: (body)  
+     - returns: `EventLoopFuture` of `TestBodyWithQueryParams` 
+     */
+    static func testBodyWithQueryParams(query: String, body: User, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestBodyWithQueryParams>
+    /**
+     To test \"client\" model
+     PATCH /fake
+     To test \"client\" model
+     - parameter body: (body) client model 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testClientModelRaw(body: Client, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     To test \"client\" model
+     PATCH /fake
+     To test \"client\" model
+     - parameter body: (body) client model 
+     - returns: `EventLoopFuture` of `TestClientModel` 
+     */
+    static func testClientModel(body: Client, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestClientModel>
+    /**
+     Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+     POST /fake
+     Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+     - BASIC:
+       - type: http
+       - name: http_basic_test
+     - parameter number: (form) None 
+     - parameter double: (form) None 
+     - parameter patternWithoutDelimiter: (form) None 
+     - parameter byte: (form) None 
+     - parameter integer: (form) None (optional)
+     - parameter int32: (form) None (optional)
+     - parameter int64: (form) None (optional)
+     - parameter float: (form) None (optional)
+     - parameter string: (form) None (optional)
+     - parameter binary: (form) None (optional)
+     - parameter date: (form) None (optional)
+     - parameter dateTime: (form) None (optional)
+     - parameter password: (form) None (optional)
+     - parameter callback: (form) None (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testEndpointParametersRaw(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int, int32: Int, int64: Int64, float: Float, string: String, binary: Data, date: Date, dateTime: Date, password: String, callback: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+     POST /fake
+     Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+     - BASIC:
+       - type: http
+       - name: http_basic_test
+     - parameter number: (form) None 
+     - parameter double: (form) None 
+     - parameter patternWithoutDelimiter: (form) None 
+     - parameter byte: (form) None 
+     - parameter integer: (form) None (optional)
+     - parameter int32: (form) None (optional)
+     - parameter int64: (form) None (optional)
+     - parameter float: (form) None (optional)
+     - parameter string: (form) None (optional)
+     - parameter binary: (form) None (optional)
+     - parameter date: (form) None (optional)
+     - parameter dateTime: (form) None (optional)
+     - parameter password: (form) None (optional)
+     - parameter callback: (form) None (optional)
+     - returns: `EventLoopFuture` of `TestEndpointParameters` 
+     */
+    static func testEndpointParameters(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int, int32: Int, int64: Int64, float: Float, string: String, binary: Data, date: Date, dateTime: Date, password: String, callback: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestEndpointParameters>
+    /**
+     To test enum parameters
+     GET /fake
+     To test enum parameters
+     - parameter enumHeaderStringArray: (header) Header parameter enum test (string array) (optional)
+     - parameter enumHeaderString: (header) Header parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryStringArray: (query) Query parameter enum test (string array) (optional)
+     - parameter enumQueryString: (query) Query parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryInteger: (query) Query parameter enum test (double) (optional)
+     - parameter enumQueryDouble: (query) Query parameter enum test (double) (optional)
+     - parameter enumFormStringArray: (form) Form parameter enum test (string array) (optional, default to .dollar)
+     - parameter enumFormString: (form) Form parameter enum test (string) (optional, default to .efg)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testEnumParametersRaw(enumHeaderStringArray: [EnumHeaderStringArray_testEnumParameters], enumHeaderString: EnumHeaderString_testEnumParameters, enumQueryStringArray: [EnumQueryStringArray_testEnumParameters], enumQueryString: EnumQueryString_testEnumParameters, enumQueryInteger: EnumQueryInteger_testEnumParameters, enumQueryDouble: EnumQueryDouble_testEnumParameters, enumFormStringArray: [EnumFormStringArray_testEnumParameters], enumFormString: EnumFormString_testEnumParameters, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     To test enum parameters
+     GET /fake
+     To test enum parameters
+     - parameter enumHeaderStringArray: (header) Header parameter enum test (string array) (optional)
+     - parameter enumHeaderString: (header) Header parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryStringArray: (query) Query parameter enum test (string array) (optional)
+     - parameter enumQueryString: (query) Query parameter enum test (string) (optional, default to .efg)
+     - parameter enumQueryInteger: (query) Query parameter enum test (double) (optional)
+     - parameter enumQueryDouble: (query) Query parameter enum test (double) (optional)
+     - parameter enumFormStringArray: (form) Form parameter enum test (string array) (optional, default to .dollar)
+     - parameter enumFormString: (form) Form parameter enum test (string) (optional, default to .efg)
+     - returns: `EventLoopFuture` of `TestEnumParameters` 
+     */
+    static func testEnumParameters(enumHeaderStringArray: [EnumHeaderStringArray_testEnumParameters], enumHeaderString: EnumHeaderString_testEnumParameters, enumQueryStringArray: [EnumQueryStringArray_testEnumParameters], enumQueryString: EnumQueryString_testEnumParameters, enumQueryInteger: EnumQueryInteger_testEnumParameters, enumQueryDouble: EnumQueryDouble_testEnumParameters, enumFormStringArray: [EnumFormStringArray_testEnumParameters], enumFormString: EnumFormString_testEnumParameters, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestEnumParameters>
+    /**
+     Fake endpoint to test group parameters (optional)
+     DELETE /fake
+     Fake endpoint to test group parameters (optional)
+     - parameter requiredStringGroup: (query) Required String in group parameters 
+     - parameter requiredBooleanGroup: (header) Required Boolean in group parameters 
+     - parameter requiredInt64Group: (query) Required Integer in group parameters 
+     - parameter stringGroup: (query) String in group parameters (optional)
+     - parameter booleanGroup: (header) Boolean in group parameters (optional)
+     - parameter int64Group: (query) Integer in group parameters (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testGroupParametersRaw(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int, booleanGroup: Bool, int64Group: Int64, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Fake endpoint to test group parameters (optional)
+     DELETE /fake
+     Fake endpoint to test group parameters (optional)
+     - parameter requiredStringGroup: (query) Required String in group parameters 
+     - parameter requiredBooleanGroup: (header) Required Boolean in group parameters 
+     - parameter requiredInt64Group: (query) Required Integer in group parameters 
+     - parameter stringGroup: (query) String in group parameters (optional)
+     - parameter booleanGroup: (header) Boolean in group parameters (optional)
+     - parameter int64Group: (query) Integer in group parameters (optional)
+     - returns: `EventLoopFuture` of `TestGroupParameters` 
+     */
+    static func testGroupParameters(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int, booleanGroup: Bool, int64Group: Int64, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestGroupParameters>
+    /**
+     test inline additionalProperties
+     POST /fake/inline-additionalProperties
+     - parameter param: (body) request body 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testInlineAdditionalPropertiesRaw(param: [String: String], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     test inline additionalProperties
+     POST /fake/inline-additionalProperties
+     - parameter param: (body) request body 
+     - returns: `EventLoopFuture` of `TestInlineAdditionalProperties` 
+     */
+    static func testInlineAdditionalProperties(param: [String: String], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestInlineAdditionalProperties>
+    /**
+     test json serialization of form data
+     GET /fake/jsonFormData
+     - parameter param: (form) field1 
+     - parameter param2: (form) field2 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testJsonFormDataRaw(param: String, param2: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     test json serialization of form data
+     GET /fake/jsonFormData
+     - parameter param: (form) field1 
+     - parameter param2: (form) field2 
+     - returns: `EventLoopFuture` of `TestJsonFormData` 
+     */
+    static func testJsonFormData(param: String, param2: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestJsonFormData>
+    /**
+     PUT /fake/test-query-paramters
+     To test the collection format in query parameters
+     - parameter pipe: (query)  
+     - parameter ioutil: (query)  
+     - parameter http: (query)  
+     - parameter url: (query)  
+     - parameter context: (query)  
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func testQueryParameterCollectionFormatRaw(pipe: [String], ioutil: [String], http: [String], url: [String], context: [String], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     PUT /fake/test-query-paramters
+     To test the collection format in query parameters
+     - parameter pipe: (query)  
+     - parameter ioutil: (query)  
+     - parameter http: (query)  
+     - parameter url: (query)  
+     - parameter context: (query)  
+     - returns: `EventLoopFuture` of `TestQueryParameterCollectionFormat` 
+     */
+    static func testQueryParameterCollectionFormat(pipe: [String], ioutil: [String], http: [String], url: [String], context: [String], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<TestQueryParameterCollectionFormat>
+}
+
+extension FakeAPI {
+    /**
+     creates an XmlItem
+     POST /fake/create_xml_item
+     this route creates an XmlItem
+     - parameter xmlItem: (body) XmlItem Body 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func createXmlItemRaw(xmlItem: XmlItem, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/create_xml_item"
         let URLString = PetstoreClient.basePath + path
 
@@ -38,11 +466,6 @@ open class FakeAPI {
         }
     }
 
-    public enum CreateXmlItem {
-        case http200(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      creates an XmlItem
      POST /fake/create_xml_item
@@ -50,7 +473,7 @@ open class FakeAPI {
      - parameter xmlItem: (body) XmlItem Body 
      - returns: `EventLoopFuture` of `CreateXmlItem` 
      */
-    open class func createXmlItem(xmlItem: XmlItem, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateXmlItem> {
+    static func createXmlItem(xmlItem: XmlItem, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<CreateXmlItem> {
         return createXmlItemRaw(xmlItem: xmlItem, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> CreateXmlItem in
             switch response.status.code {
             case 200:
@@ -61,14 +484,13 @@ open class FakeAPI {
         }
     }
 
-
     /**
      POST /fake/outer/boolean
      Test serialization of outer boolean types
      - parameter body: (body) Input boolean as post body (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func fakeOuterBooleanSerializeRaw(body: Bool? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func fakeOuterBooleanSerializeRaw(body: Bool? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/outer/boolean"
         let URLString = PetstoreClient.basePath + path
 
@@ -89,18 +511,13 @@ open class FakeAPI {
         }
     }
 
-    public enum FakeOuterBooleanSerialize {
-        case http200(value: Bool, raw: ClientResponse)
-        case http0(value: Bool, raw: ClientResponse)
-    }
-
     /**
      POST /fake/outer/boolean
      Test serialization of outer boolean types
      - parameter body: (body) Input boolean as post body (optional)
      - returns: `EventLoopFuture` of `FakeOuterBooleanSerialize` 
      */
-    open class func fakeOuterBooleanSerialize(body: Bool? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterBooleanSerialize> {
+    static func fakeOuterBooleanSerialize(body: Bool? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterBooleanSerialize> {
         return fakeOuterBooleanSerializeRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> FakeOuterBooleanSerialize in
             switch response.status.code {
             case 200:
@@ -111,14 +528,13 @@ open class FakeAPI {
         }
     }
 
-
     /**
      POST /fake/outer/composite
      Test serialization of object with outer number type
      - parameter body: (body) Input composite as post body (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func fakeOuterCompositeSerializeRaw(body: OuterComposite? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func fakeOuterCompositeSerializeRaw(body: OuterComposite? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/outer/composite"
         let URLString = PetstoreClient.basePath + path
 
@@ -139,18 +555,13 @@ open class FakeAPI {
         }
     }
 
-    public enum FakeOuterCompositeSerialize {
-        case http200(value: OuterComposite, raw: ClientResponse)
-        case http0(value: OuterComposite, raw: ClientResponse)
-    }
-
     /**
      POST /fake/outer/composite
      Test serialization of object with outer number type
      - parameter body: (body) Input composite as post body (optional)
      - returns: `EventLoopFuture` of `FakeOuterCompositeSerialize` 
      */
-    open class func fakeOuterCompositeSerialize(body: OuterComposite? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterCompositeSerialize> {
+    static func fakeOuterCompositeSerialize(body: OuterComposite? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterCompositeSerialize> {
         return fakeOuterCompositeSerializeRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> FakeOuterCompositeSerialize in
             switch response.status.code {
             case 200:
@@ -161,14 +572,13 @@ open class FakeAPI {
         }
     }
 
-
     /**
      POST /fake/outer/number
      Test serialization of outer number types
      - parameter body: (body) Input number as post body (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func fakeOuterNumberSerializeRaw(body: Double? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func fakeOuterNumberSerializeRaw(body: Double? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/outer/number"
         let URLString = PetstoreClient.basePath + path
 
@@ -189,18 +599,13 @@ open class FakeAPI {
         }
     }
 
-    public enum FakeOuterNumberSerialize {
-        case http200(value: Double, raw: ClientResponse)
-        case http0(value: Double, raw: ClientResponse)
-    }
-
     /**
      POST /fake/outer/number
      Test serialization of outer number types
      - parameter body: (body) Input number as post body (optional)
      - returns: `EventLoopFuture` of `FakeOuterNumberSerialize` 
      */
-    open class func fakeOuterNumberSerialize(body: Double? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterNumberSerialize> {
+    static func fakeOuterNumberSerialize(body: Double? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterNumberSerialize> {
         return fakeOuterNumberSerializeRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> FakeOuterNumberSerialize in
             switch response.status.code {
             case 200:
@@ -211,14 +616,13 @@ open class FakeAPI {
         }
     }
 
-
     /**
      POST /fake/outer/string
      Test serialization of outer string types
      - parameter body: (body) Input string as post body (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func fakeOuterStringSerializeRaw(body: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func fakeOuterStringSerializeRaw(body: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/outer/string"
         let URLString = PetstoreClient.basePath + path
 
@@ -239,18 +643,13 @@ open class FakeAPI {
         }
     }
 
-    public enum FakeOuterStringSerialize {
-        case http200(value: String, raw: ClientResponse)
-        case http0(value: String, raw: ClientResponse)
-    }
-
     /**
      POST /fake/outer/string
      Test serialization of outer string types
      - parameter body: (body) Input string as post body (optional)
      - returns: `EventLoopFuture` of `FakeOuterStringSerialize` 
      */
-    open class func fakeOuterStringSerialize(body: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterStringSerialize> {
+    static func fakeOuterStringSerialize(body: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FakeOuterStringSerialize> {
         return fakeOuterStringSerializeRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> FakeOuterStringSerialize in
             switch response.status.code {
             case 200:
@@ -261,14 +660,13 @@ open class FakeAPI {
         }
     }
 
-
     /**
      PUT /fake/body-with-file-schema
      For this test, the body for this request much reference a schema named `File`.
      - parameter body: (body)  
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testBodyWithFileSchemaRaw(body: FileSchemaTestClass, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testBodyWithFileSchemaRaw(body: FileSchemaTestClass, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/body-with-file-schema"
         let URLString = PetstoreClient.basePath + path
 
@@ -286,18 +684,13 @@ open class FakeAPI {
         }
     }
 
-    public enum TestBodyWithFileSchema {
-        case http200(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      PUT /fake/body-with-file-schema
      For this test, the body for this request much reference a schema named `File`.
      - parameter body: (body)  
      - returns: `EventLoopFuture` of `TestBodyWithFileSchema` 
      */
-    open class func testBodyWithFileSchema(body: FileSchemaTestClass, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestBodyWithFileSchema> {
+    static func testBodyWithFileSchema(body: FileSchemaTestClass, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestBodyWithFileSchema> {
         return testBodyWithFileSchemaRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestBodyWithFileSchema in
             switch response.status.code {
             case 200:
@@ -308,14 +701,13 @@ open class FakeAPI {
         }
     }
 
-
     /**
      PUT /fake/body-with-query-params
      - parameter query: (query)  
      - parameter body: (body)  
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testBodyWithQueryParamsRaw(query: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testBodyWithQueryParamsRaw(query: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/body-with-query-params"
         let URLString = PetstoreClient.basePath + path
 
@@ -325,20 +717,12 @@ open class FakeAPI {
 
         return apiClient.send(.PUT, headers: headers, to: URI(string: URLString)) { request in
             try Configuration.apiWrapper(&request)
-            
-            struct QueryParams: Content {
-                var query: String
-            }
+
             try request.query.encode(QueryParams(query: query))
             try request.content.encode(body, using: Configuration.contentConfiguration.requireEncoder(for: User.defaultContentType))
             
             try beforeSend(&request)
         }
-    }
-
-    public enum TestBodyWithQueryParams {
-        case http200(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
     }
 
     /**
@@ -347,7 +731,7 @@ open class FakeAPI {
      - parameter body: (body)  
      - returns: `EventLoopFuture` of `TestBodyWithQueryParams` 
      */
-    open class func testBodyWithQueryParams(query: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestBodyWithQueryParams> {
+    static func testBodyWithQueryParams(query: String, body: User, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestBodyWithQueryParams> {
         return testBodyWithQueryParamsRaw(query: query, body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestBodyWithQueryParams in
             switch response.status.code {
             case 200:
@@ -358,7 +742,6 @@ open class FakeAPI {
         }
     }
 
-
     /**
      To test \"client\" model
      PATCH /fake
@@ -366,7 +749,7 @@ open class FakeAPI {
      - parameter body: (body) client model 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testClientModelRaw(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testClientModelRaw(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
 
@@ -384,11 +767,6 @@ open class FakeAPI {
         }
     }
 
-    public enum TestClientModel {
-        case http200(value: Client, raw: ClientResponse)
-        case http0(value: Client, raw: ClientResponse)
-    }
-
     /**
      To test \"client\" model
      PATCH /fake
@@ -396,7 +774,7 @@ open class FakeAPI {
      - parameter body: (body) client model 
      - returns: `EventLoopFuture` of `TestClientModel` 
      */
-    open class func testClientModel(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestClientModel> {
+    static func testClientModel(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestClientModel> {
         return testClientModelRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestClientModel in
             switch response.status.code {
             case 200:
@@ -406,7 +784,6 @@ open class FakeAPI {
             }
         }
     }
-
 
     /**
      Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
@@ -431,7 +808,7 @@ open class FakeAPI {
      - parameter callback: (form) None (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testEndpointParametersRaw(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: Data? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testEndpointParametersRaw(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: Data? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
 
@@ -465,12 +842,6 @@ open class FakeAPI {
         }
     }
 
-    public enum TestEndpointParameters {
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
      POST /fake
@@ -494,7 +865,7 @@ open class FakeAPI {
      - parameter callback: (form) None (optional)
      - returns: `EventLoopFuture` of `TestEndpointParameters` 
      */
-    open class func testEndpointParameters(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: Data? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestEndpointParameters> {
+    static func testEndpointParameters(number: Double, double: Double, patternWithoutDelimiter: String, byte: Data, integer: Int? = nil, int32: Int? = nil, int64: Int64? = nil, float: Float? = nil, string: String? = nil, binary: Data? = nil, date: Date? = nil, dateTime: Date? = nil, password: String? = nil, callback: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestEndpointParameters> {
         return testEndpointParametersRaw(number: number, double: double, patternWithoutDelimiter: patternWithoutDelimiter, byte: byte, integer: integer, int32: int32, int64: int64, float: float, string: string, binary: binary, date: date, dateTime: dateTime, password: password, callback: callback, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestEndpointParameters in
             switch response.status.code {
             case 400:
@@ -505,74 +876,6 @@ open class FakeAPI {
                 return .http0(value: (), raw: response)
             }
         }
-    }
-
-
-    /**
-     * enum for parameter enumHeaderStringArray
-     */
-    public enum EnumHeaderStringArray_testEnumParameters: String, CaseIterable, Content {
-        case greaterThan = ">"
-        case dollar = "$"
-    }
-
-    /**
-     * enum for parameter enumHeaderString
-     */
-    public enum EnumHeaderString_testEnumParameters: String, CaseIterable, Content {
-        case abc = "_abc"
-        case efg = "-efg"
-        case xyz = "(xyz)"
-    }
-
-    /**
-     * enum for parameter enumQueryStringArray
-     */
-    public enum EnumQueryStringArray_testEnumParameters: String, CaseIterable, Content {
-        case greaterThan = ">"
-        case dollar = "$"
-    }
-
-    /**
-     * enum for parameter enumQueryString
-     */
-    public enum EnumQueryString_testEnumParameters: String, CaseIterable, Content {
-        case abc = "_abc"
-        case efg = "-efg"
-        case xyz = "(xyz)"
-    }
-
-    /**
-     * enum for parameter enumQueryInteger
-     */
-    public enum EnumQueryInteger_testEnumParameters: Int, CaseIterable, Content {
-        case _1 = 1
-        case number2 = -2
-    }
-
-    /**
-     * enum for parameter enumQueryDouble
-     */
-    public enum EnumQueryDouble_testEnumParameters: Double, CaseIterable, Content {
-        case _11 = 1.1
-        case number12 = -1.2
-    }
-
-    /**
-     * enum for parameter enumFormStringArray
-     */
-    public enum EnumFormStringArray_testEnumParameters: String, CaseIterable, Content {
-        case greaterThan = ">"
-        case dollar = "$"
-    }
-
-    /**
-     * enum for parameter enumFormString
-     */
-    public enum EnumFormString_testEnumParameters: String, CaseIterable, Content {
-        case abc = "_abc"
-        case efg = "-efg"
-        case xyz = "(xyz)"
     }
 
     /**
@@ -589,7 +892,7 @@ open class FakeAPI {
      - parameter enumFormString: (form) Form parameter enum test (string) (optional, default to .efg)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testEnumParametersRaw(enumHeaderStringArray: [EnumHeaderStringArray_testEnumParameters]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [EnumQueryStringArray_testEnumParameters]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [EnumFormStringArray_testEnumParameters]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testEnumParametersRaw(enumHeaderStringArray: [EnumHeaderStringArray_testEnumParameters]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [EnumQueryStringArray_testEnumParameters]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [EnumFormStringArray_testEnumParameters]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
 
@@ -621,12 +924,6 @@ open class FakeAPI {
         }
     }
 
-    public enum TestEnumParameters {
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      To test enum parameters
      GET /fake
@@ -641,7 +938,7 @@ open class FakeAPI {
      - parameter enumFormString: (form) Form parameter enum test (string) (optional, default to .efg)
      - returns: `EventLoopFuture` of `TestEnumParameters` 
      */
-    open class func testEnumParameters(enumHeaderStringArray: [EnumHeaderStringArray_testEnumParameters]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [EnumQueryStringArray_testEnumParameters]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [EnumFormStringArray_testEnumParameters]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestEnumParameters> {
+    static func testEnumParameters(enumHeaderStringArray: [EnumHeaderStringArray_testEnumParameters]? = nil, enumHeaderString: EnumHeaderString_testEnumParameters? = nil, enumQueryStringArray: [EnumQueryStringArray_testEnumParameters]? = nil, enumQueryString: EnumQueryString_testEnumParameters? = nil, enumQueryInteger: EnumQueryInteger_testEnumParameters? = nil, enumQueryDouble: EnumQueryDouble_testEnumParameters? = nil, enumFormStringArray: [EnumFormStringArray_testEnumParameters]? = nil, enumFormString: EnumFormString_testEnumParameters? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestEnumParameters> {
         return testEnumParametersRaw(enumHeaderStringArray: enumHeaderStringArray, enumHeaderString: enumHeaderString, enumQueryStringArray: enumQueryStringArray, enumQueryString: enumQueryString, enumQueryInteger: enumQueryInteger, enumQueryDouble: enumQueryDouble, enumFormStringArray: enumFormStringArray, enumFormString: enumFormString, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestEnumParameters in
             switch response.status.code {
             case 400:
@@ -653,7 +950,6 @@ open class FakeAPI {
             }
         }
     }
-
 
     /**
      Fake endpoint to test group parameters (optional)
@@ -667,7 +963,7 @@ open class FakeAPI {
      - parameter int64Group: (query) Integer in group parameters (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testGroupParametersRaw(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testGroupParametersRaw(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake"
         let URLString = PetstoreClient.basePath + path
 
@@ -694,11 +990,6 @@ open class FakeAPI {
         }
     }
 
-    public enum TestGroupParameters {
-        case http400(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Fake endpoint to test group parameters (optional)
      DELETE /fake
@@ -711,7 +1002,7 @@ open class FakeAPI {
      - parameter int64Group: (query) Integer in group parameters (optional)
      - returns: `EventLoopFuture` of `TestGroupParameters` 
      */
-    open class func testGroupParameters(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestGroupParameters> {
+    static func testGroupParameters(requiredStringGroup: Int, requiredBooleanGroup: Bool, requiredInt64Group: Int64, stringGroup: Int? = nil, booleanGroup: Bool? = nil, int64Group: Int64? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestGroupParameters> {
         return testGroupParametersRaw(requiredStringGroup: requiredStringGroup, requiredBooleanGroup: requiredBooleanGroup, requiredInt64Group: requiredInt64Group, stringGroup: stringGroup, booleanGroup: booleanGroup, int64Group: int64Group, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestGroupParameters in
             switch response.status.code {
             case 400:
@@ -722,14 +1013,13 @@ open class FakeAPI {
         }
     }
 
-
     /**
      test inline additionalProperties
      POST /fake/inline-additionalProperties
      - parameter param: (body) request body 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testInlineAdditionalPropertiesRaw(param: [String: String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testInlineAdditionalPropertiesRaw(param: [String: String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/inline-additionalProperties"
         let URLString = PetstoreClient.basePath + path
 
@@ -747,18 +1037,13 @@ open class FakeAPI {
         }
     }
 
-    public enum TestInlineAdditionalProperties {
-        case http200(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      test inline additionalProperties
      POST /fake/inline-additionalProperties
      - parameter param: (body) request body 
      - returns: `EventLoopFuture` of `TestInlineAdditionalProperties` 
      */
-    open class func testInlineAdditionalProperties(param: [String: String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestInlineAdditionalProperties> {
+    static func testInlineAdditionalProperties(param: [String: String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestInlineAdditionalProperties> {
         return testInlineAdditionalPropertiesRaw(param: param, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestInlineAdditionalProperties in
             switch response.status.code {
             case 200:
@@ -769,7 +1054,6 @@ open class FakeAPI {
         }
     }
 
-
     /**
      test json serialization of form data
      GET /fake/jsonFormData
@@ -777,7 +1061,7 @@ open class FakeAPI {
      - parameter param2: (form) field2 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testJsonFormDataRaw(param: String, param2: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testJsonFormDataRaw(param: String, param2: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/jsonFormData"
         let URLString = PetstoreClient.basePath + path
 
@@ -799,11 +1083,6 @@ open class FakeAPI {
         }
     }
 
-    public enum TestJsonFormData {
-        case http200(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      test json serialization of form data
      GET /fake/jsonFormData
@@ -811,7 +1090,7 @@ open class FakeAPI {
      - parameter param2: (form) field2 
      - returns: `EventLoopFuture` of `TestJsonFormData` 
      */
-    open class func testJsonFormData(param: String, param2: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestJsonFormData> {
+    static func testJsonFormData(param: String, param2: String, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestJsonFormData> {
         return testJsonFormDataRaw(param: param, param2: param2, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestJsonFormData in
             switch response.status.code {
             case 200:
@@ -821,7 +1100,6 @@ open class FakeAPI {
             }
         }
     }
-
 
     /**
      PUT /fake/test-query-paramters
@@ -833,7 +1111,7 @@ open class FakeAPI {
      - parameter context: (query)  
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func testQueryParameterCollectionFormatRaw(pipe: [String], ioutil: [String], http: [String], url: [String], context: [String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func testQueryParameterCollectionFormatRaw(pipe: [String], ioutil: [String], http: [String], url: [String], context: [String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/fake/test-query-paramters"
         let URLString = PetstoreClient.basePath + path
 
@@ -857,11 +1135,6 @@ open class FakeAPI {
         }
     }
 
-    public enum TestQueryParameterCollectionFormat {
-        case http200(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      PUT /fake/test-query-paramters
      To test the collection format in query parameters
@@ -872,7 +1145,7 @@ open class FakeAPI {
      - parameter context: (query)  
      - returns: `EventLoopFuture` of `TestQueryParameterCollectionFormat` 
      */
-    open class func testQueryParameterCollectionFormat(pipe: [String], ioutil: [String], http: [String], url: [String], context: [String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestQueryParameterCollectionFormat> {
+    static func testQueryParameterCollectionFormat(pipe: [String], ioutil: [String], http: [String], url: [String], context: [String], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<TestQueryParameterCollectionFormat> {
         return testQueryParameterCollectionFormatRaw(pipe: pipe, ioutil: ioutil, http: http, url: url, context: context, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> TestQueryParameterCollectionFormat in
             switch response.status.code {
             case 200:

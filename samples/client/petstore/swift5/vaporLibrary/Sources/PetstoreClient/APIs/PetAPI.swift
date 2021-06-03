@@ -11,8 +11,71 @@ import Vapor
 import AnyCodable
 #endif
 
-open class PetAPI {
+        enum AddPet {
+            case http200(value: Void, raw: ClientResponse)
+            case http405(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
 
+        enum DeletePet {
+            case http200(value: Void, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+    /**
+     * enum for parameter status
+     */
+    enum Status_findPetsByStatus: String, CaseIterable, Content {
+        case available = "available"
+        case pending = "pending"
+        case sold = "sold"
+    }
+
+
+        enum FindPetsByStatus {
+            case http200(value: [Pet], raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http0(value: [Pet], raw: ClientResponse)
+        }
+
+        enum FindPetsByTags {
+            case http200(value: Set<Pet>, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http0(value: Set<Pet>, raw: ClientResponse)
+        }
+
+        enum GetPetById {
+            case http200(value: Pet, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http0(value: Pet, raw: ClientResponse)
+        }
+
+        enum UpdatePet {
+            case http200(value: Void, raw: ClientResponse)
+            case http400(value: Void, raw: ClientResponse)
+            case http404(value: Void, raw: ClientResponse)
+            case http405(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum UpdatePetWithForm {
+            case http405(value: Void, raw: ClientResponse)
+            case http0(value: Void, raw: ClientResponse)
+        }
+
+        enum UploadFile {
+            case http200(value: ApiResponse, raw: ClientResponse)
+            case http0(value: ApiResponse, raw: ClientResponse)
+        }
+
+        enum UploadFileWithRequiredFile {
+            case http200(value: ApiResponse, raw: ClientResponse)
+            case http0(value: ApiResponse, raw: ClientResponse)
+        }
+
+
+protocol PetAPI {
     /**
      Add a new pet to the store
      POST /pet
@@ -22,7 +85,221 @@ open class PetAPI {
      - parameter body: (body) Pet object that needs to be added to the store 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func addPetRaw(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func addPetRaw(body: Pet, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Add a new pet to the store
+     POST /pet
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter body: (body) Pet object that needs to be added to the store 
+     - returns: `EventLoopFuture` of `AddPet` 
+     */
+    static func addPet(body: Pet, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<AddPet>
+    /**
+     Deletes a pet
+     DELETE /pet/{petId}
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) Pet id to delete 
+     - parameter apiKey: (header)  (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func deletePetRaw(petId: Int64, apiKey: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Deletes a pet
+     DELETE /pet/{petId}
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) Pet id to delete 
+     - parameter apiKey: (header)  (optional)
+     - returns: `EventLoopFuture` of `DeletePet` 
+     */
+    static func deletePet(petId: Int64, apiKey: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<DeletePet>
+    /**
+     Finds Pets by status
+     GET /pet/findByStatus
+     Multiple status values can be provided with comma separated strings
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter status: (query) Status values that need to be considered for filter 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func findPetsByStatusRaw(status: [Status_findPetsByStatus], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Finds Pets by status
+     GET /pet/findByStatus
+     Multiple status values can be provided with comma separated strings
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter status: (query) Status values that need to be considered for filter 
+     - returns: `EventLoopFuture` of `FindPetsByStatus` 
+     */
+    static func findPetsByStatus(status: [Status_findPetsByStatus], headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<FindPetsByStatus>
+    /**
+     Finds Pets by tags
+     GET /pet/findByTags
+     Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter tags: (query) Tags to filter by 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    @available(*, deprecated, message: "This operation is deprecated.")
+    static func findPetsByTagsRaw(tags: Set<String>, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Finds Pets by tags
+     GET /pet/findByTags
+     Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter tags: (query) Tags to filter by 
+     - returns: `EventLoopFuture` of `FindPetsByTags` 
+     */
+    @available(*, deprecated, message: "This operation is deprecated.")
+    static func findPetsByTags(tags: Set<String>, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<FindPetsByTags>
+    /**
+     Find pet by ID
+     GET /pet/{petId}
+     Returns a single pet
+     - API Key:
+       - type: apiKey api_key 
+       - name: api_key
+     - parameter petId: (path) ID of pet to return 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func getPetByIdRaw(petId: Int64, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Find pet by ID
+     GET /pet/{petId}
+     Returns a single pet
+     - API Key:
+       - type: apiKey api_key 
+       - name: api_key
+     - parameter petId: (path) ID of pet to return 
+     - returns: `EventLoopFuture` of `GetPetById` 
+     */
+    static func getPetById(petId: Int64, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<GetPetById>
+    /**
+     Update an existing pet
+     PUT /pet
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter body: (body) Pet object that needs to be added to the store 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func updatePetRaw(body: Pet, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Update an existing pet
+     PUT /pet
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter body: (body) Pet object that needs to be added to the store 
+     - returns: `EventLoopFuture` of `UpdatePet` 
+     */
+    static func updatePet(body: Pet, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<UpdatePet>
+    /**
+     Updates a pet in the store with form data
+     POST /pet/{petId}
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) ID of pet that needs to be updated 
+     - parameter name: (form) Updated name of the pet (optional)
+     - parameter status: (form) Updated status of the pet (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func updatePetWithFormRaw(petId: Int64, name: String, status: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     Updates a pet in the store with form data
+     POST /pet/{petId}
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) ID of pet that needs to be updated 
+     - parameter name: (form) Updated name of the pet (optional)
+     - parameter status: (form) Updated status of the pet (optional)
+     - returns: `EventLoopFuture` of `UpdatePetWithForm` 
+     */
+    static func updatePetWithForm(petId: Int64, name: String, status: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<UpdatePetWithForm>
+    /**
+     uploads an image
+     POST /pet/{petId}/uploadImage
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) ID of pet to update 
+     - parameter additionalMetadata: (form) Additional data to pass to server (optional)
+     - parameter file: (form) file to upload (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func uploadFileRaw(petId: Int64, additionalMetadata: String, file: Data, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     uploads an image
+     POST /pet/{petId}/uploadImage
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) ID of pet to update 
+     - parameter additionalMetadata: (form) Additional data to pass to server (optional)
+     - parameter file: (form) file to upload (optional)
+     - returns: `EventLoopFuture` of `UploadFile` 
+     */
+    static func uploadFile(petId: Int64, additionalMetadata: String, file: Data, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<UploadFile>
+    /**
+     uploads an image (required)
+     POST /fake/{petId}/uploadImageWithRequiredFile
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) ID of pet to update 
+     - parameter requiredFile: (form) file to upload 
+     - parameter additionalMetadata: (form) Additional data to pass to server (optional)
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func uploadFileWithRequiredFileRaw(petId: Int64, requiredFile: Data, additionalMetadata: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     uploads an image (required)
+     POST /fake/{petId}/uploadImageWithRequiredFile
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter petId: (path) ID of pet to update 
+     - parameter requiredFile: (form) file to upload 
+     - parameter additionalMetadata: (form) Additional data to pass to server (optional)
+     - returns: `EventLoopFuture` of `UploadFileWithRequiredFile` 
+     */
+    static func uploadFileWithRequiredFile(petId: Int64, requiredFile: Data, additionalMetadata: String, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<UploadFileWithRequiredFile>
+}
+
+extension PetAPI {
+    /**
+     Add a new pet to the store
+     POST /pet
+     - OAuth:
+       - type: oauth2
+       - name: petstore_auth
+     - parameter body: (body) Pet object that needs to be added to the store 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func addPetRaw(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/pet"
         let URLString = PetstoreClient.basePath + path
 
@@ -40,12 +317,6 @@ open class PetAPI {
         }
     }
 
-    public enum AddPet {
-        case http200(value: Void, raw: ClientResponse)
-        case http405(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Add a new pet to the store
      POST /pet
@@ -55,7 +326,7 @@ open class PetAPI {
      - parameter body: (body) Pet object that needs to be added to the store 
      - returns: `EventLoopFuture` of `AddPet` 
      */
-    open class func addPet(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<AddPet> {
+    static func addPet(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<AddPet> {
         return addPetRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> AddPet in
             switch response.status.code {
             case 200:
@@ -68,7 +339,6 @@ open class PetAPI {
         }
     }
 
-
     /**
      Deletes a pet
      DELETE /pet/{petId}
@@ -79,7 +349,7 @@ open class PetAPI {
      - parameter apiKey: (header)  (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func deletePetRaw(petId: Int64, apiKey: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func deletePetRaw(petId: Int64, apiKey: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/pet/{petId}"
         let petIdPreEscape = String(describing: petId)
         let petIdPostEscape = petIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -101,12 +371,6 @@ open class PetAPI {
         }
     }
 
-    public enum DeletePet {
-        case http200(value: Void, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Deletes a pet
      DELETE /pet/{petId}
@@ -117,7 +381,7 @@ open class PetAPI {
      - parameter apiKey: (header)  (optional)
      - returns: `EventLoopFuture` of `DeletePet` 
      */
-    open class func deletePet(petId: Int64, apiKey: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<DeletePet> {
+    static func deletePet(petId: Int64, apiKey: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<DeletePet> {
         return deletePetRaw(petId: petId, apiKey: apiKey, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> DeletePet in
             switch response.status.code {
             case 200:
@@ -130,16 +394,6 @@ open class PetAPI {
         }
     }
 
-
-    /**
-     * enum for parameter status
-     */
-    public enum Status_findPetsByStatus: String, CaseIterable, Content {
-        case available = "available"
-        case pending = "pending"
-        case sold = "sold"
-    }
-
     /**
      Finds Pets by status
      GET /pet/findByStatus
@@ -150,7 +404,7 @@ open class PetAPI {
      - parameter status: (query) Status values that need to be considered for filter 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func findPetsByStatusRaw(status: [Status_findPetsByStatus], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func findPetsByStatusRaw(status: [Status_findPetsByStatus], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/pet/findByStatus"
         let URLString = PetstoreClient.basePath + path
 
@@ -170,12 +424,6 @@ open class PetAPI {
         }
     }
 
-    public enum FindPetsByStatus {
-        case http200(value: [Pet], raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http0(value: [Pet], raw: ClientResponse)
-    }
-
     /**
      Finds Pets by status
      GET /pet/findByStatus
@@ -186,7 +434,7 @@ open class PetAPI {
      - parameter status: (query) Status values that need to be considered for filter 
      - returns: `EventLoopFuture` of `FindPetsByStatus` 
      */
-    open class func findPetsByStatus(status: [Status_findPetsByStatus], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FindPetsByStatus> {
+    static func findPetsByStatus(status: [Status_findPetsByStatus], headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FindPetsByStatus> {
         return findPetsByStatusRaw(status: status, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> FindPetsByStatus in
             switch response.status.code {
             case 200:
@@ -199,7 +447,6 @@ open class PetAPI {
         }
     }
 
-
     /**
      Finds Pets by tags
      GET /pet/findByTags
@@ -211,7 +458,7 @@ open class PetAPI {
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
     @available(*, deprecated, message: "This operation is deprecated.")
-    open class func findPetsByTagsRaw(tags: Set<String>, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func findPetsByTagsRaw(tags: Set<String>, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/pet/findByTags"
         let URLString = PetstoreClient.basePath + path
 
@@ -231,12 +478,6 @@ open class PetAPI {
         }
     }
 
-    public enum FindPetsByTags {
-        case http200(value: Set<Pet>, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http0(value: Set<Pet>, raw: ClientResponse)
-    }
-
     /**
      Finds Pets by tags
      GET /pet/findByTags
@@ -248,7 +489,7 @@ open class PetAPI {
      - returns: `EventLoopFuture` of `FindPetsByTags` 
      */
     @available(*, deprecated, message: "This operation is deprecated.")
-    open class func findPetsByTags(tags: Set<String>, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FindPetsByTags> {
+    static func findPetsByTags(tags: Set<String>, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<FindPetsByTags> {
         return findPetsByTagsRaw(tags: tags, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> FindPetsByTags in
             switch response.status.code {
             case 200:
@@ -261,7 +502,6 @@ open class PetAPI {
         }
     }
 
-
     /**
      Find pet by ID
      GET /pet/{petId}
@@ -272,7 +512,7 @@ open class PetAPI {
      - parameter petId: (path) ID of pet to return 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func getPetByIdRaw(petId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func getPetByIdRaw(petId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/pet/{petId}"
         let petIdPreEscape = String(describing: petId)
         let petIdPostEscape = petIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -292,13 +532,6 @@ open class PetAPI {
         }
     }
 
-    public enum GetPetById {
-        case http200(value: Pet, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http0(value: Pet, raw: ClientResponse)
-    }
-
     /**
      Find pet by ID
      GET /pet/{petId}
@@ -309,7 +542,7 @@ open class PetAPI {
      - parameter petId: (path) ID of pet to return 
      - returns: `EventLoopFuture` of `GetPetById` 
      */
-    open class func getPetById(petId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetPetById> {
+    static func getPetById(petId: Int64, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<GetPetById> {
         return getPetByIdRaw(petId: petId, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> GetPetById in
             switch response.status.code {
             case 200:
@@ -324,7 +557,6 @@ open class PetAPI {
         }
     }
 
-
     /**
      Update an existing pet
      PUT /pet
@@ -334,7 +566,7 @@ open class PetAPI {
      - parameter body: (body) Pet object that needs to be added to the store 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func updatePetRaw(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func updatePetRaw(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/pet"
         let URLString = PetstoreClient.basePath + path
 
@@ -352,14 +584,6 @@ open class PetAPI {
         }
     }
 
-    public enum UpdatePet {
-        case http200(value: Void, raw: ClientResponse)
-        case http400(value: Void, raw: ClientResponse)
-        case http404(value: Void, raw: ClientResponse)
-        case http405(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Update an existing pet
      PUT /pet
@@ -369,7 +593,7 @@ open class PetAPI {
      - parameter body: (body) Pet object that needs to be added to the store 
      - returns: `EventLoopFuture` of `UpdatePet` 
      */
-    open class func updatePet(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UpdatePet> {
+    static func updatePet(body: Pet, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UpdatePet> {
         return updatePetRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> UpdatePet in
             switch response.status.code {
             case 200:
@@ -386,7 +610,6 @@ open class PetAPI {
         }
     }
 
-
     /**
      Updates a pet in the store with form data
      POST /pet/{petId}
@@ -398,7 +621,7 @@ open class PetAPI {
      - parameter status: (form) Updated status of the pet (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func updatePetWithFormRaw(petId: Int64, name: String? = nil, status: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func updatePetWithFormRaw(petId: Int64, name: String? = nil, status: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/pet/{petId}"
         let petIdPreEscape = String(describing: petId)
         let petIdPostEscape = petIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -423,11 +646,6 @@ open class PetAPI {
         }
     }
 
-    public enum UpdatePetWithForm {
-        case http405(value: Void, raw: ClientResponse)
-        case http0(value: Void, raw: ClientResponse)
-    }
-
     /**
      Updates a pet in the store with form data
      POST /pet/{petId}
@@ -439,7 +657,7 @@ open class PetAPI {
      - parameter status: (form) Updated status of the pet (optional)
      - returns: `EventLoopFuture` of `UpdatePetWithForm` 
      */
-    open class func updatePetWithForm(petId: Int64, name: String? = nil, status: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UpdatePetWithForm> {
+    static func updatePetWithForm(petId: Int64, name: String? = nil, status: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UpdatePetWithForm> {
         return updatePetWithFormRaw(petId: petId, name: name, status: status, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> UpdatePetWithForm in
             switch response.status.code {
             case 405:
@@ -449,7 +667,6 @@ open class PetAPI {
             }
         }
     }
-
 
     /**
      uploads an image
@@ -462,7 +679,7 @@ open class PetAPI {
      - parameter file: (form) file to upload (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func uploadFileRaw(petId: Int64, additionalMetadata: String? = nil, file: Data? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func uploadFileRaw(petId: Int64, additionalMetadata: String? = nil, file: Data? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/pet/{petId}/uploadImage"
         let petIdPreEscape = String(describing: petId)
         let petIdPostEscape = petIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -487,11 +704,6 @@ open class PetAPI {
         }
     }
 
-    public enum UploadFile {
-        case http200(value: ApiResponse, raw: ClientResponse)
-        case http0(value: ApiResponse, raw: ClientResponse)
-    }
-
     /**
      uploads an image
      POST /pet/{petId}/uploadImage
@@ -503,7 +715,7 @@ open class PetAPI {
      - parameter file: (form) file to upload (optional)
      - returns: `EventLoopFuture` of `UploadFile` 
      */
-    open class func uploadFile(petId: Int64, additionalMetadata: String? = nil, file: Data? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UploadFile> {
+    static func uploadFile(petId: Int64, additionalMetadata: String? = nil, file: Data? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UploadFile> {
         return uploadFileRaw(petId: petId, additionalMetadata: additionalMetadata, file: file, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> UploadFile in
             switch response.status.code {
             case 200:
@@ -513,7 +725,6 @@ open class PetAPI {
             }
         }
     }
-
 
     /**
      uploads an image (required)
@@ -526,7 +737,7 @@ open class PetAPI {
      - parameter additionalMetadata: (form) Additional data to pass to server (optional)
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func uploadFileWithRequiredFileRaw(petId: Int64, requiredFile: Data, additionalMetadata: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func uploadFileWithRequiredFileRaw(petId: Int64, requiredFile: Data, additionalMetadata: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         var path = "/fake/{petId}/uploadImageWithRequiredFile"
         let petIdPreEscape = String(describing: petId)
         let petIdPostEscape = petIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -551,11 +762,6 @@ open class PetAPI {
         }
     }
 
-    public enum UploadFileWithRequiredFile {
-        case http200(value: ApiResponse, raw: ClientResponse)
-        case http0(value: ApiResponse, raw: ClientResponse)
-    }
-
     /**
      uploads an image (required)
      POST /fake/{petId}/uploadImageWithRequiredFile
@@ -567,7 +773,7 @@ open class PetAPI {
      - parameter additionalMetadata: (form) Additional data to pass to server (optional)
      - returns: `EventLoopFuture` of `UploadFileWithRequiredFile` 
      */
-    open class func uploadFileWithRequiredFile(petId: Int64, requiredFile: Data, additionalMetadata: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UploadFileWithRequiredFile> {
+    static func uploadFileWithRequiredFile(petId: Int64, requiredFile: Data, additionalMetadata: String? = nil, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<UploadFileWithRequiredFile> {
         return uploadFileWithRequiredFileRaw(petId: petId, requiredFile: requiredFile, additionalMetadata: additionalMetadata, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> UploadFileWithRequiredFile in
             switch response.status.code {
             case 200:

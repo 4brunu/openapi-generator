@@ -11,8 +11,8 @@ import PromiseKit
 import AnyCodable
 #endif
 
-open class FakeClassnameTags123API {
 
+protocol FakeClassnameTags123API {
     /**
      To test class name in snake case
      
@@ -20,7 +20,30 @@ open class FakeClassnameTags123API {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Client>
      */
-    open class func testClassname( body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Client> {
+    static func testClassname( body: Client, apiResponseQueue: DispatchQueue) -> Promise<Client>
+
+    /**
+     To test class name in snake case
+     - PATCH /fake_classname_test
+     - To test class name in snake case
+     - API Key:
+       - type: apiKey api_key_query (QUERY)
+       - name: api_key_query
+     - parameter body: (body) client model 
+     - returns: RequestBuilder<Client> 
+     */
+    static func testClassnameWithRequestBuilder(body: Client) -> RequestBuilder<Client>
+}
+
+extension FakeClassnameTags123API {
+    /**
+     To test class name in snake case
+     
+     - parameter body: (body) client model 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Client>
+     */
+    static func testClassname( body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Client> {
         let deferred = Promise<Client>.pending()
         testClassnameWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -43,7 +66,7 @@ open class FakeClassnameTags123API {
      - parameter body: (body) client model 
      - returns: RequestBuilder<Client> 
      */
-    open class func testClassnameWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
+    static func testClassnameWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
         let path = "/fake_classname_test"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

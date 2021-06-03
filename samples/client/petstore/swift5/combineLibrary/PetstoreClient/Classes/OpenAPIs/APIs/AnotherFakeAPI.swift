@@ -13,8 +13,8 @@ import Combine
 import AnyCodable
 #endif
 
-open class AnotherFakeAPI {
 
+protocol AnotherFakeAPI {
     /**
      To test special tags
      
@@ -24,7 +24,30 @@ open class AnotherFakeAPI {
      */
     #if canImport(Combine)
     @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func call123testSpecialTags(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> AnyPublisher<Client, Error> {
+    static func call123testSpecialTags(body: Client, apiResponseQueue: DispatchQueue) -> AnyPublisher<Client, Error>
+    #endif
+
+    /**
+     To test special tags
+     - PATCH /another-fake/dummy
+     - To test special tags and operation ID starting with number
+     - parameter body: (body) client model 
+     - returns: RequestBuilder<Client> 
+     */
+    static func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client>
+}
+
+extension AnotherFakeAPI {
+    /**
+     To test special tags
+     
+     - parameter body: (body) client model 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: AnyPublisher<Client, Error>
+     */
+    #if canImport(Combine)
+    @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    static func call123testSpecialTags(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> AnyPublisher<Client, Error> {
         return Future<Client, Error>.init { promise in
             call123testSpecialTagsWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -45,7 +68,7 @@ open class AnotherFakeAPI {
      - parameter body: (body) client model 
      - returns: RequestBuilder<Client> 
      */
-    open class func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
+    static func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
         let path = "/another-fake/dummy"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

@@ -13,8 +13,8 @@ import Combine
 import AnyCodable
 #endif
 
-open class FakeClassnameTags123API {
 
+protocol FakeClassnameTags123API {
     /**
      To test class name in snake case
      
@@ -24,7 +24,33 @@ open class FakeClassnameTags123API {
      */
     #if canImport(Combine)
     @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func testClassname(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> AnyPublisher<Client, Error> {
+    static func testClassname(body: Client, apiResponseQueue: DispatchQueue) -> AnyPublisher<Client, Error>
+    #endif
+
+    /**
+     To test class name in snake case
+     - PATCH /fake_classname_test
+     - To test class name in snake case
+     - API Key:
+       - type: apiKey api_key_query (QUERY)
+       - name: api_key_query
+     - parameter body: (body) client model 
+     - returns: RequestBuilder<Client> 
+     */
+    static func testClassnameWithRequestBuilder(body: Client) -> RequestBuilder<Client>
+}
+
+extension FakeClassnameTags123API {
+    /**
+     To test class name in snake case
+     
+     - parameter body: (body) client model 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: AnyPublisher<Client, Error>
+     */
+    #if canImport(Combine)
+    @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    static func testClassname(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> AnyPublisher<Client, Error> {
         return Future<Client, Error>.init { promise in
             testClassnameWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -48,7 +74,7 @@ open class FakeClassnameTags123API {
      - parameter body: (body) client model 
      - returns: RequestBuilder<Client> 
      */
-    open class func testClassnameWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
+    static func testClassnameWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
         let path = "/fake_classname_test"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

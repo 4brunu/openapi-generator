@@ -10,11 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-@available(*, deprecated, renamed: "PetstoreClient.FormatTest")
-public typealias FormatTest = PetstoreClient.FormatTest
-
-extension PetstoreClient {
-
 public final class FormatTest: Codable, Hashable {
 
     public var integer: Int?
@@ -117,4 +112,3 @@ public final class FormatTest: Codable, Hashable {
     }
 }
 
-}

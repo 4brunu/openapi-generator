@@ -10,8 +10,8 @@ import Foundation
 import AnyCodable
 #endif
 
-@objc open class AnotherFakeAPI : NSObject {
 
+@objc protocol AnotherFakeAPI : NSObject {
     /**
      To test special tags
      
@@ -19,7 +19,27 @@ import AnyCodable
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func call123testSpecialTags(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue, completion: @escaping ((_ data: Client?, _ error: Error?) -> Void)) {
+    static func call123testSpecialTags(body: Client, apiResponseQueue: DispatchQueue, completion: @escaping ((_ data: Client?, _ error: Error?) -> Void))
+
+    /**
+     To test special tags
+     - PATCH /another-fake/dummy
+     - To test special tags and operation ID starting with number
+     - parameter body: (body) client model 
+     - returns: RequestBuilder<Client> 
+     */
+    static func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client>
+}
+
+@objc extension AnotherFakeAPI : NSObject {
+    /**
+     To test special tags
+     
+     - parameter body: (body) client model 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    static func call123testSpecialTags(body: Client, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue, completion: @escaping ((_ data: Client?, _ error: Error?) -> Void)) {
         call123testSpecialTagsWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -37,7 +57,7 @@ import AnyCodable
      - parameter body: (body) client model 
      - returns: RequestBuilder<Client> 
      */
-    open class func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
+    static func call123testSpecialTagsWithRequestBuilder(body: Client) -> RequestBuilder<Client> {
         let path = "/another-fake/dummy"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

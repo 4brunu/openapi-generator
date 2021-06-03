@@ -11,8 +11,8 @@ import PromiseKit
 import AnyCodable
 #endif
 
-open class UserAPI {
 
+protocol UserAPI {
     /**
      Create user
      
@@ -20,7 +20,144 @@ open class UserAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func createUser( body: User, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
+    static func createUser( body: User, apiResponseQueue: DispatchQueue) -> Promise<Void>
+
+    /**
+     Create user
+     - POST /user
+     - This can only be done by the logged in user.
+     - parameter body: (body) Created user object 
+     - returns: RequestBuilder<Void> 
+     */
+    static func createUserWithRequestBuilder(body: User) -> RequestBuilder<Void>
+    /**
+     Creates list of users with given input array
+     
+     - parameter body: (body) List of user object 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    static func createUsersWithArrayInput( body: [User], apiResponseQueue: DispatchQueue) -> Promise<Void>
+
+    /**
+     Creates list of users with given input array
+     - POST /user/createWithArray
+     - parameter body: (body) List of user object 
+     - returns: RequestBuilder<Void> 
+     */
+    static func createUsersWithArrayInputWithRequestBuilder(body: [User]) -> RequestBuilder<Void>
+    /**
+     Creates list of users with given input array
+     
+     - parameter body: (body) List of user object 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    static func createUsersWithListInput( body: [User], apiResponseQueue: DispatchQueue) -> Promise<Void>
+
+    /**
+     Creates list of users with given input array
+     - POST /user/createWithList
+     - parameter body: (body) List of user object 
+     - returns: RequestBuilder<Void> 
+     */
+    static func createUsersWithListInputWithRequestBuilder(body: [User]) -> RequestBuilder<Void>
+    /**
+     Delete user
+     
+     - parameter username: (path) The name that needs to be deleted 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    static func deleteUser( username: String, apiResponseQueue: DispatchQueue) -> Promise<Void>
+
+    /**
+     Delete user
+     - DELETE /user/{username}
+     - This can only be done by the logged in user.
+     - parameter username: (path) The name that needs to be deleted 
+     - returns: RequestBuilder<Void> 
+     */
+    static func deleteUserWithRequestBuilder(username: String) -> RequestBuilder<Void>
+    /**
+     Get user by user name
+     
+     - parameter username: (path) The name that needs to be fetched. Use user1 for testing. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<User>
+     */
+    static func getUserByName( username: String, apiResponseQueue: DispatchQueue) -> Promise<User>
+
+    /**
+     Get user by user name
+     - GET /user/{username}
+     - parameter username: (path) The name that needs to be fetched. Use user1 for testing. 
+     - returns: RequestBuilder<User> 
+     */
+    static func getUserByNameWithRequestBuilder(username: String) -> RequestBuilder<User>
+    /**
+     Logs user into the system
+     
+     - parameter username: (query) The user name for login 
+     - parameter password: (query) The password for login in clear text 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<String>
+     */
+    static func loginUser( username: String,  password: String, apiResponseQueue: DispatchQueue) -> Promise<String>
+
+    /**
+     Logs user into the system
+     - GET /user/login
+     - responseHeaders: [X-Rate-Limit(Int), X-Expires-After(Date)]
+     - parameter username: (query) The user name for login 
+     - parameter password: (query) The password for login in clear text 
+     - returns: RequestBuilder<String> 
+     */
+    static func loginUserWithRequestBuilder(username: String, password: String) -> RequestBuilder<String>
+    /**
+     Logs out current logged in user session
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    static func logoutUser(apiResponseQueue: DispatchQueue) -> Promise<Void>
+
+    /**
+     Logs out current logged in user session
+     - GET /user/logout
+     - returns: RequestBuilder<Void> 
+     */
+    static func logoutUserWithRequestBuilder() -> RequestBuilder<Void>
+    /**
+     Updated user
+     
+     - parameter username: (path) name that need to be deleted 
+     - parameter body: (body) Updated user object 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    static func updateUser( username: String,  body: User, apiResponseQueue: DispatchQueue) -> Promise<Void>
+
+    /**
+     Updated user
+     - PUT /user/{username}
+     - This can only be done by the logged in user.
+     - parameter username: (path) name that need to be deleted 
+     - parameter body: (body) Updated user object 
+     - returns: RequestBuilder<Void> 
+     */
+    static func updateUserWithRequestBuilder(username: String, body: User) -> RequestBuilder<Void>
+}
+
+extension UserAPI {
+    /**
+     Create user
+     
+     - parameter body: (body) Created user object 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    static func createUser( body: User, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         createUserWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -40,7 +177,7 @@ open class UserAPI {
      - parameter body: (body) Created user object 
      - returns: RequestBuilder<Void> 
      */
-    open class func createUserWithRequestBuilder(body: User) -> RequestBuilder<Void> {
+    static func createUserWithRequestBuilder(body: User) -> RequestBuilder<Void> {
         let path = "/user"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -57,7 +194,6 @@ open class UserAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Creates list of users with given input array
      
@@ -65,7 +201,7 @@ open class UserAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func createUsersWithArrayInput( body: [User], apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
+    static func createUsersWithArrayInput( body: [User], apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         createUsersWithArrayInputWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -84,7 +220,7 @@ open class UserAPI {
      - parameter body: (body) List of user object 
      - returns: RequestBuilder<Void> 
      */
-    open class func createUsersWithArrayInputWithRequestBuilder(body: [User]) -> RequestBuilder<Void> {
+    static func createUsersWithArrayInputWithRequestBuilder(body: [User]) -> RequestBuilder<Void> {
         let path = "/user/createWithArray"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -101,7 +237,6 @@ open class UserAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Creates list of users with given input array
      
@@ -109,7 +244,7 @@ open class UserAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func createUsersWithListInput( body: [User], apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
+    static func createUsersWithListInput( body: [User], apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         createUsersWithListInputWithRequestBuilder(body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -128,7 +263,7 @@ open class UserAPI {
      - parameter body: (body) List of user object 
      - returns: RequestBuilder<Void> 
      */
-    open class func createUsersWithListInputWithRequestBuilder(body: [User]) -> RequestBuilder<Void> {
+    static func createUsersWithListInputWithRequestBuilder(body: [User]) -> RequestBuilder<Void> {
         let path = "/user/createWithList"
         let URLString = PetstoreClient.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -145,7 +280,6 @@ open class UserAPI {
 
         return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Delete user
      
@@ -153,7 +287,7 @@ open class UserAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteUser( username: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
+    static func deleteUser( username: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         deleteUserWithRequestBuilder(username: username).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -173,7 +307,7 @@ open class UserAPI {
      - parameter username: (path) The name that needs to be deleted 
      - returns: RequestBuilder<Void> 
      */
-    open class func deleteUserWithRequestBuilder(username: String) -> RequestBuilder<Void> {
+    static func deleteUserWithRequestBuilder(username: String) -> RequestBuilder<Void> {
         var path = "/user/{username}"
         let usernamePreEscape = "\(APIHelper.mapValueToPathItem(username))"
         let usernamePostEscape = usernamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -193,7 +327,6 @@ open class UserAPI {
 
         return requestBuilder.init(method: "DELETE", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Get user by user name
      
@@ -201,7 +334,7 @@ open class UserAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<User>
      */
-    open class func getUserByName( username: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<User> {
+    static func getUserByName( username: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<User> {
         let deferred = Promise<User>.pending()
         getUserByNameWithRequestBuilder(username: username).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -220,7 +353,7 @@ open class UserAPI {
      - parameter username: (path) The name that needs to be fetched. Use user1 for testing. 
      - returns: RequestBuilder<User> 
      */
-    open class func getUserByNameWithRequestBuilder(username: String) -> RequestBuilder<User> {
+    static func getUserByNameWithRequestBuilder(username: String) -> RequestBuilder<User> {
         var path = "/user/{username}"
         let usernamePreEscape = "\(APIHelper.mapValueToPathItem(username))"
         let usernamePostEscape = usernamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -240,7 +373,6 @@ open class UserAPI {
 
         return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Logs user into the system
      
@@ -249,7 +381,7 @@ open class UserAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<String>
      */
-    open class func loginUser( username: String,  password: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<String> {
+    static func loginUser( username: String,  password: String, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<String> {
         let deferred = Promise<String>.pending()
         loginUserWithRequestBuilder(username: username, password: password).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -270,7 +402,7 @@ open class UserAPI {
      - parameter password: (query) The password for login in clear text 
      - returns: RequestBuilder<String> 
      */
-    open class func loginUserWithRequestBuilder(username: String, password: String) -> RequestBuilder<String> {
+    static func loginUserWithRequestBuilder(username: String, password: String) -> RequestBuilder<String> {
         let path = "/user/login"
         let URLString = PetstoreClient.basePath + path
         let parameters: [String: Any]? = nil
@@ -291,14 +423,13 @@ open class UserAPI {
 
         return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Logs out current logged in user session
      
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func logoutUser(apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
+    static func logoutUser(apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         logoutUserWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -316,7 +447,7 @@ open class UserAPI {
      - GET /user/logout
      - returns: RequestBuilder<Void> 
      */
-    open class func logoutUserWithRequestBuilder() -> RequestBuilder<Void> {
+    static func logoutUserWithRequestBuilder() -> RequestBuilder<Void> {
         let path = "/user/logout"
         let URLString = PetstoreClient.basePath + path
         let parameters: [String: Any]? = nil
@@ -333,7 +464,6 @@ open class UserAPI {
 
         return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
     }
-
     /**
      Updated user
      
@@ -342,7 +472,7 @@ open class UserAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func updateUser( username: String,  body: User, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
+    static func updateUser( username: String,  body: User, apiResponseQueue: DispatchQueue = PetstoreClient.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         updateUserWithRequestBuilder(username: username, body: body).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -363,7 +493,7 @@ open class UserAPI {
      - parameter body: (body) Updated user object 
      - returns: RequestBuilder<Void> 
      */
-    open class func updateUserWithRequestBuilder(username: String, body: User) -> RequestBuilder<Void> {
+    static func updateUserWithRequestBuilder(username: String, body: User) -> RequestBuilder<Void> {
         var path = "/user/{username}"
         let usernamePreEscape = "\(APIHelper.mapValueToPathItem(username))"
         let usernamePostEscape = usernamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

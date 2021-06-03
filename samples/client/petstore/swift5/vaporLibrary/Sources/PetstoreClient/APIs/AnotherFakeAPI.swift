@@ -11,8 +11,13 @@ import Vapor
 import AnyCodable
 #endif
 
-open class AnotherFakeAPI {
+        enum Call123testSpecialTags {
+            case http200(value: Client, raw: ClientResponse)
+            case http0(value: Client, raw: ClientResponse)
+        }
 
+
+protocol AnotherFakeAPI {
     /**
      To test special tags
      PATCH /another-fake/dummy
@@ -20,7 +25,27 @@ open class AnotherFakeAPI {
      - parameter body: (body) client model 
      - returns: `EventLoopFuture` of `ClientResponse` 
      */
-    open class func call123testSpecialTagsRaw(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
+    static func call123testSpecialTagsRaw(body: Client, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<ClientResponse>
+
+    /**
+     To test special tags
+     PATCH /another-fake/dummy
+     To test special tags and operation ID starting with number
+     - parameter body: (body) client model 
+     - returns: `EventLoopFuture` of `Call123testSpecialTags` 
+     */
+    static func call123testSpecialTags(body: Client, headers: HTTPHeaders, beforeSend: (inout ClientRequest) throws -> ()) -> EventLoopFuture<Call123testSpecialTags>
+}
+
+extension AnotherFakeAPI {
+    /**
+     To test special tags
+     PATCH /another-fake/dummy
+     To test special tags and operation ID starting with number
+     - parameter body: (body) client model 
+     - returns: `EventLoopFuture` of `ClientResponse` 
+     */
+    static func call123testSpecialTagsRaw(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<ClientResponse> {
         let path = "/another-fake/dummy"
         let URLString = PetstoreClient.basePath + path
 
@@ -38,11 +63,6 @@ open class AnotherFakeAPI {
         }
     }
 
-    public enum Call123testSpecialTags {
-        case http200(value: Client, raw: ClientResponse)
-        case http0(value: Client, raw: ClientResponse)
-    }
-
     /**
      To test special tags
      PATCH /another-fake/dummy
@@ -50,7 +70,7 @@ open class AnotherFakeAPI {
      - parameter body: (body) client model 
      - returns: `EventLoopFuture` of `Call123testSpecialTags` 
      */
-    open class func call123testSpecialTags(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<Call123testSpecialTags> {
+    static func call123testSpecialTags(body: Client, headers: HTTPHeaders = PetstoreClient.customHeaders, beforeSend: (inout ClientRequest) throws -> () = { _ in }) -> EventLoopFuture<Call123testSpecialTags> {
         return call123testSpecialTagsRaw(body: body, headers: headers, beforeSend: beforeSend).flatMapThrowing { response -> Call123testSpecialTags in
             switch response.status.code {
             case 200:

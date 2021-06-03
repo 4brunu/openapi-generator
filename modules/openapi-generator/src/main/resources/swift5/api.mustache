@@ -50,7 +50,7 @@ extension {{projectName}} {
 
 {{#description}}
 /** {{{description}}} */{{/description}}
-{{#objcCompatible}}@objc {{/objcCompatible}}protocol {{classname}}{{#objcCompatible}} : NSObject{{/objcCompatible}} {
+{{#objcCompatible}}@objc {{/objcCompatible}}public protocol {{classname}}{{#objcCompatible}} : NSObject{{/objcCompatible}} {
 {{#operation}}
 {{^useVapor}}
 {{^usePromiseKit}}

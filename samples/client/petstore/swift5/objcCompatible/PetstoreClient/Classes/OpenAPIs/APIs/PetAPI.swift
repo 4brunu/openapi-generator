@@ -20,7 +20,7 @@ import AnyCodable
 
 
 
-@objc protocol PetAPI : NSObject {
+@objc public protocol PetAPI : NSObject {
     /**
      Add a new pet to the store
      

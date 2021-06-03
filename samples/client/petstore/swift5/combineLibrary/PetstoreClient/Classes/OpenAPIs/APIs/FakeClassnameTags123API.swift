@@ -14,7 +14,7 @@ import AnyCodable
 #endif
 
 
-protocol FakeClassnameTags123API {
+public protocol FakeClassnameTags123API {
     /**
      To test class name in snake case
      

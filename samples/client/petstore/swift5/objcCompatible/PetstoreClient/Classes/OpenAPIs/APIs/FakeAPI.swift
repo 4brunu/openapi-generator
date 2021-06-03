@@ -78,7 +78,7 @@ import AnyCodable
 
 
 
-@objc protocol FakeAPI : NSObject {
+@objc public protocol FakeAPI : NSObject {
     /**
 
      - parameter body: (body) Input boolean as post body (optional)

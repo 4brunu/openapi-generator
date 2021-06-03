@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-protocol DefaultAPI {
+public protocol DefaultAPI {
     /**
 
      - parameter apiResponseQueue: The queue on which api response is dispatched.

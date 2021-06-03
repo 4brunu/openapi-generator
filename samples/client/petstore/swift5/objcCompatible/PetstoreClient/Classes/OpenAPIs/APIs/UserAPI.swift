@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-@objc protocol UserAPI : NSObject {
+@objc public protocol UserAPI : NSObject {
     /**
      Create user
      

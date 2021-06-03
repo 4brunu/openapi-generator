@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-@objc protocol AnotherFakeAPI : NSObject {
+@objc public protocol AnotherFakeAPI : NSObject {
     /**
      To test special tags
      

@@ -75,7 +75,7 @@ import AnyCodable
         }
 
 
-protocol PetAPI {
+public protocol PetAPI {
     /**
      Add a new pet to the store
      POST /pet

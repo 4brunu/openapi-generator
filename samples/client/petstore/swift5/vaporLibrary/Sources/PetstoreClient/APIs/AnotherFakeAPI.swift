@@ -17,7 +17,7 @@ import AnyCodable
         }
 
 
-protocol AnotherFakeAPI {
+public protocol AnotherFakeAPI {
     /**
      To test special tags
      PATCH /another-fake/dummy

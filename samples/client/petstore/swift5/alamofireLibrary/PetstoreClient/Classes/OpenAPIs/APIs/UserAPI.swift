@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-protocol UserAPI {
+public protocol UserAPI {
     /**
      Create user
      

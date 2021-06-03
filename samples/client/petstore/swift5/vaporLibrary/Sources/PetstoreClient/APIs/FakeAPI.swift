@@ -151,7 +151,7 @@ import AnyCodable
         }
 
 
-protocol FakeAPI {
+public protocol FakeAPI {
     /**
      creates an XmlItem
      POST /fake/create_xml_item
@@ -717,7 +717,10 @@ extension FakeAPI {
 
         return apiClient.send(.PUT, headers: headers, to: URI(string: URLString)) { request in
             try Configuration.apiWrapper(&request)
-
+            
+            struct QueryParams: Content {
+                var query: String
+            }
             try request.query.encode(QueryParams(query: query))
             try request.content.encode(body, using: Configuration.contentConfiguration.requireEncoder(for: User.defaultContentType))
             

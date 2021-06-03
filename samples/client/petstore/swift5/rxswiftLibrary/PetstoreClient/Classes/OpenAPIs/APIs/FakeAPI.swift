@@ -79,7 +79,7 @@ import AnyCodable
 
 
 
-protocol FakeAPI {
+public protocol FakeAPI {
     /**
 
      - parameter body: (body) Input boolean as post body (optional)

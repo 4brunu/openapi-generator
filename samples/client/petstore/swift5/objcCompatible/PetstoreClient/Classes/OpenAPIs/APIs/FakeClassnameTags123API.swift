@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-@objc protocol FakeClassnameTags123API : NSObject {
+@objc public protocol FakeClassnameTags123API : NSObject {
     /**
      To test class name in snake case
      

@@ -78,7 +78,7 @@ import AnyCodable
 
 
 
-protocol FakeAPI {
+public protocol FakeAPI {
     /**
      creates an XmlItem
      

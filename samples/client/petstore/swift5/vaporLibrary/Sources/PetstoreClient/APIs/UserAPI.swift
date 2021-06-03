@@ -53,7 +53,7 @@ import AnyCodable
         }
 
 
-protocol UserAPI {
+public protocol UserAPI {
     /**
      Create user
      POST /user

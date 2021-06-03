@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-protocol StoreAPI {
+public protocol StoreAPI {
     /**
      Delete purchase order by ID
      

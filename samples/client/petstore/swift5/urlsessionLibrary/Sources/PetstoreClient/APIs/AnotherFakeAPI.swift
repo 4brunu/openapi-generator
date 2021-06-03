@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-protocol AnotherFakeAPI {
+public protocol AnotherFakeAPI {
     /**
      To test special tags
      

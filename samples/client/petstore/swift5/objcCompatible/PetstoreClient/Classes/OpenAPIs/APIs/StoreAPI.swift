@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 
-@objc protocol StoreAPI : NSObject {
+@objc public protocol StoreAPI : NSObject {
     /**
      Delete purchase order by ID
      

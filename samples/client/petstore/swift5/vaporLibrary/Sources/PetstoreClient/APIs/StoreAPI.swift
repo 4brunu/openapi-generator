@@ -36,7 +36,7 @@ import AnyCodable
         }
 
 
-protocol StoreAPI {
+public protocol StoreAPI {
     /**
      Delete purchase order by ID
      DELETE /store/order/{order_id}

@@ -102,22 +102,30 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                 encoding = nil
 
                 let upload = manager.upload(multipartFormData: { mpForm in
-                    for (k, v) in self.parameters! {
-                        switch v {
+                    for (key, value) in self.parameters! {
+                        switch value {
                         case let fileURL as URL:
                             if let mimeType = self.contentTypeForFormPart(fileURL: fileURL) {
-                                mpForm.append(fileURL, withName: k, fileName: fileURL.lastPathComponent, mimeType: mimeType)
+                                mpForm.append(fileURL, withName: key, fileName: fileURL.lastPathComponent, mimeType: mimeType)
                             } else {
-                                mpForm.append(fileURL, withName: k)
+                                mpForm.append(fileURL, withName: key)
                             }
                         case let string as String:
-                            mpForm.append(string.data(using: String.Encoding.utf8)!, withName: k)
+                            if let data = string.data(using: String.Encoding.utf8) {
+                                mpForm.append(data, withName: key)
+                            }
                         case let number as NSNumber:
-                            mpForm.append(number.stringValue.data(using: String.Encoding.utf8)!, withName: k)
+                            if let data = number.stringValue.data(using: String.Encoding.utf8) {
+                                mpForm.append(data, withName: key)
+                            }
                         case let data as Data:
-                            mpForm.append(data, withName: k)
+                            mpForm.append(data, withName: key)
+                        case let jsonEncodable as JSONEncodable:
+                            if let data = try? CodableHelper.jsonEncoder.encode(jsonEncodable) {
+                                mpForm.append(data, withName: key)
+                            }
                         default:
-                            fatalError("Unprocessable value \(v) with key \(k)")
+                            fatalError("Unprocessable value \(value) with key \(key)")
                         }
                     }
                 }, to: URLString, method: xMethod, headers: nil)

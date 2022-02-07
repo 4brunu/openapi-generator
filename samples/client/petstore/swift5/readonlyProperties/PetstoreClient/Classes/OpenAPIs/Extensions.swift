@@ -67,11 +67,7 @@ extension Date: JSONEncodable {
 
 extension JSONEncodable where Self: Encodable {
     func encodeToJSON() -> Any {
-        let encoder = CodableHelper.jsonEncoder
-        guard let data = try? encoder.encode(self) else {
-            fatalError("Could not encode to json: \(self)")
-        }
-        return data.encodeToJSON()
+        return self
     }
 }
 

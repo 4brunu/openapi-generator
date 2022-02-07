@@ -486,6 +486,17 @@ private class FormDataEncoding: ParameterEncoding {
                     data: data
                 )
 
+            case let jsonEncodable as JSONEncodable:
+
+                if let data = try? CodableHelper.jsonEncoder.encode(jsonEncodable) {
+                    urlRequest = configureDataUploadRequest(
+                        urlRequest: urlRequest,
+                        boundary: boundary,
+                        name: key,
+                        data: data
+                    )
+                }
+
             default:
                 fatalError("Unprocessable value \(value) with key \(key)")
             }

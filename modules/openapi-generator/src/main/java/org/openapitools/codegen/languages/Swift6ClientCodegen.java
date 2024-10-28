@@ -76,6 +76,7 @@ public class Swift6ClientCodegen extends DefaultCodegen implements CodegenConfig
     public static final String VALIDATABLE = "validatable";
     public static final String API_STATIC_METHOD = "apiStaticMethod";
     public static final String COMBINE_DEFERRED = "combineDeferred";
+    public static final String USE_DEPRECATED_RESPONSE_LIBRARY_PROMISE_KIT = "useDeprecatedResponseLibraryPromiseKit";
     protected static final String LIBRARY_ALAMOFIRE = "alamofire";
     protected static final String LIBRARY_URLSESSION = "urlsession";
     protected static final String LIBRARY_VAPOR = "vapor";
@@ -104,6 +105,7 @@ public class Swift6ClientCodegen extends DefaultCodegen implements CodegenConfig
     @Setter protected boolean validatable = true;
     @Setter protected boolean apiStaticMethod = true;
     @Setter protected boolean combineDeferred = true;
+    @Setter protected boolean useDeprecatedResponseLibraryPromiseKit = false;
     @Setter protected String[] responseAs = { RESPONSE_LIBRARY_ASYNC_AWAIT };
     protected String sourceFolder = swiftPackagePath;
     protected HashSet objcReservedWords;
@@ -331,6 +333,10 @@ public class Swift6ClientCodegen extends DefaultCodegen implements CodegenConfig
                 "Make combine usages deferred (default: true)")
                 .defaultValue(Boolean.TRUE.toString()));
 
+        cliOptions.add(new CliOption(USE_DEPRECATED_RESPONSE_LIBRARY_PROMISE_KIT,
+                "LALALA (default: false)")
+                .defaultValue(Boolean.FALSE.toString()));
+
         supportedLibraries.put(LIBRARY_URLSESSION, "[DEFAULT] HTTP client: URLSession");
         supportedLibraries.put(LIBRARY_ALAMOFIRE, "HTTP client: Alamofire");
         supportedLibraries.put(LIBRARY_VAPOR, "HTTP client: Vapor");
@@ -462,7 +468,11 @@ public class Swift6ClientCodegen extends DefaultCodegen implements CodegenConfig
         }
         additionalProperties.put(RESPONSE_AS, responseAs);
         if (ArrayUtils.contains(responseAs, RESPONSE_LIBRARY_PROMISE_KIT)) {
-            additionalProperties.put("usePromiseKit", true);
+            if (useDeprecatedResponseLibraryPromiseKit) {
+                additionalProperties.put("usePromiseKit", true);
+            } else {
+                throw new RuntimeException("LALALA");
+            }
         }
         if (ArrayUtils.contains(responseAs, RESPONSE_LIBRARY_RX_SWIFT)) {
             additionalProperties.put("useRxSwift", true);

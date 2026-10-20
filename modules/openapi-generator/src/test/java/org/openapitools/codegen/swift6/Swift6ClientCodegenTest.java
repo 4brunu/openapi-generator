@@ -640,6 +640,47 @@ public class Swift6ClientCodegenTest {
         Assert.assertEquals(imports.get(2), "BazKit");
     }
 
+    @Test(description = "omitDefaultNullValues removes nil defaults from model initializers and API methods")
+    public void testOmitDefaultNullValues() throws IOException {
+        File output = Files.createTempDirectory("test").toFile();
+        output.deleteOnExit();
+
+        final CodegenConfigurator configurator = new CodegenConfigurator()
+                .setGeneratorName("swift6")
+                .addAdditionalProperty(CodegenConstants.OMIT_DEFAULT_NULL_VALUES, true)
+                .setInputSpec("src/test/resources/3_0/petstore.yaml")
+                .setOutputDir(output.getAbsolutePath().replace("\\", "/"));
+
+        new DefaultGenerator().opts(configurator.toClientOptInput()).generate();
+
+        Path petModel = Path.of(output.getAbsolutePath(), "Sources/OpenAPIClient/Models/Pet.swift");
+        TestUtils.assertFileContains(petModel, "public init(id: Int64?, category: Category?, name: String");
+        TestUtils.assertFileNotContains(petModel, "= nil");
+
+        Path petApi = Path.of(output.getAbsolutePath(), "Sources/OpenAPIClient/APIs/PetAPI.swift");
+        TestUtils.assertFileContains(petApi, "apiKey: String?", "additionalMetadata: String?");
+        TestUtils.assertFileNotContains(petApi, "apiKey: String? = nil", "additionalMetadata: String? = nil");
+    }
+
+    @Test(description = "model initializers and API methods default optional parameters to nil by default")
+    public void testDefaultNullValuesByDefault() throws IOException {
+        File output = Files.createTempDirectory("test").toFile();
+        output.deleteOnExit();
+
+        final CodegenConfigurator configurator = new CodegenConfigurator()
+                .setGeneratorName("swift6")
+                .setInputSpec("src/test/resources/3_0/petstore.yaml")
+                .setOutputDir(output.getAbsolutePath().replace("\\", "/"));
+
+        new DefaultGenerator().opts(configurator.toClientOptInput()).generate();
+
+        Path petModel = Path.of(output.getAbsolutePath(), "Sources/OpenAPIClient/Models/Pet.swift");
+        TestUtils.assertFileContains(petModel, "public init(id: Int64? = nil, category: Category? = nil, name: String");
+
+        Path petApi = Path.of(output.getAbsolutePath(), "Sources/OpenAPIClient/APIs/PetAPI.swift");
+        TestUtils.assertFileContains(petApi, "apiKey: String? = nil", "additionalMetadata: String? = nil");
+    }
+
     @Test(description = "Issue #17996")
     public void testNullableMap() {
         final OpenAPI openAPI = TestUtils.parseFlattenSpec("src/test/resources/3_0/swift6/issue17996-nullable-map.yaml");

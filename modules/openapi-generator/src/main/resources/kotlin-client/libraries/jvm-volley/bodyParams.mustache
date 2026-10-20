@@ -1,1 +1,1 @@
-{{#isBodyParam}}{{{paramName}}}: {{{dataType}}}{{^required}}? = null{{/required}}{{/isBodyParam}}
+{{#isBodyParam}}{{{paramName}}}: {{{dataType}}}{{^required}}?{{^omitDefaultNullValues}} = null{{/omitDefaultNullValues}}{{/required}}{{/isBodyParam}}

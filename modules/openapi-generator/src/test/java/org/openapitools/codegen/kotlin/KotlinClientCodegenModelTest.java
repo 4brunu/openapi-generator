@@ -39,10 +39,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static org.openapitools.codegen.CodegenConstants.*;
 import static org.openapitools.codegen.languages.KotlinClientCodegen.*;
@@ -1199,6 +1201,45 @@ public class KotlinClientCodegenModelTest {
 
         Path petModel = Paths.get(output.getAbsolutePath() + "/src/main/kotlin/org/openapitools/client/models/Pet.kt");
         TestUtils.assertFileContains(petModel, "companion object { }");
+    }
+
+    @DataProvider(name = "omitDefaultNullValues")
+    public Object[][] omitDefaultNullValues() {
+        return Arrays.stream(ClientLibrary.values())
+                .flatMap(library -> Stream.of(new Object[]{library, true}, new Object[]{library, false}))
+                .toArray(Object[][]::new);
+    }
+
+    @Test(dataProvider = "omitDefaultNullValues")
+    public void testOmitDefaultNullValues(ClientLibrary clientLibrary, boolean omitDefaultNullValues) throws IOException {
+        File output = Files.createTempDirectory("test").toFile();
+        String path = output.getAbsolutePath();
+        output.deleteOnExit();
+
+        final CodegenConfigurator configurator = new CodegenConfigurator()
+                .setGeneratorName(KOTLIN_GENERATOR)
+                .setLibrary(clientLibrary.getLibraryName())
+                .setInputSpec("src/test/resources/3_0/petstore.yaml")
+                .addAdditionalProperty(SERIALIZATION_LIBRARY, clientLibrary.getSerializationLibrary())
+                .addAdditionalProperty("dateLibrary", "kotlinx-datetime")
+                .addAdditionalProperty("useSpringBoot3", "true")
+                .addAdditionalProperty(OMIT_DEFAULT_NULL_VALUES, omitDefaultNullValues)
+                .setOutputDir(path.replace("\\", "/"));
+
+        new DefaultGenerator().opts(configurator.toClientOptInput()).generate();
+
+        String packagePath = path + "/src/" + clientLibrary.getSourceRoot() + "/org/openapitools/client";
+        Path petModel = Paths.get(packagePath + "/models/Pet.kt");
+        Path petApi = Paths.get(packagePath + "/apis/PetApi.kt");
+        if (omitDefaultNullValues) {
+            TestUtils.assertFileContains(petModel, "val id: kotlin.Long?");
+            TestUtils.assertFileNotContains(petModel, "val id: kotlin.Long? = null");
+            TestUtils.assertFileContains(petApi, "apiKey: kotlin.String?", "additionalMetadata: kotlin.String?");
+            TestUtils.assertFileNotContains(petApi, "apiKey: kotlin.String? = null", "additionalMetadata: kotlin.String? = null");
+        } else {
+            TestUtils.assertFileContains(petModel, "val id: kotlin.Long? = null");
+            TestUtils.assertFileContains(petApi, "apiKey: kotlin.String? = null", "additionalMetadata: kotlin.String? = null");
+        }
     }
 
     @Test(description = "nameMappings: @param:JsonProperty must use the original JSON field name for deserialization")

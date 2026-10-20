@@ -354,6 +354,9 @@ public class CodegenConstants {
     public static final String NON_PUBLIC_API = "nonPublicApi";
     public static final String NON_PUBLIC_API_DESC = "Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.";
 
+    public static final String OMIT_DEFAULT_NULL_VALUES = "omitDefaultNullValues";
+    public static final String OMIT_DEFAULT_NULL_VALUES_DESC = "Omit the null default value of optional model properties and API method parameters that have no default value in the spec.";
+
     public static final String VALIDATABLE = "validatable";
     public static final String VALIDATABLE_DESC = "Generates self-validatable models.";
 

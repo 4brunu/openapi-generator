@@ -38,6 +38,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 |nonPublicApi|Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.(default: false)| |null|
 |nonisolatedModels|Mark generated models, and the supporting protocols, extensions and helper types they rely on, as nonisolated so they stay usable off the main actor in modules built with default MainActor isolation (SE-0466). Requires a Swift 6.1+ toolchain (default: false)| |false|
 |objcCompatible|Add additional properties and methods for Objective-C compatibility (default: false)| |null|
+|omitDefaultNullValues|Omit the null default value of optional model properties and API method parameters that have no default value in the spec. (default: false)| |false|
 |oneOfUnknownDefaultCase|Add unknownDefault case to oneOf enum (default: false)| |false|
 |podAuthors|Authors used for Podspec| |null|
 |podDescription|Description used for Podspec| |null|

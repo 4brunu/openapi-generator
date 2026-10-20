@@ -58,6 +58,7 @@ public class Swift6ClientCodegenOptionsProvider implements OptionsProvider {
     public static final String ENUM_UNKNOWN_DEFAULT_CASE_VALUE = "false";
     public static final String API_STATIC_METHOD_VALUE = "true";
     public static final String COMBINE_DEFERRED_VALUE = "true";
+    public static final String OMIT_DEFAULT_NULL_VALUES_VALUE = "false";
     public static final String ADDITIONAL_MODEL_OBJECT_ATTRIBUTES_VALUE = "@MainActor";
     public static final String ADDITIONAL_MODEL_ENUM_ATTRIBUTES_VALUE = "@CasePathable";
     public static final String ADDITIONAL_MODEL_IMPORTS_VALUE = "CasePaths";
@@ -114,6 +115,8 @@ public class Swift6ClientCodegenOptionsProvider implements OptionsProvider {
                         API_STATIC_METHOD_VALUE)
                 .put(Swift6ClientCodegen.COMBINE_DEFERRED,
                         COMBINE_DEFERRED_VALUE)
+                .put(CodegenConstants.OMIT_DEFAULT_NULL_VALUES,
+                        OMIT_DEFAULT_NULL_VALUES_VALUE)
                 .put(CodegenConstants.ENUM_UNKNOWN_DEFAULT_CASE, ENUM_UNKNOWN_DEFAULT_CASE_VALUE)
                 .put(Swift6ClientCodegen.ADDITIONAL_MODEL_OBJECT_ATTRIBUTES, ADDITIONAL_MODEL_OBJECT_ATTRIBUTES_VALUE)
                 .put(Swift6ClientCodegen.ADDITIONAL_MODEL_ENUM_ATTRIBUTES, ADDITIONAL_MODEL_ENUM_ATTRIBUTES_VALUE)

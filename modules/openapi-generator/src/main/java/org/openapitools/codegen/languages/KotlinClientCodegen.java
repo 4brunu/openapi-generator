@@ -308,6 +308,7 @@ public class KotlinClientCodegen extends AbstractKotlinCodegen {
                 .defaultValue("empty map"));
 
         cliOptions.add(CliOption.newBoolean(COMPANION_OBJECT, "Whether to generate companion objects in data classes, enabling companion extensions.", false));
+        cliOptions.add(CliOption.newBoolean(CodegenConstants.OMIT_DEFAULT_NULL_VALUES, CodegenConstants.OMIT_DEFAULT_NULL_VALUES_DESC, false));
 
         CliOption serializationLibraryOpt = new CliOption(CodegenConstants.SERIALIZATION_LIBRARY, SERIALIZATION_LIBRARY_DESC);
         cliOptions.add(serializationLibraryOpt.defaultValue(serializationLibrary.name()));

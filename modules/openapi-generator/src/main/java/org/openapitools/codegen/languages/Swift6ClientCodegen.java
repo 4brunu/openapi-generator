@@ -141,6 +141,8 @@ public class Swift6ClientCodegen extends DefaultCodegen implements CodegenConfig
     protected boolean apiStaticMethod = true;
     @Setter
     protected boolean combineDeferred = true;
+    @Setter
+    protected boolean omitDefaultNullValues = false;
     @Getter @Setter
     protected List<String> additionalModelObjectAttributes = new LinkedList<>();
     @Getter @Setter
@@ -413,6 +415,10 @@ public class Swift6ClientCodegen extends DefaultCodegen implements CodegenConfig
                 "Make combine usages deferred (default: true)")
                 .defaultValue(Boolean.TRUE.toString()));
 
+        cliOptions.add(new CliOption(CodegenConstants.OMIT_DEFAULT_NULL_VALUES,
+                CodegenConstants.OMIT_DEFAULT_NULL_VALUES_DESC + " (default: false)")
+                .defaultValue(Boolean.FALSE.toString()));
+
         cliOptions.add(CliOption.newString(ADDITIONAL_MODEL_OBJECT_ATTRIBUTES,
                 "Additional Swift attributes prepended to generated model struct/class declarations "
                         + "(e.g. @MainActor, custom @attached macros). "
@@ -682,6 +688,11 @@ public class Swift6ClientCodegen extends DefaultCodegen implements CodegenConfig
             setCombineDeferred(convertPropertyToBooleanAndWriteBack(COMBINE_DEFERRED));
         }
         additionalProperties.put(COMBINE_DEFERRED, combineDeferred);
+
+        if (additionalProperties.containsKey(CodegenConstants.OMIT_DEFAULT_NULL_VALUES)) {
+            setOmitDefaultNullValues(convertPropertyToBooleanAndWriteBack(CodegenConstants.OMIT_DEFAULT_NULL_VALUES));
+        }
+        additionalProperties.put(CodegenConstants.OMIT_DEFAULT_NULL_VALUES, omitDefaultNullValues);
 
         additionalProperties.put("transformArrayType", (Mustache.Lambda) (frag, out) -> {
             String type = frag.execute();

@@ -91,6 +91,9 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
 
     @Setter protected boolean nonPublicApi = false;
 
+    // Handled for all Kotlin generators, but the CLI option is only registered by the generators whose templates honour it
+    @Setter protected boolean omitDefaultNullValues = false;
+
     /**
      * Naming convention options for Kotlin enum properties. Extends the shared
      * {@link org.openapitools.codegen.CodegenConstants.ENUM_PROPERTY_NAMING_TYPE} with
@@ -645,6 +648,12 @@ public abstract class AbstractKotlinCodegen extends DefaultCodegen implements Co
             this.setNonPublicApi(convertPropertyToBooleanAndWriteBack(CodegenConstants.NON_PUBLIC_API));
         } else {
             additionalProperties.put(CodegenConstants.NON_PUBLIC_API, nonPublicApi);
+        }
+
+        if (additionalProperties.containsKey(CodegenConstants.OMIT_DEFAULT_NULL_VALUES)) {
+            this.setOmitDefaultNullValues(convertPropertyToBooleanAndWriteBack(CodegenConstants.OMIT_DEFAULT_NULL_VALUES));
+        } else {
+            additionalProperties.put(CodegenConstants.OMIT_DEFAULT_NULL_VALUES, omitDefaultNullValues);
         }
 
         if (additionalProperties.containsKey(ADDITIONAL_MODEL_TYPE_ANNOTATIONS)) {

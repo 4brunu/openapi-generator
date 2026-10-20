@@ -40,6 +40,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 |moshiCodeGen|Whether to enable codegen with the Moshi library. Refer to the [official Moshi doc](https://github.com/square/moshi#codegen) for more info.| |false|
 |nonPublicApi|Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.| |false|
 |nullableReturnType|Nullable return type| |false|
+|omitDefaultNullValues|Omit the null default value of optional model properties and API method parameters that have no default value in the spec.| |false|
 |omitGradlePluginVersions|Whether to declare Gradle plugin versions in build files.| |false|
 |omitGradleWrapper|Whether to omit Gradle wrapper for creating a sub project.| |false|
 |packageName|Generated artifact package name.| |org.openapitools.client|
